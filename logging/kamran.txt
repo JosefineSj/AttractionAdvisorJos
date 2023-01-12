@@ -1,0 +1,2 @@
+2022-01-12 
+Suggested API and database structure
