@@ -23,21 +23,21 @@ Satte upp Trello-board.
 
 Sätta upp backloggen i Trello och bryta ner våra uppgifter till minsta beståndsdel - User Stories. Struturera och planera arkitektur.
 Front-End Neovim och VSC. Back-End SSMS och Visual Studio 22.
-Förslag på första möte med Martin antingen idag eller nästa torsdag vid lektionstillfälle.
+Förslag på första möte med Martin: Måndag 16/11 kl 16:30
 
 Upplägg:
-FrontEnd - Carl-Henrik och Kamran
-BackEnd - Hanna och Sahar
+Frontend - Carl-Henrik och Kamran
+Backend - Hanna och Sahar
 Fullstack - Josefine (flygande)
 Databas  - Alla i gruppen
 
-Struktur och arkitektur 
-Frontend : React NextJS (Neovim & VSC)         
+Struktur och arkitektur:
+Frontend: React NextJS (Neovim & VSC)         
 Backend: C#, code first i EF core, Restful webapi (Visual Studio 2022, .NET 6)
-Databas : SSMS
+Databas: SSMS
 
 Tekniska utmaningar: 
 Vi är betydligt färre i vår grupp än i resterande grupper.
-Vi har inte så stora förkunskaper i varesig React eller EF Core Code First
+Vi har inte så stora förkunskaper i varesig React, EF Core Code First eller, Restful WebApis
 
 
