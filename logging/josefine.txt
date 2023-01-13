@@ -1,0 +1,43 @@
+12/1  
+
+Planering och strukturering för projektet. Rollindelning m.m. 
+
+V.2. Sahar Scrum Master - Hanna Product Owner. 
+
+V.3. Josefine Scrum Master - Carl-Henrik Product Owner 
+
+V.4. Hanna Scrum Master - Josefine Product Owner 
+
+V.5. Kamran Scrum Master - Sahar Product Owner 
+
+V.6. Carl-Henrik Scrum Master - Carl-Henrik Product Owner 
+
+Tekniker vi använder
+-SSMS
+-EF Code First
+-React NextJS 
+
+Satte upp Trello-board.
+
+13/1
+
+Sätta upp backloggen i Trello och bryta ner våra uppgifter till minsta beståndsdel - User Stories. Struturera och planera arkitektur.
+Front-End Neovim och VSC. Back-End SSMS och Visual Studio 22.
+Förslag på första möte med Martin: Måndag 16/11 kl 16:30
+
+Upplägg:
+Frontend - Carl-Henrik och Kamran
+Backend - Hanna och Sahar
+Fullstack - Josefine (flygande)
+Databas  - Alla i gruppen
+
+Struktur och arkitektur:
+Frontend: React NextJS (Neovim & VSC)         
+Backend: C#, code first i EF core, Restful webapi (Visual Studio 2022, .NET 6)
+Databas: SSMS
+
+Tekniska utmaningar: 
+Vi är betydligt färre i vår grupp än i resterande grupper.
+Vi har inte så stora förkunskaper i varesig React, EF Core Code First eller, Restful WebApis
+
+
