@@ -23,7 +23,7 @@ Satte upp Trello-board.
 
 Sätta upp backloggen i Trello och bryta ner våra uppgifter till minsta beståndsdel - User Stories. Struturera och planera arkitektur.
 Front-End Neovim och VSC. Back-End SSMS och Visual Studio 22.
-Förslag på första möte antingen idag eller nästa torsdag vid lektionstillfälle.
+Förslag på första möte med Martin antingen idag eller nästa torsdag vid lektionstillfälle.
 
 Upplägg:
 FrontEnd - Carl-Henrik och Kamran
