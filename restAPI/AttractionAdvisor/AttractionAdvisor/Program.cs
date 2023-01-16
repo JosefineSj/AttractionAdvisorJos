@@ -15,14 +15,24 @@ serviceCollection.AddDbContext<AttractionAdvisorDbContext>(
         builder.Configuration.GetConnectionString("AttractionAdvisorConnection")));
 
 app.UseHttpsRedirection();
+var serviceProvider = serviceCollection.BuildServiceProvider();
+var context = serviceProvider.GetService<AttractionAdvisorDbContext>();
+var userService = new UserService(context);
 
-app.MapGet("register", async (HttpRequest request, HttpResponse response) =>
+app.MapPost("register", async (HttpRequest request, HttpResponse response) =>
 {
-    var serviceProvider = serviceCollection.BuildServiceProvider();
-    var context = serviceProvider.GetService<AttractionAdvisorDbContext>();
-    var userService = new UserService(context);
     var resp = await userService.Register(request);
     await response.WriteAsJsonAsync(resp);
 });
 
-app.Run();
+
+// a sample endpoint for testing. works!
+app.MapPost("lmao", async (HttpRequest request, HttpResponse response) =>
+{
+    var resp = await userService.Lmao(request);
+    await response.WriteAsJsonAsync(resp);
+});
+
+app.Run("http://localhost:8080");
+
+
