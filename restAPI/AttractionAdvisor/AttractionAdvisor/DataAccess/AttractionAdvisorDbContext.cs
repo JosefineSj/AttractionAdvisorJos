@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using AttractionAdvisor.Models;
 
-namespace AttractionAdvisor.data_access
+namespace AttractionAdvisor.DataAccess
 {
     public class AttractionAdvisorDbContext: DbContext
     {
