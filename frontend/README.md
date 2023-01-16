@@ -1,1 +1,1 @@
-# Frontend web application written in Next.JS
+# Frontend web application written in React
