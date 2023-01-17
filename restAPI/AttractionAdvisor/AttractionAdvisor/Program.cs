@@ -1,5 +1,7 @@
 ﻿using AttractionAdvisor.DataAccess;
 using AttractionAdvisor.API;
+using AttractionAdvisor.Utils;
+using AttractionAdvisor.Models;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -14,25 +16,35 @@ serviceCollection.AddDbContext<AttractionAdvisorDbContext>(
     options => options.UseSqlServer(
         builder.Configuration.GetConnectionString("AttractionAdvisorConnection")));
 
-app.UseHttpsRedirection();
 var serviceProvider = serviceCollection.BuildServiceProvider();
 var context = serviceProvider.GetService<AttractionAdvisorDbContext>();
-var userService = new UserService(context);
+var userHandler = new UserHandler(context);
 
-app.MapPost("register", async (HttpRequest request, HttpResponse response) =>
+app.UseHttpsRedirection();
+
+app.MapPost("api/login", async (HttpRequest request, HttpResponse response) =>
 {
-    var resp = await userService.Register(request);
-    await response.WriteAsJsonAsync(resp);
-});
+    // Validate request.
+    if (!Utils.ValidateRequest(request))
+    {
+        response.StatusCode = 400;
+        await response.WriteAsJsonAsync(new { message = "Invalid request." });
+    }
 
-
-// a sample endpoint for testing. works!
-app.MapPost("lmao", async (HttpRequest request, HttpResponse response) =>
-{
-    var resp = await userService.Lmao(request);
-    await response.WriteAsJsonAsync(resp);
+    // Deserialize request JSON to Models.User.
+    var user = await Utils.Deserialize<User>(request);
+    
+    var loggedIn = await userHandler.Login(user);
+    if (!loggedIn)
+    {
+        response.StatusCode = 401;
+        await response.WriteAsJsonAsync(new { message = "Invalid username or password" });
+    }
+    else
+    {
+        response.StatusCode = 200;
+        await response.WriteAsJsonAsync(new { message = "Logged in successfully" });
+    }
 });
 
 app.Run("http://localhost:8080");
-
-
