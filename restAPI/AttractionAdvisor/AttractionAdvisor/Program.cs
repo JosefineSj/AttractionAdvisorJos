@@ -29,6 +29,7 @@ app.MapPost("api/login", async (HttpRequest request, HttpResponse response) =>
     {
         response.StatusCode = 400;
         await response.WriteAsJsonAsync(new { message = "Invalid request." });
+        return;
     }
 
     // Deserialize request JSON to Models.User.
@@ -39,12 +40,11 @@ app.MapPost("api/login", async (HttpRequest request, HttpResponse response) =>
     {
         response.StatusCode = 401;
         await response.WriteAsJsonAsync(new { message = "Invalid username or password" });
+        return;
     }
-    else
-    {
-        response.StatusCode = 200;
-        await response.WriteAsJsonAsync(new { message = "Logged in successfully" });
-    }
+    
+    response.StatusCode = 200;
+    await response.WriteAsJsonAsync(new { message = "Logged in successfully" });
 });
 
 app.Run("http://localhost:8080");
