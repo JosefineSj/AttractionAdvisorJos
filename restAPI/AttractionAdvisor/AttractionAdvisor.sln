@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.1.32328.378
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AttractionAdvisor", "AttractionAdvisor\AttractionAdvisor.csproj", "{EEDC81AA-1492-48E8-96C3-36EEE8F176C2}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{EEDC81AA-1492-48E8-96C3-36EEE8F176C2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EEDC81AA-1492-48E8-96C3-36EEE8F176C2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EEDC81AA-1492-48E8-96C3-36EEE8F176C2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EEDC81AA-1492-48E8-96C3-36EEE8F176C2}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D7C2F600-4E79-4DF7-965C-2C76FD4544C7}
+	EndGlobalSection
+EndGlobal
