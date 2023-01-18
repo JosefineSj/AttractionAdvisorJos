@@ -6,6 +6,7 @@
         public string Name { get; set; }
         public string City { get; set; }
         public string Description { get; set; }
+        public string ImageSource { get; set; }
         public IList<Rating> Ratings { get; set; }
         public IList<Comment> Comments { get; set; }
     }
