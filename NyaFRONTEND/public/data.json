@@ -1,0 +1,44 @@
+[
+    {
+      "id": 1,
+      "name": "Södermalm",
+      "city": "Stockholm",
+      "description": "sdfjk sdfsdf fs fdsf sd fs df s sdf dsf f sdf sdf sf f sf sdfs fsd fsdf sd f sdfsdfs ffd",
+      "pictureLink": "https://media.tacdn.com/media/attractions-splice-spp-360x240/0b/97/ce/cd.jpg"
+    },
+    {
+        "id": 2,
+        "name": "Gamla stan",
+        "city": "Stockholm",
+        "description": "sdfjk sdfsdf fs fdsf sd fs df s sdf dsf f sdf sdf sf f sf sdfs fsd fsdf sd f sdfsdfs ffd",
+        "pictureLink": "https://media.tacdn.com/media/attractions-splice-spp-360x240/0b/25/79/21.jpg"
+      },
+      {
+        "id": 3,
+        "name": "Malmö centralstation",
+        "city": "Malmö",
+        "description": "sdfjk sdfsdf fs fdsf sd fs df s sdf dsf f sdf sdf sf f sf sdfs fsd fsdf sd f sdfsdfs ffd",
+        "pictureLink": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/4d/44/30/malmo.jpg?w=300&h=300&s=1"
+      },
+      {
+        "id": 4,
+        "name": "Stranden",
+        "city": "Helsingborg",
+        "description": "sdfjk sdfsdf fs fdsf sd fs df s sdf dsf f sdf sdf sf f sf sdfs fsd fsdf sd f sdfsdfs ffd",
+        "pictureLink": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/0f/b2/1c/48/tropical-beach.jpg?w=300&h=300&s=1"
+      },
+      {
+        "id": 5,
+        "name": "Stora hotellet",
+        "city": "Göteborg",
+        "description": "sdfjk sdfsdf fs fdsf sd fs df s sdf dsf f sdf sdf sf f sf sdfs fsd fsdf sd f sdfsdfs ffd",
+        "pictureLink": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/03/81/7f/93/liseberg-park.jpg?w=300&h=300&s=1"
+      },
+      {
+        "id": 6,
+        "name": "Vasastan",
+        "city": "Stockholm",
+        "description": "sdfjk sdfsdf fs fdsf sd fs df s sdf dsf f sdf sdf sf f sf sdfs fsd fsdf sd f sdfsdfs ffd",
+        "pictureLink": "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/15/33/f9/5e/stockholm.jpg?w=300&h=300&s=1"
+      }
+  ]

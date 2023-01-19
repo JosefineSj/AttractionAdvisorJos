@@ -1,19 +1,13 @@
-import { Component } from "react";
 import AttractionListElement from "./AttractionListElement";
 
-class ListOfAttractions extends Component {
+const ListOfAttractions = ({places}) => (
+  places.map((place) => {
+    return (
+      <AttractionListElement key={place.id}  id={place.id} name={place.name} pictureLink={place.pictureLink} city={place.city} description={place.description}  /> 
+    )
+    })
+  )
+    
 
-    render() {
-        const {places } = this.props;
-
-        return (
-            places.map((place) => {
-              return (
-              <AttractionListElement  id={place.id} name={place.name} email={place.email} /> 
-              )
-            })
-          )
-    }
-}
 
 export default ListOfAttractions

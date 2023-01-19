@@ -1,17 +1,10 @@
-import { Component } from "react";
-
-class AttractionListElement extends Component {
-    render() {
-        const {id, name, email} = this.props
-        return (
-            <div key={id}>
-                <img src={`https://robohash.org/${id}?set=set2&size=180x180`} alt="trt"  />
-                <h1>{name}</h1> 
-                <p>{email}</p>
-              </div> 
-        )
-    }
-
-}
+const AttractionListElement = ({id, name, pictureLink, city, description}) => (       
+    <div key={id}>
+        <h1>{name}</h1> 
+        <img src={`${pictureLink}`} alt="trt"  />
+        <p>{city}</p>
+        <p>{description}</p>
+    </div> 
+)
 
 export default AttractionListElement;
