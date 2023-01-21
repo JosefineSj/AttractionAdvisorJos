@@ -3,10 +3,11 @@ import Navbar from './Navbar';
 import Home from './pages/Home';
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
+import MyPage from './pages/MyPage';
+import About from './pages/About';
 import { Route, Routes } from 'react-router-dom';
-import SubmitAttraction from './components/SubmitAttraction';
-import AddComment from './components/AddComment';
-import Attraction from './components/Attraction'; 
+/*import AddComment from './components/AddComment'; */
+
 
 function App() {
  
@@ -16,18 +17,18 @@ function App() {
     <div className="container">
       <Routes>
         <Route path="/" element={<Home />}/>
+        <Route path="/about" element={<About />}/>
         <Route path="/signup" element={<SignUp />}/>
         <Route path="/login" element={<LogIn />}/>
+        <Route path="/my-page" element={<MyPage />}/>
       </Routes>
-
-      <SubmitAttraction />
-      <AddComment attractionId={1} userId={1}  />
-      <Attraction />
-    </div>
-
      
+    
+    </div>     
       
     </>
+
+    /*   <AddComment attractionId={1} userId={1}  />*/
 
   );
 }

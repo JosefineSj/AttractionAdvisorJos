@@ -33,7 +33,8 @@ export default function SignUp() {
         
           return (
             <form onSubmit={handleSubmit}>
-              <h2>Register new user:</h2>
+              <h2>Hi, User!</h2>
+              <h3>Enter a username and password of your choice:</h3>
               <label>
                 Username:
                 <input

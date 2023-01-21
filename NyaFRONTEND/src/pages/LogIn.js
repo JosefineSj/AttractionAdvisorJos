@@ -33,7 +33,9 @@ export default function SignIn() {
       return (
         
         <form onSubmit={handleSubmit}>
-            <h2>Login:</h2>
+            <h2>Welcome back!</h2>
+            <h3>Enter your chosen username and password:</h3>
+
           <label>
             Username:
             <input type="text" value={username} onChange={(e) => setUsername(e.target.value)} />
@@ -50,7 +52,7 @@ export default function SignIn() {
     } else {
       return (
         <div>
-          <h1>Du är nu inloggad!</h1>
+          <h1>You are in!</h1>
         </div>
       )
     }

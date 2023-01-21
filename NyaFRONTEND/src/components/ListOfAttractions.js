@@ -10,4 +10,4 @@ const ListOfAttractions = ({places}) => (
     
 
 
-export default ListOfAttractions
+export default ListOfAttractions;

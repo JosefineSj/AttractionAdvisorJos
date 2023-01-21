@@ -27,7 +27,7 @@ function SubmitAttraction() {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Registrera ny sevärdhet:</h2>
+      <h2>Register new attraction:</h2>
       <label>
         Name:
         <input type="text" value={name} onChange={(e) => setName(e.target.value)} />

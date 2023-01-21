@@ -4,6 +4,7 @@ import SearchBox from './search-box';
 
 
 
+
 const Attraction = () => {
   
   const [searchField, setSearchField] = useState('');
@@ -27,15 +28,15 @@ const Attraction = () => {
                 }
              }
              )
-             .then((respons) => respons.json())
-             .then((placesRespons) => setPlaces(placesRespons))
+             .then((response) => response.json())
+             .then((placesResponse) => setPlaces(placesResponse))
       }, []);
 
       
       
   return(
       <div>
-        <h1>Sök sevärdhet</h1>    
+        <h1>Search attraction:</h1>    
         <SearchBox className='SearchBox' placeholder='Sök plats' onChangeHandler={onSearchChange} />
         <ListOfAttractions places = {filteredPlaces} />
       </div>
