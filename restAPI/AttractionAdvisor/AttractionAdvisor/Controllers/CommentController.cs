@@ -34,9 +34,7 @@ namespace AttractionAdvisor.Controllers
         public async Task<ActionResult<Comment>> GetComment(int id)
         {
             if (id <= 0)
-            {
                 return BadRequest();
-            }
 
             try
             {

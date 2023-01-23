@@ -73,9 +73,12 @@ namespace AttractionAdvisor.Repository
 
         [HttpPut("{id}")]
 
-        public async Task<ActionResult<Rating>> UpdateRating(int id, Rating rating)
+        public async Task<ActionResult<Rating>> UpdateRating(Rating rating)
         {
-            if (id != rating.Id)
+            if (rating == null)
+                return BadRequest();
+
+            if (rating.Id <= 0)
                 return BadRequest("Rating Id mismatch");
 
             try
