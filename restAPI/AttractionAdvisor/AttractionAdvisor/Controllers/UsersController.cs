@@ -19,7 +19,26 @@ namespace AttractionAdvisor.Controllers
         {
             _userRepository = userRepository;
         }
-        private readonly User _password;
+
+        [HttpPost("login")]
+
+        public async Task<ActionResult<User>> Login(string userName, string password)
+        {
+            try
+            {
+               var result = await _userRepository.LoginUser(userName,password);
+
+                if(result == null) 
+                return Unauthorized("Wrong username or password");
+
+                return Ok(result);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Failed to log in!");
+            }
+        }
 
         [HttpGet]
         public async Task<ActionResult> GetUsers()
@@ -55,7 +74,7 @@ namespace AttractionAdvisor.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<User>> CreateUser(User user)
+        public async Task<ActionResult<int>> CreateUser(User user)
         {
             if (user == null)
                 return BadRequest();
@@ -65,7 +84,7 @@ namespace AttractionAdvisor.Controllers
                 var createdUser = await _userRepository.AddUser(user);
                 
                 return CreatedAtAction(nameof(GetUserById),
-                    new { id = createdUser.Id}, createdUser);
+                    new { id = createdUser.Id}, createdUser.Id;);
             }
             catch (Exception)
             {
