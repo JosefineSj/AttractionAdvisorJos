@@ -10,5 +10,4 @@
         public IList<Rating> Ratings { get; set; }
         public IList<Comment> Comments { get; set; }
     }
-
 }
