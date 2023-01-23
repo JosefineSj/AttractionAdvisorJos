@@ -58,7 +58,7 @@ namespace AttractionAdvisor.Repository
         {
             var result = await _context.Comments
                 .FirstOrDefaultAsync(c => c.Id == id);
-            if (result != null)
+            if (result == null)
                 throw new Exception("comment not found");
             
             _context.Remove(result);
