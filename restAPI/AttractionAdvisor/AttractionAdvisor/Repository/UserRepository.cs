@@ -33,9 +33,12 @@ namespace AttractionAdvisor.Repository
 
         public async Task<User> AddUser(User user)
         {
+           
          
             var result = await _context.Users.AddAsync(user);
-            //User.SetPassword(user.Password);
+           
+            var _user = new User();
+            _user.SetPassword(user.Password);
             await _context.SaveChangesAsync();
             return result.Entity;
         }
