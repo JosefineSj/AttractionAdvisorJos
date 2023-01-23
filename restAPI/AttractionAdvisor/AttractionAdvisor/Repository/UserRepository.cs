@@ -7,7 +7,6 @@ using AttractionAdvisor.Utils;
 namespace AttractionAdvisor.Repository
 {
     public class UserRepository : IUserRepository
-
     {
 
         private readonly AttractionAdvisorDbContext _context;
@@ -17,28 +16,21 @@ namespace AttractionAdvisor.Repository
             _context = context;
         }
 
-      
-
         public async Task<IEnumerable<User>> GetUsers()
         {
-            //Get users from datbase:
             return await _context.Users.ToListAsync();
         }
 
         public async Task<User> GetUserById(int id)
         {
             return await _context.Users.FirstOrDefaultAsync(e => e.Id == id);
-
         }
 
         public async Task<User> AddUser(User user)
         {
-           
-         
             var result = await _context.Users.AddAsync(user);
            
-            var _user = new User();
-            _user.SetPassword(user.Password);
+            result.SetPassword(user.Password);
             await _context.SaveChangesAsync();
             return result.Entity;
         }
@@ -52,6 +44,7 @@ namespace AttractionAdvisor.Repository
             if (result != null)
             {
                 result.UserName = user.UserName;
+                result.Password = user.Password;
                 await _context.SaveChangesAsync();
 
                 return result;
@@ -78,7 +71,5 @@ namespace AttractionAdvisor.Repository
             throw new NotImplementedException();
         }
     }
-
-        
     }
 

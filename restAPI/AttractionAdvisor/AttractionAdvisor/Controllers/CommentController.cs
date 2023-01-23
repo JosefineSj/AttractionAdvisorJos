@@ -33,6 +33,9 @@ namespace AttractionAdvisor.Controllers
         [HttpGet("{id}")]
         public async Task<ActionResult<Comment>> GetComment(int id)
         {
+            if (id <= 0)
+                return BadRequest();
+
             try
             {
                 var result = await _commentRepository.GetComment(id);
@@ -45,37 +48,44 @@ namespace AttractionAdvisor.Controllers
             catch (Exception)
             {
 
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error retriving data from the database");
+                return StatusCode(
+                        StatusCodes.Status500InternalServerError,
+                        "Error retriving data from the database");
             }
         }
 
         [HttpPost]
         public async Task<ActionResult<Comment>> AddComment(Comment comment)
         {
+            if (comment == null)
+                return BadRequest();
+
             try
             {
-                if (comment == null)
-                    return BadRequest();
-
                 var createdComment = await _commentRepository.AddComment(comment);
                 return CreatedAtAction(nameof(GetComment),
                     new { id = createdComment.Id }, createdComment);
             }
             catch (Exception)
             {
-
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error adding new comment record");
+                return StatusCode(
+                        StatusCodes.Status500InternalServerError,
+                        "Error adding new comment record");
             }
         }
 
         [HttpPut("{id}")]
         
-        public async Task<ActionResult<Comment>> UpdateComment(int id, Comment comment)
+        public async Task<ActionResult<Comment>> UpdateComment(Comment comment)
         {
+            if (comment == null)
+                return BadRequest();
+
+            if (comment.Id <= 0)
+                return BadRequest();
+
             try
             {
-                if (id != comment.Id)
-                    return BadRequest("Comment Id mismatch");
                 var commentToUpdate = await _commentRepository.GetComment(id);
                 if (commentToUpdate == null)
                     return NotFound($"Comment with Id = {id} not found");
@@ -84,7 +94,9 @@ namespace AttractionAdvisor.Controllers
             }
             catch (Exception)
             {
-                return StatusCode(StatusCodes.Status500InternalServerError, "Error updating data");
+                return StatusCode(
+                        StatusCodes.Status500InternalServerError,
+                        "Error updating data");
             }
         }
 
@@ -94,11 +106,8 @@ namespace AttractionAdvisor.Controllers
             try
             {
                 var commentToDelete = await _commentRepository.GetComment(id);
-
                 if (commentToDelete == null)
-                { 
                     return NotFound($"Comment with Id = {id} not found"); 
-                }
 
                 return Ok();
             }
