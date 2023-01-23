@@ -5,6 +5,8 @@ using System.Data.SqlClient;
 using AttractionAdvisor.DataAccess;
 using Microsoft.EntityFrameworkCore;
 using AttractionAdvisor.Models;
+using AttractionAdvisor.Interfaces;
+using AttractionAdvisor.Repository;
 
 namespace AttractionAdvisor.Controllers
 {
@@ -12,45 +14,111 @@ namespace AttractionAdvisor.Controllers
     [ApiController]
     public class UsersController : ControllerBase
     {
-
-        private readonly AttractionAdvisorDbContext _context;
-
-        public UsersController(AttractionAdvisorDbContext context)
+        private readonly IUserRepository _userRepository;
+        public UsersController(IUserRepository userRepository)
         {
-            _context = context;
+            _userRepository = userRepository;   //Bättre än att använda this.
         }
+        private readonly User _password;
+      
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUsers()
+        public async Task<ActionResult> GetUsers()
         {
-            return await _context.Users.ToListAsync();
+            try
+            {
+                return Ok(await _userRepository.GetUsers());
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error retrieving data from the database");
+            }
         }
-        /*private readonly IConfiguration _configuration;
-        public UsersController(IConfiguration configuration)
+        [HttpGet("{id}")]
+        public async Task<ActionResult<User>> GetUserById(int id)
         {
-            _configuration = configuration;
+            try
+            {
+                var result = await _userRepository.GetUserById(id);
 
+                if (result == null) return NotFound();
+
+                return result;
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error retrieving data from the database");
+            }
         }
 
         [HttpPost]
-        
-        public string registration(Models.User registration)
+        public async Task<ActionResult<User>> CreateUser(User user)
         {
-            SqlConnection con = new SqlConnection(_configuration.GetConnectionString("AttractionAdvisorConnection").ToString());
-            
-            SqlCommand cmd = new SqlCommand("INSERT INTO Users(Id,UserName,Password)VALUES('"+registration.Id +"','" + registration.UserName + "','" + registration.Password +"' )", con);
-            int i = cmd.ExecuteNonQuery();
-            if(i> 0)
+            try
             {
-                return "Data inserted";
+                if (user == null)
+                    return BadRequest();
+
+                var createdUser = await _userRepository.AddUser(user);
+               
+                
+                return CreatedAtAction(nameof(GetUserById),
+                    new { id = createdUser.Id}, createdUser);
             }
-            else
+            catch (Exception)
             {
-                return "Error";
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error creating new user record");
             }
-            
         }
-    }*/
+
+        [HttpPut("{id}")]
+        public async Task<ActionResult<User>> UpdateUser(int id, User user)
+        {
+            try
+            {
+                if (id != user.Id)
+                    return BadRequest("User ID mismatch");
+
+                var userToUpdate = await _userRepository.GetUserById(id);
+
+                if (userToUpdate == null)
+                    return NotFound($"User with Id = {id} not found");
+
+                return await _userRepository.UpdateUser(user);
+    
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error updating data");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<User>> DeleteUser(int id)
+        {
+            try
+            {
+                var userToDelete = await _userRepository.GetUserById(id);
+
+                if (userToDelete == null)
+                {
+                    return NotFound($"User with Id = {id} not found");
+                }
+
+                return await _userRepository.DeleteUser(id);
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error deleting data");
+            }
+        }
 
     }
+
 }
+
