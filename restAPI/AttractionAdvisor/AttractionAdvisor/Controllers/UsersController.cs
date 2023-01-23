@@ -20,7 +20,6 @@ namespace AttractionAdvisor.Controllers
             _userRepository = userRepository;
         }
         private readonly User _password;
-      
 
         [HttpGet]
         public async Task<ActionResult> GetUsers()
@@ -35,6 +34,7 @@ namespace AttractionAdvisor.Controllers
                     "Error retrieving data from the database");
             }
         }
+
         [HttpGet("{id}")]
         public async Task<ActionResult<User>> GetUserById(int id)
         {

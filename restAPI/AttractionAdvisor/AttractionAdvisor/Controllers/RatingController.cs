@@ -83,7 +83,7 @@ namespace AttractionAdvisor.Repository
 
             try
             {
-                var ratingToUpdate = await _ratingRepository.GetRating(id);
+                var ratingToUpdate = await _ratingRepository.GetRating(rating.id);
                 if (ratingToUpdate == null)
                     return NotFound($"Rating with Id = {id} not found");
 
