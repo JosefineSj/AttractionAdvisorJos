@@ -1,10 +1,3 @@
-C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\AttractionAdvisor.csproj.AssemblyReference.cache
-C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\AttractionAdvisor.GeneratedMSBuildEditorConfig.editorconfig
-C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\AttractionAdvisor.AssemblyInfoInputs.cache
-C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\AttractionAdvisor.AssemblyInfo.cs
-C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\AttractionAdvisor.csproj.CoreCompileInputs.cache
-C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\AttractionAdvisor.MvcApplicationPartsAssemblyInfo.cs
-C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\AttractionAdvisor.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\bin\Debug\net6.0\appsettings.Development.json
 C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\bin\Debug\net6.0\appsettings.json
 C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\bin\Debug\net6.0\AttractionAdvisor.exe
@@ -72,6 +65,13 @@ C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\Attracti
 C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\bin\Debug\net6.0\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
 C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\bin\Debug\net6.0\runtimes\browser\lib\net6.0\System.Text.Encodings.Web.dll
 C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\bin\Debug\net6.0\runtimes\win\lib\netcoreapp3.0\System.Windows.Extensions.dll
+C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\AttractionAdvisor.csproj.AssemblyReference.cache
+C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\AttractionAdvisor.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\AttractionAdvisor.AssemblyInfoInputs.cache
+C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\AttractionAdvisor.AssemblyInfo.cs
+C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\AttractionAdvisor.csproj.CoreCompileInputs.cache
+C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\AttractionAdvisor.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\AttractionAdvisor.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\staticwebassets.build.json
 C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\staticwebassets.development.json
 C:\Users\hante\Source\Repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\scopedcss\bundle\AttractionAdvisor.styles.css
