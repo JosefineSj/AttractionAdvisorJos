@@ -86,7 +86,7 @@ namespace AttractionAdvisor.Controllers
 
             try
             {
-                var commentToUpdate = await _commentRepository.GetComment(id);
+                var commentToUpdate = await _commentRepository.GetComment(comment.id);
                 if (commentToUpdate == null)
                     return NotFound($"Comment with Id = {id} not found");
 

@@ -26,13 +26,19 @@ namespace AttractionAdvisor.Repository
             return await _context.Users.FirstOrDefaultAsync(e => e.Id == id);
         }
 
-        public async Task<User> AddUser(User user)
+        public async Task<int> AddUser(User user)
         {
+            var userExists = await _context.Users.AnyAsync(
+             x => x.UserName == user.UserName);
+
+             if (userExists)
+             throw new Exception("User already exists");
+
             var result = await _context.Users.AddAsync(user);
            
             result.SetPassword(user.Password);
             await _context.SaveChangesAsync();
-            return result.Entity;
+            return result.Entity.Id;
         }
 
         public async Task<User> UpdateUser(User user)
@@ -66,10 +72,20 @@ namespace AttractionAdvisor.Repository
 
         }
 
-        public Task<User> LoginUser(int id)
+        public async Task<User> LoginUser(string userName, string password)
         {
-            throw new NotImplementedException();
-        }
+            var user = await _context.Users
+            .SingleOrDefaultAsync(u => u.UserName == userName);
+
+            if (user == null) 
+                return null;
+
+            if (!user.ValidatePassword(password))
+                return null;
+
+            return user;
+          
+        }       
     }
     }
 
