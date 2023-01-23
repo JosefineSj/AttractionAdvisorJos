@@ -14,22 +14,24 @@ namespace AttractionAdvisor.Repository
             _context = context;
         }
 
-
         public async Task<IEnumerable<Rating>> GetRatings()
         {
             return await _context.Ratings.ToListAsync();
         }
+
         public async Task<Rating> GetRating(int id)
         {
             return await _context.Ratings.FirstOrDefaultAsync(r => r.Id == id);
 
         }
+
         public async Task<Rating> AddRating(Rating rating)
         {
             var result = await _context.Ratings.AddAsync(rating);
             await _context.SaveChangesAsync();
             return result.Entity;
         }
+
         public async Task<Rating> UpdateRating(Rating rating)
         {
             var result = await _context.Ratings
@@ -48,6 +50,7 @@ namespace AttractionAdvisor.Repository
 
             return null;
         }
+
         public async void DeleteRating(int id)
         {
             var result = await _context.Ratings
