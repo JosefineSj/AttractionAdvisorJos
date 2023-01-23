@@ -17,7 +17,7 @@ namespace AttractionAdvisor.Controllers
         private readonly IUserRepository _userRepository;
         public UsersController(IUserRepository userRepository)
         {
-            _userRepository = userRepository;   //Bättre än att använda this.
+            _userRepository = userRepository;
         }
         private readonly User _password;
       
@@ -42,7 +42,8 @@ namespace AttractionAdvisor.Controllers
             {
                 var result = await _userRepository.GetUserById(id);
 
-                if (result == null) return NotFound();
+                if (result == null) 
+                    return NotFound();
 
                 return result;
             }
@@ -56,13 +57,12 @@ namespace AttractionAdvisor.Controllers
         [HttpPost]
         public async Task<ActionResult<User>> CreateUser(User user)
         {
+            if (user == null)
+                return BadRequest();
+
             try
             {
-                if (user == null)
-                    return BadRequest();
-
                 var createdUser = await _userRepository.AddUser(user);
-               
                 
                 return CreatedAtAction(nameof(GetUserById),
                     new { id = createdUser.Id}, createdUser);
@@ -75,20 +75,22 @@ namespace AttractionAdvisor.Controllers
         }
 
         [HttpPut("{id}")]
-        public async Task<ActionResult<User>> UpdateUser(int id, User user)
+        public async Task<ActionResult<User>> UpdateUser(User user)
         {
+            if (user == null)
+                return BadRequest();
+
+            if (user.Id == 0)
+                return BadRequest();
+
             try
             {
-                if (id != user.Id)
-                    return BadRequest("User ID mismatch");
-
-                var userToUpdate = await _userRepository.GetUserById(id);
+                var userToUpdate = await _userRepository.GetUserById(user.Id);
 
                 if (userToUpdate == null)
                     return NotFound($"User with Id = {id} not found");
 
                 return await _userRepository.UpdateUser(user);
-    
             }
             catch (Exception)
             {
@@ -117,8 +119,5 @@ namespace AttractionAdvisor.Controllers
                     "Error deleting data");
             }
         }
-
     }
-
 }
-
