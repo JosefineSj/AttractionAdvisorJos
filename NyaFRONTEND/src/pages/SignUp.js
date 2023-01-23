@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import './signup.css';
 
 
 export default function SignUp() {
@@ -32,30 +33,37 @@ export default function SignUp() {
           };
         
           return (
-            <form onSubmit={handleSubmit}>
-              <h2>Hi, User!</h2>
-              <h3>Enter a username and password of your choice:</h3>
-              <label>
-                Username:
-                <input
+            <form className='formControl' onSubmit={handleSubmit} action="action_page.php">
+              <div className='signUpHeader'>
+               <h1 >Hi, User!</h1>
+               <p >Enter a username and password of your choice:</p>
+               <hr/>
+              </div>
+              <label for="username"><b>Username: </b></label>
+                <input className='inputSignUp'
+                  placeholder='Your name...'
                   type="text"
                   name="username"
                   value={formData.username}
                   onChange={handleChange}
+                  required
                 />
-              </label>
+              
               <br />
-              <label>
-                Password:
-                <input
+              <label for="password"><b>Password: </b></label>
+                <input className='inputSignUp'
+                  placeholder='Your password...'
                   type="password"
                   name="password"
                   value={formData.password}
                   onChange={handleChange}
+                  required
                 />
-              </label>
+              
               <br />
-              <button type="submit">Register</button>
+              <div className='clearfix'>
+               <button className="signupbtn" type="submit">Sign Up</button>
+              </div>
             </form>
     );
 }

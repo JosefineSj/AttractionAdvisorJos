@@ -35,10 +35,15 @@ const Attraction = () => {
       
       
   return(
-      <div>
-        <h1>Search attraction:</h1>    
-        <SearchBox className='SearchBox' placeholder='Sök plats' onChangeHandler={onSearchChange} />
-        <ListOfAttractions places = {filteredPlaces} />
+      <div> 
+        <div className='boxAroundSearchBox'>
+          <SearchBox className='SearchBox' placeholder='Search for a city...' onChangeHandler={onSearchChange} />
+        </div>  
+
+        <div className="attractionList">
+          <ListOfAttractions places = {filteredPlaces} />
+
+        </div>
       </div>
   )
 }

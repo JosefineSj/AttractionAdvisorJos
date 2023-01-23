@@ -24,7 +24,7 @@ function AddComment({attractionId, userId}) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Kommentera sevärdhet:</h2>
+      <h2>Add comment:</h2>
       <p>AttractionId:{attractionId}, UserId: {userId}</p>
       <label>
         Comment:

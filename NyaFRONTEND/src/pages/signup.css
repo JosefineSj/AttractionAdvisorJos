@@ -1,0 +1,98 @@
+* {
+    box-sizing: border-box;
+}
+
+/*.signUpHeader{
+    margin-top: 50px;
+    height: 100px;
+    background: #fff;
+    justify-content: center;
+}*/
+
+/*.container{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    align-items: center;
+    align-content: center;
+}*/
+
+/*.inputSignUp{
+    border-radius: 5px;
+    border: 3px solid black;
+    padding: 5px;
+    font-size: medium;
+    font-style: italic;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 3px;
+    max-width: 1000px;
+    min-width: 300px;
+}*/
+
+/*.form{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    border: 3px solid black;
+    border-radius: 5px;
+}
+*/
+
+.formControl{
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 80%;
+}
+
+/* Full-width input fields */
+.inputSignUp[type=text], .inputSignUp[type=password] {
+  width: 25%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  display: inline-block;
+  border: 2px solid black;
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+
+.inputSignUp[type=text]:focus, .inputSignUp[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+  margin-left: 5px;
+}
+
+/* Set a style for all buttons */
+.signupbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 20%;
+  opacity: 0.9;
+}
+
+.signupbtn:hover {
+  opacity:1;
+}
+
+/* Add padding to container elements */
+.signUpHeader {
+  padding: 16px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .signupbtn {
+    width: 100%;
+  }
+}

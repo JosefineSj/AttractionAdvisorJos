@@ -1,0 +1,97 @@
+/*.attractionContainer{
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+} */
+
+
+.boxAroundSearchBox{
+    display: flex;
+    justify-content: center;
+    min-height: 80px;
+    margin-top: 0;
+
+}
+
+#searchBoxInput{
+    border-radius: 5px;
+    border: 3px solid black;
+    padding: 5px;
+    font-size: medium;
+    font-style: italic;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-bottom: 30px;
+    max-width: 1000px;
+    min-width: 300px;
+
+}
+
+
+.searchBox{
+   
+    /*margin-top: 60px;
+    height: 150px;
+    width: 60%;
+    border-radius: 5px;
+    max-width: 800px;
+    min-width: 100px;
+    border: 1px solid #ccc;
+    border-radius: 4px; */
+
+    margin-top: 50px;
+    height: 100px;
+    max-width: 900px;
+    width: 100%;
+    background: #fff;
+    /*margin: 0 20px;*/
+    
+
+}
+
+
+.attractionList{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    flex-direction: row;
+    align-content: space-between;
+    margin: 20px;
+    align-items: center;
+}
+
+.flexItemAttraction{
+    display: flex; 
+    width: 335px;
+    flex-direction: column;
+    margin-right: 20px;
+    margin-top: 20px;
+    border: 3px solid black;
+    border-radius: 5px;
+    padding: 5px;
+    cursor: pointer;
+    text-overflow:ellipsis; 
+   
+}
+    
+
+img{
+    margin-right: 10px;
+    margin-top: 10px;
+
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 12px;
+   
+}
+
+p{
+    margin-bottom: 10px;
+    font-family: tahoma;
+    object-fit: cover;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow:ellipsis; 
+    font-size: bold; 
+}

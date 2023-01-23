@@ -4,7 +4,7 @@ import Home from './pages/Home';
 import SignUp from './pages/SignUp';
 import LogIn from './pages/LogIn';
 import MyPage from './pages/MyPage';
-import About from './pages/About';
+import Attractions from './pages/Attractions';
 import { Route, Routes } from 'react-router-dom';
 /*import AddComment from './components/AddComment'; */
 
@@ -14,10 +14,12 @@ function App() {
   return (
     <>
     <Navbar /> 
-    <div className="container">
+
+    <div className='createSpace'></div>
+    <div className='container'>
       <Routes>
         <Route path="/" element={<Home />}/>
-        <Route path="/about" element={<About />}/>
+        <Route path="/attractions" element={<Attractions />}/>
         <Route path="/signup" element={<SignUp />}/>
         <Route path="/login" element={<LogIn />}/>
         <Route path="/my-page" element={<MyPage />}/>

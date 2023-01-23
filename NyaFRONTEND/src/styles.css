@@ -1,18 +1,26 @@
-.App {
+/*.App {
     text-align: center;
-  }
+  }*/
 
 * {
     box-sizing: border-box;
-}
+} 
 
 body{
     margin: 0;
+	padding: 0;
+    box-sizing: border-box;
+    background-color:white;
+}
+
+.createSpace{
+    height: 40px;
 }
 
 .container{
-    margin: 1rem;
+    /*margin: 20px;*/
     text-align: center;
+    justify-content: center;
 }
 
 .navbar{
@@ -23,6 +31,11 @@ body{
     align-items: stretch;
     gap: 2rem;
     padding: 0 1rem;
+    position: fixed;
+    width:100%;
+    top: 0;
+    margin-bottom: 20px;
+    
     
 }
 

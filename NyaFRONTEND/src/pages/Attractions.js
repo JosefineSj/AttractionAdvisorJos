@@ -1,15 +1,13 @@
-
 import Attraction from '../components/Attraction';
+import './attractions.css'; 
 
 
-export default function About() {
+export default function Attractions() {
     return (
-    <> <h1>View all uploaded attractions and search a city</h1>
+    <>
 
     <div className="attractionContainer">
-      <Attraction />
-      
-        
+      <Attraction /> 
     </div>
 
 
