@@ -14,22 +14,25 @@ namespace AttractionAdvisor.Repository
             _context = context;
         }
 
-
         public async Task<IEnumerable<Comment>> GetComments()
         {
             return await _context.Comments.ToListAsync();
         }
+
         public async Task<Comment> GetComment(int id)
         {
-            return await _context.Comments.FirstOrDefaultAsync(c => c.Id == id);
+            return await _context.Comments.FirstOrDefaultAsync(
+                    c => c.Id == id);
           
         }
+
         public async Task<Comment> AddComment(Comment comment)
         {
             var result = await _context.Comments.AddAsync(comment);
-                await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
             return result.Entity;
         }
+
         public async Task<Comment> UpdateComment(Comment comment)
         {
             var result = await _context.Comments
