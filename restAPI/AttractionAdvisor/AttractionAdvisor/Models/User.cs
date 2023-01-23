@@ -6,6 +6,10 @@
         public string UserName { get; set; }
         private string _passwordHash { get; set; }
 
+        public string Password { get; set; }    
+
+        
+
         public void SetPassword(string password)
         {
             _passwordHash = BCrypt.Net.BCrypt.HashPassword(password);
@@ -23,5 +27,7 @@
 
 
     }
+
+ 
 
 }
