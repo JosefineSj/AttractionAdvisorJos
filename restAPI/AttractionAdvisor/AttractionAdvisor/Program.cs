@@ -13,6 +13,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddScoped<ICommentRepository, CommentRepository>();
 builder.Services.AddScoped<IRatingRepository, RatingRepository>();
+builder.Services.AddScoped<IUserRepository, UserRepository>();// dependency injection
 builder.Services.AddDbContext<AttractionAdvisorDbContext>(
     options => options.UseSqlServer(
         builder.Configuration.GetConnectionString("AttractionAdvisorConnection")));
