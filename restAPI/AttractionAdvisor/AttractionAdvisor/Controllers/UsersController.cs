@@ -65,7 +65,7 @@ namespace AttractionAdvisor.Controllers
                
                 
                 return CreatedAtAction(nameof(GetUserById),
-                    new { id = createdUser.Id, userName = createdUser.UserName}, createdUser);
+                    new { id = createdUser.Id}, createdUser);
             }
             catch (Exception)
             {
