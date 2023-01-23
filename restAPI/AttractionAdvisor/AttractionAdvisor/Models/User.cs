@@ -19,15 +19,5 @@
         public IList<Attraction> Attractions { get; set; }
         public IList<Rating> Ratings { get; set; }
         public IList<Comment> Comments { get; set; }
-        public static bool ValidateUser(User user)
-        {
-            if (String.IsNullOrEmpty(user.UserName))
-                return false;
-            
-            if (String.IsNullOrEmpty(user.PasswordHash))
-                return false;
-            
-            return true;
-        }
     }
 }
