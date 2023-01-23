@@ -1,0 +1,122 @@
+﻿using AttractionAdvisor.Interfaces;
+using AttractionAdvisor.Models;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Mvc;
+
+namespace AttractionAdvisor.Repository
+{
+    [Route("api/[controller]")]
+    [ApiController]
+    public class RatingController : ControllerBase
+    {
+        private readonly IRatingRepository _ratingRepository;
+
+        public RatingController(IRatingRepository ratingRepository)
+        {
+            _ratingRepository = ratingRepository;
+        }
+
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Rating>>> GetRatings()
+        {
+            try
+            {
+                return (await _ratingRepository.GetRatings()).ToList();
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                    "Error retrieving data from the database");
+            }
+        }
+
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Rating>> GetRating(int id)
+        {
+            try
+            {
+                var result = await _ratingRepository.GetRating(id);
+
+                if (result == null)
+                    return NotFound();
+
+                return result;
+            }
+            catch (Exception)
+            {
+                return StatusCode(
+                        StatusCodes.Status500InternalServerError,
+                        "Error retriving data from the database");
+            }
+        }
+
+        [HttpPost]
+        public async Task<ActionResult<Rating>> AddRating(Rating rating)
+        {
+            if (rating == null)
+                return BadRequest();
+
+            try
+            {
+                var createdRating = await _ratingRepository.AddRating(rating);
+                        // can't we just return createdRating?
+                return CreatedAtAction(nameof(GetRating), 
+                    new { id = createdRating.Id }, createdRating);
+            }
+            catch (Exception)
+            {
+                return StatusCode(
+                        StatusCodes.Status500InternalServerError,
+                        "Error adding new rating record");
+            }
+        }
+
+        [HttpPut("{id}")]
+
+        public async Task<ActionResult<Rating>> UpdateRating(Rating rating)
+        {
+            if (rating == null)
+                return BadRequest();
+
+            if (rating.Id <= 0)
+                return BadRequest("Rating Id mismatch");
+
+            try
+            {
+                var ratingToUpdate = await _ratingRepository.GetRating(rating.id);
+                if (ratingToUpdate == null)
+                    return NotFound($"Rating with Id = {id} not found");
+
+                return await _ratingRepository.UpdateRating(rating);
+            }
+            catch (Exception)
+            {
+                return StatusCode(
+                        StatusCodes.Status500InternalServerError,
+                        "Error updating data");
+            }
+        }
+
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Rating>> DeleteRating(int id)
+        {
+            try
+            {
+                var ratingToDelete = await _ratingRepository.GetRating(id);
+
+                if (ratingToDelete == null)
+                {
+                    return NotFound($"Rating with Id = {id} not found");
+                }
+
+                return Ok();
+            }
+            catch (Exception)
+            {
+                return StatusCode(StatusCodes.Status500InternalServerError,
+                   "Error deleting data");
+            }
+        }
+    }
+}
+
