@@ -56,19 +56,19 @@ namespace AttractionAdvisor.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<User>> GetUserById(int id)
+        public async Task<ActionResult<User>> GetUser(int id)
         {
             if (id <= 0)
                 return BadRequest();
             
             try
             {
-                var result = await _userRepository.GetUserById(id);
+                var result = await _userRepository.GetUser(id);
 
                 if (result == null) 
                     return NotFound();
 
-                return result;
+                return Ok(result);
             }
             catch (Exception ex)
             {
@@ -84,8 +84,8 @@ namespace AttractionAdvisor.Controllers
             {
                 var createdUser = await _userRepository.AddUser(user);
                 
-                return CreatedAtAction(nameof(GetUserById),
-                    new { id = createdUser.Id}, createdUser.Id);
+                return Ok(CreatedAtAction(nameof(GetUser),
+                    new { id = createdUser.Id}, createdUser.Id));
             }
             catch (Exception ex)
             {
@@ -102,8 +102,7 @@ namespace AttractionAdvisor.Controllers
 
             try
             {
-                var userToUpdate = await _userRepository.GetUserById(user.Id);
-
+                var userToUpdate = await _userRepository.GetUser(user.Id);
                 if (userToUpdate == null)
                     return NotFound();
 
@@ -125,12 +124,12 @@ namespace AttractionAdvisor.Controllers
         {
             try
             {
-                var userToDelete = await _userRepository.GetUserById(id);
+                var userToDelete = await _userRepository.GetUser(id);
 
                 if (userToDelete == null)
                     return NotFound();
 
-                return await _userRepository.DeleteUser(id);
+                return Ok(await _userRepository.DeleteUser(id));
             }
             catch (Exception ex)
             {
