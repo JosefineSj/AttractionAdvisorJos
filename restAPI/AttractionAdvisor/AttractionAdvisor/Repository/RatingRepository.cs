@@ -19,14 +19,12 @@ namespace AttractionAdvisor.Repository
             return await _context.Ratings.ToListAsync();
         }
 
-        public async Task<Rating> GetRating(int id)
+        public async Task<Rating?> GetRating(int id)
         {
             var result = await _context.Ratings.FirstOrDefaultAsync(
                 r => r.Id == id);
-            if (result == null)
-                throw new Exception("rating not found");
 
-            return result;
+            return result ?? null;
         }
 
         public async Task<Rating> AddRating(Rating rating)
@@ -36,13 +34,13 @@ namespace AttractionAdvisor.Repository
             return result.Entity;
         }
 
-        public async Task<Rating> UpdateRating(Rating rating)
+        public async Task<Rating?> UpdateRating(Rating rating)
         {
             var result = await _context.Ratings
                .FirstOrDefaultAsync(r => r.Id == rating.Id);
 
             if (result == null)
-                throw new Exception("rating not found");
+                return null;
 
             result.AttractionId = rating.AttractionId;
             result.UserId = rating.UserId;
@@ -58,7 +56,7 @@ namespace AttractionAdvisor.Repository
             var result = await _context.Ratings
                 .FirstOrDefaultAsync(r => r.Id == id);
             if (result == null)
-                throw new Exception("rating not found");
+                return false;
             
             _context.Remove(result);
             await _context.SaveChangesAsync();
