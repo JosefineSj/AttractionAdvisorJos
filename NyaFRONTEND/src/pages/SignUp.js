@@ -33,12 +33,16 @@ export default function SignUp() {
           };
         
           return (
+            <div className='SignUp'> 
+
             <form className='formControl' onSubmit={handleSubmit} action="action_page.php">
+              <div className='containerForm'>
               <div className='signUpHeader'>
                <h1 >Hi, User!</h1>
                <p >Enter a username and password of your choice:</p>
                <hr/>
               </div>
+              <div className='signUpUserNamePassWordDiv'>
               <label for="username"><b>Username: </b></label>
                 <input className='inputSignUp'
                   placeholder='Your name...'
@@ -48,8 +52,9 @@ export default function SignUp() {
                   onChange={handleChange}
                   required
                 />
-              
-              <br />
+              </div>
+
+              <div className='signUpUserNamePassWordDiv'>
               <label for="password"><b>Password: </b></label>
                 <input className='inputSignUp'
                   placeholder='Your password...'
@@ -59,12 +64,14 @@ export default function SignUp() {
                   onChange={handleChange}
                   required
                 />
-              
-              <br />
+              </div>
+
               <div className='clearfix'>
                <button className="signupbtn" type="submit">Sign Up</button>
               </div>
+              </div>
             </form>
+            </div>
     );
 }
         

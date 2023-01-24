@@ -1,6 +1,5 @@
 import React, { useState, setState } from "react";
 import "./modal.css";
-import AttractionListElement from "./AttractionListElement";
 import AddComment from "./AddComment";
 
 export default function Modal({

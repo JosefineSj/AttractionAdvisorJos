@@ -11,11 +11,12 @@
     justify-content: center;
     min-height: 80px;
     margin-top: 0;
+    height: 220px;
 
 }
 
 #searchBoxInput{
-    border-radius: 5px;
+    /*border-radius: 5px;
     border: 3px solid black;
     padding: 5px;
     font-size: medium;
@@ -23,9 +24,25 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     margin-bottom: 30px;
     max-width: 1000px;
-    min-width: 300px;
+    min-width: 300px;*/
+
+    width: 50%;
+    padding: 15px;
+    margin: 5px 0 15px 0;
+    display: inline-block;
+    border: 2px solid black;
+    background: #f1f1f1;
+    border-radius: 10px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 
 }
+
+#searchBoxInput[type=search]:focus{
+    background-color: #ddd;
+    outline: none;
+    margin-left: 5px;
+  }
 
 
 .searchBox{
@@ -39,8 +56,8 @@
     border: 1px solid #ccc;
     border-radius: 4px; */
 
-    margin-top: 50px;
-    height: 100px;
+    margin-top: 60px;
+    height: 150px;
     max-width: 900px;
     width: 100%;
     background: #fff;
@@ -66,12 +83,25 @@
     flex-direction: column;
     margin-right: 20px;
     margin-top: 20px;
-    border: 3px solid black;
+    border: 1px solid #888;
     border-radius: 5px;
     padding: 5px;
     cursor: pointer;
     text-overflow:ellipsis; 
+    background-color: #fefefe;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+
+    /*margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    
+   /* width: 750px;
+    height: 500px; */
+    
    
+}
+
+.flexItemAttraction:hover{
+    text-decoration: underline;
 }
     
 
@@ -88,10 +118,22 @@ img{
 
 p{
     margin-bottom: 10px;
-    font-family: tahoma;
     object-fit: cover;
     white-space: nowrap;
     overflow: hidden;
     text-overflow:ellipsis; 
-    font-size: bold; 
+    font-size: 20px;
+    font-weight: bold;
+    color: #333;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+
+.searchBoxHeader{
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 20px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+    
 }

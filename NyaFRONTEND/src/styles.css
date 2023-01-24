@@ -21,6 +21,7 @@ body{
     /*margin: 20px;*/
     text-align: center;
     justify-content: center;
+    height: 100%;
 }
 
 .navbar{
@@ -61,7 +62,6 @@ body{
     font-size: 2rem;
     font-weight: bold;
     text-decoration: none;
-    
 }
 
 .navbar li.active{

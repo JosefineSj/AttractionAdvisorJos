@@ -1,0 +1,91 @@
+* {
+    box-sizing: border-box;
+}
+
+.formControl{
+    
+    background-color: #fefefe;
+    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+    border: 1px solid #888;
+    width: 750px;
+    height: 500px;
+    border-radius: 5px;
+}
+
+.signUpUserNamePassWordDiv{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+/* Full-width input fields */
+.inputSignUp[type=text], .inputSignUp[type=password] {
+  width: 50%;
+  padding: 15px;
+  margin: 5px 0 15px 0;
+  display: inline-block;
+  border: 2px solid black;
+  background: #f1f1f1;
+  border-radius: 10px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.inputSignUp[type=text]:focus, .inputSignUp[type=password]:focus {
+  background-color: #ddd;
+  outline: none;
+  margin-left: 5px;
+}
+
+/* Set a style for all buttons */
+.signupbtn {
+  background-color: #04AA6D;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 40%;
+  opacity: 0.9;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+.signupbtn:hover {
+  opacity:1;
+}
+
+.signUpHeader{
+  font-size: 20px;
+  font-weight: bold;
+  margin-bottom: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
+}
+
+/* Add padding to container elements */
+.containerForm {
+  padding: 20px;
+}
+
+/* Clear floats */
+.clearfix::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+#label{
+  font-size: 20px;
+  font-weight: bold;
+}
+
+/* Change styles for cancel button and signup button on extra small screens */
+@media screen and (max-width: 300px) {
+  .signupbtn {
+    width: 100%;
+  }
+}
