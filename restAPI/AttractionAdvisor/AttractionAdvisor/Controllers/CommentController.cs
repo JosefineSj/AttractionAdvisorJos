@@ -21,16 +21,16 @@ namespace AttractionAdvisor.Controllers
         {
             try
             {
-                return (await _commentRepository.GetComments()).ToList();
+                return Ok(await _commentRepository.GetComments());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from the database");
+                    ex.Message);
             }
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id:int}")]
         public async Task<ActionResult<Comment>> GetComment(int id)
         {
             if (id <= 0)
@@ -39,82 +39,82 @@ namespace AttractionAdvisor.Controllers
             try
             {
                 var result = await _commentRepository.GetComment(id);
-               
-                if(result == null)
-                 return NotFound();
+                if (result == null)
+                    return NotFound();
                 
-                return result;
+                return Ok(result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
 
                 return StatusCode(
                         StatusCodes.Status500InternalServerError,
-                        "Error retriving data from the database");
+                        ex.Message);
             }
         }
 
         [HttpPost]
         public async Task<ActionResult<Comment>> AddComment(Comment comment)
         {
-            if (comment == null)
-                return BadRequest();
-
             try
             {
                 var createdComment = await _commentRepository.AddComment(comment);
-                return CreatedAtAction(nameof(GetComment),
-                    new { id = createdComment.Id }, createdComment);
+                return Ok(CreatedAtAction(nameof(GetComment),
+                    new { id = createdComment.Id }, createdComment));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return StatusCode(
                         StatusCodes.Status500InternalServerError,
-                        "Error adding new comment record");
+                        ex.Message);
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         
         public async Task<ActionResult<Comment>> UpdateComment(Comment comment)
         {
-            if (comment == null)
-                return BadRequest();
-
             if (comment.Id <= 0)
                 return BadRequest();
 
             try
             {
-                var commentToUpdate = await _commentRepository.GetComment(comment.id);
+                var commentToUpdate = await _commentRepository.GetComment(
+                    comment.Id);
                 if (commentToUpdate == null)
-                    return NotFound($"Comment with Id = {id} not found");
+                    return NotFound();
 
-                return await _commentRepository.UpdateComment(comment);
+                var updatedComment = await _commentRepository.UpdateComment(
+                    comment);
+                if (updatedComment == null)
+                    BadRequest();
+
+
+                return Ok(updatedComment);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return StatusCode(
                         StatusCodes.Status500InternalServerError,
-                        "Error updating data");
+                        ex.Message);
             }
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<Comment>> DeleteComment(int id)
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<bool>> DeleteComment(int id)
         {
             try
             {
                 var commentToDelete = await _commentRepository.GetComment(id);
                 if (commentToDelete == null)
-                    return NotFound($"Comment with Id = {id} not found"); 
-
-                return Ok();
+                    return NotFound();
+                
+                return Ok(await _commentRepository.DeleteComment(id));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                   "Error deleting data");
+                   ex.Message);
             }
         }
     }
