@@ -39,7 +39,6 @@ namespace AttractionAdvisor.Controllers
             try
             {
                 var result = await _ratingRepository.GetRating(id);
-
                 if (result == null)
                     return NotFound();
 
@@ -72,7 +71,6 @@ namespace AttractionAdvisor.Controllers
         }
 
         [HttpPut]
-
         public async Task<ActionResult<Rating>> UpdateRating(Rating rating)
         {
             if (rating.Id <= 0)
@@ -103,12 +101,10 @@ namespace AttractionAdvisor.Controllers
         {
             try
             {
-                var ratingToDelete = await _ratingRepository.GetRating(id);
-
-                if (ratingToDelete == null)
+                if (!await _ratingRepository.DeleteRating(id))
                     return NotFound();
 
-                return Ok(await _ratingRepository.DeleteRating(id));
+                return Ok();
             }
             catch (Exception ex)
             {
