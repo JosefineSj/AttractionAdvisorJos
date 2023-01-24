@@ -2,9 +2,6 @@ import { useState, useEffect } from 'react';
 import ListOfAttractions from './ListOfAttractions';
 import SearchBox from './search-box';
 
-
-
-
 const Attraction = () => {
   
   const [searchField, setSearchField] = useState('');
@@ -31,8 +28,7 @@ const Attraction = () => {
              .then((response) => response.json())
              .then((placesResponse) => setPlaces(placesResponse))
       }, []);
-
-      
+ 
       
   return(
       <div> 

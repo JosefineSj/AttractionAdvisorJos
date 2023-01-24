@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import LoginApi from "../loginCheck";
+import './login.css';
 
 export default function SignIn() {
   const [username, setUsername] = useState("");
@@ -29,6 +30,7 @@ export default function SignIn() {
   console.log(user);
   if (user === null) {
     return (
+      <div className="LogIn">
       <form
         className="formControl"
         onSubmit={handleSubmit}
@@ -75,6 +77,7 @@ export default function SignIn() {
           </div>
         </div>
       </form>
+      </div>
     );
   } else {
     return (

@@ -2,14 +2,20 @@
     box-sizing: border-box;
 }
 
+.LogIn{
+  background-image: url("https://thumbs.dreamstime.com/b/landscape-nature-view-background-view-window-landscape-nature-view-background-view-window-wonderful-landscape-121459679.jpg");
+  height:100vh;
+  width: 100vw;
+  background-size: cover;
+  background-position: center; 
+  padding-left: 0px;
+}
+
 .formControl{
-    
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 750px;
-    height: 500px;
-    border-radius: 5px;
+  margin: 50px auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
+  width: 750px;
+  height: 500px;
+  padding: 20px;
 }
 
 .signUpUserNamePassWordDiv{

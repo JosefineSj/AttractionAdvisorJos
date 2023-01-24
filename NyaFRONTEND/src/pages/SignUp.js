@@ -34,7 +34,6 @@ export default function SignUp() {
         
           return (
             <div className='SignUp'> 
-
             <form className='formControl' onSubmit={handleSubmit} action="action_page.php">
               <div className='containerForm'>
               <div className='signUpHeader'>
@@ -71,7 +70,7 @@ export default function SignUp() {
               </div>
               </div>
             </form>
-            </div>
+          </div>
     );
 }
         

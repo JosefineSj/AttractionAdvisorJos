@@ -1,7 +1,7 @@
 const SearchBox = ({className, placeholder, onChangeHandler}) => ( 
     <div className="searchBox">
         <div className="searchBoxHeader">
-          <h1>All available attractions:</h1>
+          <h1 id="attractionHeader" >All available attractions:</h1>
         </div>
          <input
         className={className}

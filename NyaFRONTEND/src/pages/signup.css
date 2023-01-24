@@ -3,22 +3,20 @@
 }
 
 .SignUp{
-  background:  rgb(11, 11, 11);
+  background-image: url("https://thumbs.dreamstime.com/b/ocean-beach-aerial-top-down-view-blue-water-waves-foam-spray-fine-sand-beautiful-summer-vacation-holidays-destination-185365664.jpg");
   height:100vh;
   width: 100vw;
-  background-size: contain;
+  background-size: cover;
   background-position: center; 
   padding-left: 0px;
 }
 
 .formControl{
     
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
+    margin: 50px auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
     width: 750px;
     height: 500px;
-    border-radius: 5px;
+    padding: 20px;
 }
 
 
@@ -74,6 +72,11 @@
 /* Add padding to container elements */
 .containerForm {
   padding: 20px;
+  margin-top: 60px;
+  background-color: #fefefe;
+  border: 1px solid #888;
+  border-radius: 5px;
+
 }
 
 /* Clear floats */
