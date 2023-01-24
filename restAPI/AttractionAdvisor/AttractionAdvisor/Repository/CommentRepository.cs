@@ -54,7 +54,7 @@ namespace AttractionAdvisor.Repository
 
             return result;
         }
-        public async void DeleteComment(int id)
+        public async Task<bool> DeleteComment(int id)
         {
             var result = await _context.Comments
                 .FirstOrDefaultAsync(c => c.Id == id);
@@ -63,6 +63,8 @@ namespace AttractionAdvisor.Repository
             
             _context.Remove(result);
             await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

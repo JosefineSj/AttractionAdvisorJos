@@ -60,7 +60,7 @@ namespace AttractionAdvisor.Repository
             return result;
         }
 
-        public async void DeleteUser(int id)
+        public async Task<bool> DeleteUser(int id)
         {
             var result = await _context.Users
                 .FirstOrDefaultAsync(x => x.Id == id);
@@ -69,6 +69,8 @@ namespace AttractionAdvisor.Repository
             
             _context.Users.Remove(result);
             await _context.SaveChangesAsync();
+
+            return true;
         }
 
         public async Task<User> LoginUser(string userName, string password)
