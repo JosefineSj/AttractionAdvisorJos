@@ -105,11 +105,10 @@ namespace AttractionAdvisor.Controllers
         {
             try
             {
-                var commentToDelete = await _commentRepository.GetComment(id);
-                if (commentToDelete == null)
+                if (!await _commentRepository.DeleteComment(id))
                     return NotFound();
                 
-                return Ok(await _commentRepository.DeleteComment(id));
+                return Ok();
             }
             catch (Exception ex)
             {
