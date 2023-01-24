@@ -9,6 +9,6 @@ namespace AttractionAdvisor.Interfaces
         Task<Comment> GetComment(int id);
         Task<Comment> AddComment(Comment comment);
         Task<Comment> UpdateComment(Comment comment);
-        void DeleteComment(int id);
+        Task<bool> DeleteComment(int id);
     }
 }
