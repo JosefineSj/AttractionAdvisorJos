@@ -21,8 +21,12 @@ namespace AttractionAdvisor.Repository
 
         public async Task<Rating> GetRating(int id)
         {
-            return await _context.Ratings.FirstOrDefaultAsync(r => r.Id == id);
+            var result = await _context.Ratings.FirstOrDefaultAsync(
+                r => r.Id == id);
+            if (result == null)
+                throw new Exception("rating not found");
 
+            return result;
         }
 
         public async Task<Rating> AddRating(Rating rating)
@@ -37,29 +41,29 @@ namespace AttractionAdvisor.Repository
             var result = await _context.Ratings
                .FirstOrDefaultAsync(r => r.Id == rating.Id);
 
-            if (result != null)
-            {
-                result.AttractionId = rating.AttractionId;
-                result.UserId = rating.UserId;
-                result.Rank = rating.Rank;
+            if (result == null)
+                throw new Exception("rating not found");
 
-                await _context.SaveChangesAsync();
+            result.AttractionId = rating.AttractionId;
+            result.UserId = rating.UserId;
+            result.Rank = rating.Rank;
 
-                return result;
-            }
+            await _context.SaveChangesAsync();
 
-            return null;
+            return result;
         }
 
-        public async void DeleteRating(int id)
+        public async Task<bool> DeleteRating(int id)
         {
             var result = await _context.Ratings
                 .FirstOrDefaultAsync(r => r.Id == id);
-            if (result != null)
-            {
-                _context.Remove(result);
-                await _context.SaveChangesAsync();
-            }
+            if (result == null)
+                throw new Exception("rating not found");
+            
+            _context.Remove(result);
+            await _context.SaveChangesAsync();
+
+            return true;
         }
     }
 }

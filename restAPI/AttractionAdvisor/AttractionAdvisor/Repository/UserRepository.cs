@@ -23,53 +23,54 @@ namespace AttractionAdvisor.Repository
 
         public async Task<User> GetUserById(int id)
         {
-            return await _context.Users.FirstOrDefaultAsync(e => e.Id == id);
+            var result = await _context.Users.FirstOrDefaultAsync(
+                e => e.Id == id);
+            if (result == null)
+                throw new Exception("user not found");
+
+            return result;
         }
 
-        public async Task<int> AddUser(User user)
+        public async Task<User> AddUser(User user)
         {
             var userExists = await _context.Users.AnyAsync(
              x => x.UserName == user.UserName);
-
              if (userExists)
-             throw new Exception("User already exists");
+                throw new Exception("User already exists");
 
+            user.SetPassword(user.PasswordHash);
             var result = await _context.Users.AddAsync(user);
            
-            result.SetPassword(user.Password);
             await _context.SaveChangesAsync();
-            return result.Entity.Id;
+            return result.Entity;
         }
 
         public async Task<User> UpdateUser(User user)
         {
-          
             var result = await _context.Users
                 .FirstOrDefaultAsync(e => e.Id == user.Id);
 
-            if (result != null)
-            {
-                result.UserName = user.UserName;
-                result.Password = user.Password;
-                await _context.SaveChangesAsync();
+            if (result == null)
+                throw new Exception("user does not found");
 
-                return result;
-            }
+            result.UserName = user.UserName;
+            result.PasswordHash = user.PasswordHash;
+            await _context.SaveChangesAsync();
 
-            return null;
+            return result;
         }
 
-        public async Task<User> DeleteUser(int id)
+        public async Task<bool> DeleteUser(int id)
         {
-            var result = await _context.Users.FindAsync(id);
+            var result = await _context.Users
+                .FirstOrDefaultAsync(x => x.Id == id);
+            if (result == null)
+                throw new Exception("user not found");
+            
             _context.Users.Remove(result);
+            await _context.SaveChangesAsync();
 
-            int affected = await _context.SaveChangesAsync();
-            if (affected != 0)
-                return result;
-            else
-                return null;
-
+            return true;
         }
 
         public async Task<User> LoginUser(string userName, string password)
@@ -84,8 +85,7 @@ namespace AttractionAdvisor.Repository
                 return null;
 
             return user;
-          
         }       
     }
-    }
+}
 

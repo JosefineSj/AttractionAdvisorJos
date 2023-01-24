@@ -10,5 +10,4 @@
         public User User { get; set; }
         public string Commentary { get; set; }
     }
-
 }
