@@ -20,14 +20,12 @@ namespace AttractionAdvisor.Repository
             return await _context.Comments.ToListAsync();
         }
 
-        public async Task<Comment> GetComment(int id)
+        public async Task<Comment?> GetComment(int id)
         {
             var comment = await _context.Comments.FirstOrDefaultAsync(
                     c => c.Id == id);
-            if (comment == null)
-                throw new Exception("not found");
 
-            return comment;
+            return comment ?? null;
         }
 
         public async Task<Comment> AddComment(Comment comment)
@@ -38,13 +36,13 @@ namespace AttractionAdvisor.Repository
             return result.Entity;
         }
 
-        public async Task<Comment> UpdateComment(Comment comment)
+        public async Task<Comment?> UpdateComment(Comment comment)
         {
             var result = await _context.Comments
                .FirstOrDefaultAsync(c => c.Id == comment.Id);
 
             if (result == null)
-                throw new Exception("comment not found");
+                return null;
                     
             result.AttractionId = comment.AttractionId;
             result.UserId = comment.UserId;
@@ -59,7 +57,7 @@ namespace AttractionAdvisor.Repository
             var result = await _context.Comments
                 .FirstOrDefaultAsync(c => c.Id == id);
             if (result == null)
-                throw new Exception("comment not found");
+                return false;
             
             _context.Remove(result);
             await _context.SaveChangesAsync();
