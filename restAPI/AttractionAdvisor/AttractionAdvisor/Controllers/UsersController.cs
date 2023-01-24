@@ -28,7 +28,6 @@ namespace AttractionAdvisor.Controllers
             {
                var result = await _userRepository.LoginUser(
                    login.username,login.password);
-
                 if(result == null) 
                     return Unauthorized();
 
@@ -64,7 +63,6 @@ namespace AttractionAdvisor.Controllers
             try
             {
                 var result = await _userRepository.GetUser(id);
-
                 if (result == null) 
                     return NotFound();
 
@@ -124,12 +122,11 @@ namespace AttractionAdvisor.Controllers
         {
             try
             {
-                var userToDelete = await _userRepository.GetUser(id);
 
-                if (userToDelete == null)
+                if (!await _userRepository.DeleteUser(id))
                     return NotFound();
 
-                return Ok(await _userRepository.DeleteUser(id));
+                return Ok();
             }
             catch (Exception ex)
             {
