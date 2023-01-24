@@ -21,10 +21,11 @@ namespace AttractionAdvisor.Repository
             return await _context.Users.ToListAsync();
         }
 
-        public async Task<User?> GetUserById(int id)
+        public async Task<User?> GetUser(int id)
         {
             var result = await _context.Users.FirstOrDefaultAsync(
                 e => e.Id == id);
+            
             return result ?? null;
         }
 
@@ -52,6 +53,7 @@ namespace AttractionAdvisor.Repository
 
             result.UserName = user.UserName;
             result.PasswordHash = user.PasswordHash;
+            
             await _context.SaveChangesAsync();
 
             return result;
@@ -62,7 +64,7 @@ namespace AttractionAdvisor.Repository
             var result = await _context.Users
                 .FirstOrDefaultAsync(x => x.Id == id);
             if (result == null)
-                throw new Exception("user not found");
+                return false;
             
             _context.Users.Remove(result);
             await _context.SaveChangesAsync();
