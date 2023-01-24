@@ -7,6 +7,6 @@ namespace AttractionAdvisor.Interfaces
         Task<Rating> GetRating(int id);
         Task<Rating> AddRating(Rating rating);
         Task<Rating> UpdateRating(Rating rating);
-        void DeleteRating(int id);
+        Task<bool> DeleteRating(int id);
     }
 }
