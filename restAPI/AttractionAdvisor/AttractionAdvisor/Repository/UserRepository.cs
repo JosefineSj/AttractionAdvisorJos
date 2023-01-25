@@ -75,7 +75,7 @@ namespace AttractionAdvisor.Repository
         public async Task<User?> LoginUser(string userName, string password)
         {
             var user = await _context.Users
-            .FirstOrDefaultAsync(u => u.UserName == userName);
+            .SingleOrDefaultAsync(u => u.UserName == userName);
 
             if (user == null) 
                 return null;
