@@ -22,21 +22,21 @@ namespace AttractionAdvisor.Controllers
 
         [HttpPost("login")]
 
-        public async Task<ActionResult<User>> Login(string userName, string password)
+        public async Task<ActionResult<User>> Login([FromBody] LoginDto login)
         {
             try
             {
-               var result = await _userRepository.LoginUser(userName,password);
-
+               var result = await _userRepository.LoginUser(
+                   login.username,login.password);
                 if(result == null) 
-                return Unauthorized("Wrong username or password");
+                    return Unauthorized();
 
-                return Ok(result);
+                return Ok(result.UserName);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Failed to log in!");
+                    ex.Message);
             }
         }
 
@@ -47,95 +47,91 @@ namespace AttractionAdvisor.Controllers
             {
                 return Ok(await _userRepository.GetUsers());
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from the database");
+                    ex.Message);
             }
         }
 
-        [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUserById(int id)
+        [HttpGet("{id:int}")]
+        public async Task<ActionResult<User>> GetUser(int id)
         {
+            if (id <= 0)
+                return BadRequest();
+            
             try
             {
-                var result = await _userRepository.GetUserById(id);
-
+                var result = await _userRepository.GetUser(id);
                 if (result == null) 
                     return NotFound();
 
-                return result;
+                return Ok(result);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error retrieving data from the database");
+                    ex.Message);
             }
         }
 
         [HttpPost]
         public async Task<ActionResult<int>> CreateUser(User user)
         {
-            if (user == null)
-                return BadRequest();
-
             try
             {
                 var createdUser = await _userRepository.AddUser(user);
                 
-                return CreatedAtAction(nameof(GetUserById),
-                    new { id = createdUser.Id}, createdUser.Id;);
+                return Ok(CreatedAtAction(nameof(GetUser),
+                    new { id = createdUser.Id}, createdUser.Id));
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error creating new user record");
+                    ex.Message);
             }
         }
 
-        [HttpPut("{id}")]
+        [HttpPut]
         public async Task<ActionResult<User>> UpdateUser(User user)
         {
-            if (user == null)
-                return BadRequest();
-
-            if (user.Id == 0)
+            if (user.Id <= 0)
                 return BadRequest();
 
             try
             {
-                var userToUpdate = await _userRepository.GetUserById(user.Id);
-
+                var userToUpdate = await _userRepository.GetUser(user.Id);
                 if (userToUpdate == null)
-                    return NotFound($"User with Id = {id} not found");
+                    return NotFound();
 
-                return await _userRepository.UpdateUser(user);
+                var updatedUser = await _userRepository.UpdateUser(user);
+                if (updatedUser == null)
+                    return BadRequest();
+
+                return Ok(updatedUser.Id);
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error updating data");
+                    ex.Message);
             }
         }
 
-        [HttpDelete("{id}")]
-        public async Task<ActionResult<User>> DeleteUser(int id)
+        [HttpDelete("{id:int}")]
+        public async Task<ActionResult<bool>> DeleteUser(int id)
         {
             try
             {
-                var userToDelete = await _userRepository.GetUserById(id);
 
-                if (userToDelete == null)
-                {
-                    return NotFound($"User with Id = {id} not found");
-                }
+                if (!await _userRepository.DeleteUser(id))
+                    return NotFound();
 
-                return await _userRepository.DeleteUser(id);
+                return Ok();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
-                    "Error deleting data");
+                    ex.Message);
             }
         }
     }

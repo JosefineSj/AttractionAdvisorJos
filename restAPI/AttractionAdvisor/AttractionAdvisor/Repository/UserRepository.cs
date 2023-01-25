@@ -21,14 +21,12 @@ namespace AttractionAdvisor.Repository
             return await _context.Users.ToListAsync();
         }
 
-        public async Task<User> GetUserById(int id)
+        public async Task<User?> GetUser(int id)
         {
             var result = await _context.Users.FirstOrDefaultAsync(
                 e => e.Id == id);
-            if (result == null)
-                throw new Exception("user not found");
-
-            return result;
+            
+            return result ?? null;
         }
 
         public async Task<User> AddUser(User user)
@@ -36,7 +34,7 @@ namespace AttractionAdvisor.Repository
             var userExists = await _context.Users.AnyAsync(
              x => x.UserName == user.UserName);
              if (userExists)
-                throw new Exception("User already exists");
+                throw new Exception("user already exists");
 
             user.SetPassword(user.PasswordHash);
             var result = await _context.Users.AddAsync(user);
@@ -45,16 +43,17 @@ namespace AttractionAdvisor.Repository
             return result.Entity;
         }
 
-        public async Task<User> UpdateUser(User user)
+        public async Task<User?> UpdateUser(User user)
         {
             var result = await _context.Users
                 .FirstOrDefaultAsync(e => e.Id == user.Id);
 
             if (result == null)
-                throw new Exception("user does not found");
+                return null;
 
             result.UserName = user.UserName;
             result.PasswordHash = user.PasswordHash;
+            
             await _context.SaveChangesAsync();
 
             return result;
@@ -65,7 +64,7 @@ namespace AttractionAdvisor.Repository
             var result = await _context.Users
                 .FirstOrDefaultAsync(x => x.Id == id);
             if (result == null)
-                throw new Exception("user not found");
+                return false;
             
             _context.Users.Remove(result);
             await _context.SaveChangesAsync();
@@ -73,7 +72,7 @@ namespace AttractionAdvisor.Repository
             return true;
         }
 
-        public async Task<User> LoginUser(string userName, string password)
+        public async Task<User?> LoginUser(string userName, string password)
         {
             var user = await _context.Users
             .SingleOrDefaultAsync(u => u.UserName == userName);
