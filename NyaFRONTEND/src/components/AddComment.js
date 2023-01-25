@@ -24,14 +24,10 @@ function AddComment({attractionId, userId}) {
 
   return (
     <form onSubmit={handleSubmit}>
-      <h2>Add comment:</h2>
-      <p>AttractionId:{attractionId}, UserId: {userId}</p>
-      <label>
-        Comment:
-        <input type="textarea" value={comment} onChange={(e) => setComment(e.target.value)} />
-      </label>
-      <br />
-      <button type="submit">Publish</button>
+      <div id='addCommentBox'>
+        <textarea id='addCommentInput' type="textarea" placeholder='Your comment...' value={comment} onChange={(e) => setComment(e.target.value)} />
+        <button id='addCommentBtn' type="submit">Publish comment</button>
+      </div>
     </form>
   );
 }

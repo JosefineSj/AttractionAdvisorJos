@@ -1,6 +1,8 @@
 import React, { useState, setState } from "react";
 import "./modal.css";
 import AddComment from "./AddComment";
+import Comments from "./Comments";
+import Rating from "./Rating";
 
 export default function Modal({
   hideModal,
@@ -29,11 +31,14 @@ export default function Modal({
           <div onClick={toggleModal} className="overlay"></div>
           <div className="modal-content">
             <div
-              className="flexItemAttraction">
-              <p>{`${city}, ${name}`}</p>
+              className="modalBox">
+              <h1>{name}</h1>
+              <p>{city}</p>
               <div>{description}</div>
               <img src={`${pictureLink}`} alt="trt" />
             </div>
+            <Rating />
+            <Comments />
             <AddComment />
             <button className="close-modal" onClick={hideModal}>
               CLOSE
