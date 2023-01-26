@@ -35,7 +35,7 @@ export default function Modal({
               <h1>{name}</h1>
               <p>{city}</p>
               <div>{description}</div>
-              <img src={`${pictureLink}`} alt="trt" />
+              <img src={`${pictureLink}`} alt="trt"  id="modalImg"/>
             </div>
             <Rating />
             <Comments />
