@@ -1,4 +1,7 @@
-﻿namespace AttractionAdvisor.Models
+﻿using Microsoft.AspNetCore.Mvc.ModelBinding;
+using System.Text.Json.Serialization;
+
+namespace AttractionAdvisor.Models
 {
     public class User
     {
@@ -16,8 +19,11 @@
             return BCrypt.Net.BCrypt.Verify(password, PasswordHash);
         }
 
-        public IList<Attraction> Attractions { get; set; }
-        public IList<Rating> Ratings { get; set; }
-        public IList<Comment> Comments { get; set; }
+        [JsonIgnore]
+        public IList<Attraction>? Attractions { get; set; }
+        [JsonIgnore]
+        public IList<Rating>? Ratings { get; set; }
+        [JsonIgnore]
+        public IList<Comment>? Comments { get; set; }
     }
 }

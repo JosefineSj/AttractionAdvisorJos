@@ -1,4 +1,6 @@
-﻿namespace AttractionAdvisor.Models
+﻿using System.Text.Json.Serialization;
+
+namespace AttractionAdvisor.Models
 {
     public class Attraction
     {
@@ -7,7 +9,11 @@
         public string City { get; set; }
         public string Description { get; set; }
         public string ImageSource { get; set; }
-        public IList<Rating> Ratings { get; set; }
-        public IList<Comment> Comments { get; set; }
+
+        [JsonIgnore]
+        public IList<Rating>? Ratings { get; set; }
+
+        [JsonIgnore]
+        public IList<Comment>? Comments { get; set; }
     }
 }
