@@ -17,7 +17,7 @@ const Attraction = () => {
       return place.city.toLowerCase().includes(searchField)})
 
       useEffect(() => {
-        fetch('data.json'
+        fetch(''
             ,{
                headers : { 
                  'Content-Type': 'application/json',

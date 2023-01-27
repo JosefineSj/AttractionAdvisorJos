@@ -15,9 +15,9 @@ export default function SignUp() {
             const requestOptions = {
               method: 'POST',
               headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ UserName: 'Adsdsd dfsd dfsff', Password: 'fdsfsd' })
+              body: JSON.stringify({ Username: 'SignUpTest', Password: 'Hej' })
           };
-          fetch('https://reqres.in/api/posts', requestOptions)
+          fetch('https://localhost:7216/api/Users', requestOptions)
               .then(response => response.json())
               //.then(data => this.setState({ postId: data.id }))
               .then(data => console.log(data));
