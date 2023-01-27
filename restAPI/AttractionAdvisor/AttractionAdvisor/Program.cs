@@ -18,6 +18,7 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddDbContext<AttractionAdvisorDbContext>(
     options => options.UseSqlServer(
         builder.Configuration.GetConnectionString("AttractionAdvisorConnection")));
+builder.Services.AddCors();
 
 var app = builder.Build();
 
@@ -29,6 +30,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors();
 
 app.UseAuthorization();
 
