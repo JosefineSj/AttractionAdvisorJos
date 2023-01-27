@@ -21,7 +21,7 @@ builder.Services.AddDbContext<AttractionAdvisorDbContext>(
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("ApiCors", policy => 
-        policy.WithOrigins("https://locahost:3000")
+        policy.WithOrigins("*")
             .AllowAnyHeader()
             .AllowAnyMethod()
             .WithExposedHeaders("Content-Type")
