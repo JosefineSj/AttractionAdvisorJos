@@ -7,21 +7,22 @@ namespace AttractionAdvisor.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CommentController : ControllerBase
+    public class AttractionController : ControllerBase
     {
-        private readonly ICommentRepository _commentRepository;
+        private readonly IAttractionRepository _attractionRepository;
 
-        public CommentController(ICommentRepository commentRepository)
+        public AttractionController(IAttractionRepository attractionRepository)
         {
-            _commentRepository = commentRepository;
+        
+            _attractionRepository = attractionRepository;
         }
 
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Comment>>> GetComments()
+        public async Task<ActionResult<IEnumerable<Attraction>>> GetAttractions()
         {
             try
             {
-                return Ok(await _commentRepository.GetComments());
+                return Ok(await _attractionRepository.GetAttractions());
             }
             catch (Exception ex)
             {
@@ -31,22 +32,21 @@ namespace AttractionAdvisor.Controllers
         }
 
         [HttpGet("{id:int}")]
-        public async Task<ActionResult<Comment>> GetComment(int id)
+        public async Task<ActionResult<Attraction>> GetAttraction(int id)
         {
             if (id <= 0)
                 return BadRequest();
-
             try
             {
-                var result = await _commentRepository.GetComment(id);
+                var result = await _attractionRepository.GetAttraction(id);
+
                 if (result == null)
                     return NotFound();
-                
+
                 return Ok(result);
             }
             catch (Exception ex)
             {
-
                 return StatusCode(
                         StatusCodes.Status500InternalServerError,
                         ex.Message);
@@ -54,44 +54,46 @@ namespace AttractionAdvisor.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Comment>> AddComment(Comment comment)
+        public async Task<ActionResult<Attraction>> AddAttraction(Attraction attraction)
         {
+           
             try
             {
-                var createdComment = await _commentRepository.AddComment(comment);
+                var createdAttraction = await _attractionRepository.AddAttraction(attraction);
                 
-                return Ok(CreatedAtAction(nameof(GetComment),
-                    new { id = createdComment.Id }, createdComment));
+                return Ok(CreatedAtAction(nameof(GetAttraction),
+                    new { id = createdAttraction.Id }, createdAttraction));
             }
             catch (Exception ex)
             {
                 return StatusCode(
                         StatusCodes.Status500InternalServerError,
-                        ex.Message);
+                       ex.Message);
             }
         }
 
         [HttpPut]
-        
-        public async Task<ActionResult<Comment>> UpdateComment(Comment comment)
+
+        public async Task<ActionResult<Attraction>> UpdateAttraction(Attraction attraction)
         {
-            if (comment.Id <= 0)
+           
+
+            if (attraction.Id <= 0)
                 return BadRequest();
 
             try
             {
-                var commentToUpdate = await _commentRepository.GetComment(
-                    comment.Id);
-                if (commentToUpdate == null)
+                var attractionToUpdate = await _attractionRepository.GetAttraction(attraction.Id);
+                if (attractionToUpdate == null)
                     return NotFound();
 
-                var updatedComment = await _commentRepository.UpdateComment(
-                    comment);
-                if (updatedComment == null)
-                    BadRequest();
 
 
-                return Ok(updatedComment);
+                var updatedAttraction = await _attractionRepository.UpdateAttraction(attraction);
+                if (updatedAttraction == null)
+                    return BadRequest();
+
+                return Ok(updatedAttraction.Id);
             }
             catch (Exception ex)
             {
@@ -102,13 +104,13 @@ namespace AttractionAdvisor.Controllers
         }
 
         [HttpDelete("{id:int}")]
-        public async Task<ActionResult<bool>> DeleteComment(int id)
+       public async Task<ActionResult<bool>> DeleteAttraction(int id)
         {
             try
             {
-                if (!await _commentRepository.DeleteComment(id))
+                if (!await _attractionRepository.DeleteAttraction(id))
                     return NotFound();
-                
+
                 return Ok();
             }
             catch (Exception ex)
@@ -117,5 +119,6 @@ namespace AttractionAdvisor.Controllers
                    ex.Message);
             }
         }
+
     }
 }
