@@ -20,13 +20,8 @@ builder.Services.AddDbContext<AttractionAdvisorDbContext>(
         builder.Configuration.GetConnectionString("AttractionAdvisorConnection")));
 builder.Services.AddCors(options =>
 {
-    if (builder.Environment.IsDevelopment())
-    {
-        options.AddDefaultPolicy(b =>
-        {
-            b.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost");
-        });
-    }
+    options.AddPolicy("ApiCors", policy => 
+        policy.WithOrigins("https://locahost:7216"));
 });
 
 var app = builder.Build();
