@@ -18,16 +18,18 @@ builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddDbContext<AttractionAdvisorDbContext>(
     options => options.UseSqlServer(
         builder.Configuration.GetConnectionString("AttractionAdvisorConnection")));
-var app = builder.Build();
 builder.Services.AddCors(options =>
 {
-    if (app.Environment.IsDevelopment())
+    if (builder.Environment.IsDevelopment())
     {
         options.AddDefaultPolicy(b =>
         {
             b.SetIsOriginAllowed(origin => new Uri(origin).Host == "localhost");
         });
-}
+    }
+});
+
+var app = builder.Build();
 
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment())
