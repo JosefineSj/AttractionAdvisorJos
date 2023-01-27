@@ -21,7 +21,14 @@ builder.Services.AddDbContext<AttractionAdvisorDbContext>(
 builder.Services.AddCors(options =>
 {
     options.AddPolicy("ApiCors", policy => 
-        policy.WithOrigins("https://locahost:3000"));
+        policy.WithOrigins("https://locahost:3000")
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+            .WithExposedHeaders("Content-Type")
+            .WithExposedHeaders("Access-Control-Allow-Origin")
+            .WithExposedHeaders("Access-Control-Allow-Headers")
+            .WithExposedHeaders("Access-Control-Allow-Methods")
+            .AllowCredentials());
 });
 
 var app = builder.Build();
@@ -35,7 +42,7 @@ if (app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseCors();
+app.UseCors("ApiCors");
 
 app.UseAuthorization();
 

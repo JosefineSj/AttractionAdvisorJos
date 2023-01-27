@@ -7,11 +7,13 @@ using Microsoft.EntityFrameworkCore;
 using AttractionAdvisor.Models;
 using AttractionAdvisor.Interfaces;
 using AttractionAdvisor.Repository;
+using Microsoft.AspNetCore.Cors;
 
 namespace AttractionAdvisor.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [EnableCors("CorsPolicy")]
     public class UsersController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
