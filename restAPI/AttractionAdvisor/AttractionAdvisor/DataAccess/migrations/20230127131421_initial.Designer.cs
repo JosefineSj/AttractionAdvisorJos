@@ -12,7 +12,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AttractionAdvisor.DataAccess.migrations
 {
     [DbContext(typeof(AttractionAdvisorDbContext))]
-    [Migration("20230126144433_initial")]
+    [Migration("20230127131421_initial")]
     partial class initial
     {
         /// <inheritdoc />

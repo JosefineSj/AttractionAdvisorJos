@@ -13,7 +13,7 @@ namespace AttractionAdvisor.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [EnableCors("CorsPolicy")]
+    //[EnableCors("CorsPolicy")]
     public class UsersController : ControllerBase
     {
         private readonly IUserRepository _userRepository;
@@ -33,7 +33,8 @@ namespace AttractionAdvisor.Controllers
                 if(result == null) 
                     return Unauthorized();
 
-                return Ok(result.UserName);
+
+                return Ok(result.UserName + result.Id);
             }
             catch (Exception ex)
             {
