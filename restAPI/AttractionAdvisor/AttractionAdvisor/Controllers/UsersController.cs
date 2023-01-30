@@ -34,7 +34,7 @@ namespace AttractionAdvisor.Controllers
                     return Unauthorized();
 
 
-                return Ok(result.UserName + result.Id);
+                return Ok(result.Username + result.Id);
             }
             catch (Exception ex)
             {
