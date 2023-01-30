@@ -9,7 +9,17 @@ function Navbar() {
         <CustomLink to='/attractions'>Attractions</CustomLink>
         <CustomLink to='/signup'>Sign Up</CustomLink>
         <CustomLink to='/login'>Sign In</CustomLink>
-        <CustomLink to='/my-page'>My Page</CustomLink>
+
+     <div className="dropdown">
+       <button className="dropbtn">My Page<i class="fa fa-caret-down"></i></button>
+      <div class="dropdown-content">
+        <CustomLink to='/my-account'>My Account</CustomLink>
+        <CustomLink to='/add-attraction'>Add Attraction</CustomLink>
+        <CustomLink to='/my-uploads'>My Uploads</CustomLink>
+        <CustomLink to='/my-comments'>My Comments</CustomLink>
+      </div>
+     </div> 
+
       </ul>
     </nav> 
   );
