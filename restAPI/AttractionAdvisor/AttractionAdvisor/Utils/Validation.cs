@@ -48,10 +48,10 @@ public class Validation
 
     public static bool ValidateUser(User user)
     {
-        if (String.IsNullOrEmpty(user.UserName))
+        if (String.IsNullOrEmpty(user.Username))
             return false;
         
-        if (String.IsNullOrEmpty(user.PasswordHash))
+        if (String.IsNullOrEmpty(user.Password))
             return false;
         
         return true;
