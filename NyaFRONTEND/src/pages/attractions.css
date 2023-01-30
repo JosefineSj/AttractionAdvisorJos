@@ -2,6 +2,7 @@
 .attractionContainer{
     background-image: url("https://thumbs.dreamstime.com/b/travel-photos-turquoise-wood-background-heap-azure-55515164.jpg");
     /*height:100vh;*/
+    height: 100vh;
     width: 100vw;
     background-size: cover;
     background-position: center; 
@@ -18,9 +19,9 @@
 }
 
 #searchBoxInput{
-    width: 50%;
-    padding: 15px;
-    margin: 5px 0 15px 0;
+    width: 40%;
+    padding: 10px;
+    margin: 5px 5px 15px 0;
     display: inline-block;
     border: 2px solid black;
     background: #f1f1f1;
@@ -39,8 +40,8 @@
 
 
 .searchBox{
-    margin-top: 80px;
-    height: 150px;
+    margin-top: 70px;
+    height: 130px;
     max-width: 900px;
     width: 100%;
     background: rgba(255, 255, 255, 0.6);
@@ -57,6 +58,8 @@
     align-content: space-between;
     margin: 20px;
     align-items: center;
+    overflow-y: scroll;
+    height: 500px;
 }
 
 .flexItemAttraction{
@@ -104,108 +107,12 @@ p{
 
 
 .searchBoxHeader{
-    font-size: 20px;
-    font-weight: bold;
-    margin-bottom: 20px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    opacity: 1.0;
-
-    
-}
-
-.commentHeader {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-}
-
-#commentHeaderHeadline {
-    font-size: 28px;
-    margin-bottom: 15px;
-}
-
-#commentHeaderParagraf {
     font-size: 18px;
-    color: grey;
-}
-
-#CommentListElementUser {
-    font-size: 15px;
     font-weight: bold;
-    justify-items: flex-start;
-    text-align: left;
-    margin-bottom: 0px;
-}
-
-#CommentListElementComment {
-    font-size: 15px;
-    font-weight: 200;
-    justify-items: flex-start;
-    text-align: left;
-    margin-bottom: 0px;
-}
-
-.flexItemComment {
-    display: flex;
-    flex-direction: column;
-    border-top: grey dotted 1px;
-    padding-top: 20px;
-    margin-bottom: 20px;
-
-}
-
-#addCommentBox {
-    display: flex;
-    flex-direction: column;
-}
-
-#addCommentInput {
-    height: 100px;
-    padding: 15px;
-    margin: 5px 0 15px 0;
-    display: inline-block;
-    border: 2px solid black;
-    background: #f1f1f1;
-    border-radius: 10px;
+    margin-bottom: 10px;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     opacity: 1.0;
-}
 
-#addCommentBtn {
-    background-color: #04AA6D;
-    color: white;
-    padding: 14px 20px;
-    margin: 8px 0;
-    border: none;
-    cursor: pointer;
-    width: 40%;
-    opacity: 0.9;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    align-self: center;
-}
-
-.buttons {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-top: 20px;
-    margin-bottom: 20px;
     
-
 }
 
-
-.ratingImg {
-    width: 40px;
-    height: 40px;
-    object-fit:contain;
-}
-
-#likeCount{
-    color: green;
-}
-
-#dislikeCount{
-    color: red;
-}

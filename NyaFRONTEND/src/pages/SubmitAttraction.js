@@ -1,4 +1,7 @@
 import React, { useState } from 'react';
+import SecondNavbar from "./SecondNavbar";
+import './myPageStyles.css'; 
+
 
 function SubmitAttraction() {
   const [name, setName] = useState('');
@@ -26,6 +29,8 @@ function SubmitAttraction() {
   };
 
   return (
+    <>
+    <SecondNavbar />
     <form onSubmit={handleSubmit}>
       <h2>Register new attraction:</h2>
       <label>
@@ -50,6 +55,8 @@ function SubmitAttraction() {
       <br />
       <button type="submit">Publish</button>
     </form>
+    
+    </>
   );
 }
 

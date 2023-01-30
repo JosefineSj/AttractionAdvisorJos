@@ -1,14 +1,29 @@
-import SubmitAttraction from "../components/SubmitAttraction";
+import SubmitAttraction from './SubmitAttraction';
+import MyAttractions from "./MyAttractions";
+import MyComments from "./MyComments";
+import MyAccount from "./MyAccount";
+import './myPageStyles.css'; 
+import SecondNavbar from "./SecondNavbar";
+import { Route, Routes } from 'react-router-dom';
+
 
 export default function MyPage() {
     return (
-    <><h1>This page is where you can upload and view your attractions.</h1>
-    <h2>You should also be able to change your password, alter your attractions and delete your account.</h2>
+    <>
+
+    <SecondNavbar/>
+    <div className='myPageContainer'>
+      <Routes>
+        <Route path="/add-attraction" element={<SubmitAttraction />}/>
+        <Route path="/my-attractions" element={<MyAttractions />}/>
+        <Route path="/my-comments" element={<MyComments />}/>
+        <Route path="/my-comments" element={<MyAccount />}/>
+
+      </Routes>
+     
     
-    <div className="myPageContainer">
-      <SubmitAttraction />
-        
     </div>
+    
     
     
     
