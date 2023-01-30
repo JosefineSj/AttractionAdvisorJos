@@ -139,6 +139,7 @@ body.active-modal {
     padding: 14px 20px;
     margin: 8px 0;
     border: none;
+    border-radius: 10px;
     cursor: pointer;
     width: 40%;
     opacity: 0.9;

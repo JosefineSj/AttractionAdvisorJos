@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import './submitAttraction.css';
+
 
 
 function SubmitAttraction() {
@@ -28,31 +30,80 @@ function SubmitAttraction() {
 
   return (
     <>
-    <form onSubmit={handleSubmit}>
-      <h2>Register new attraction:</h2>
-      <label>
-        Name:
-        <input type="text" value={name} onChange={(e) => setName(e.target.value)} />
-      </label>
+    <div className="SubmitAttraction">
+
+    <form className="formController" onSubmit={handleSubmit} action="action_page.php">
+    <div className="containerForm">
+
+     <div className="submitAttractionHeader">
+            <h1>Register new attraction:</h1>
+            <hr />
+     </div>
+
+     <div className="submitAttractionDiv">
+            <label for="name">
+              <b>Name: </b>{" "}
+            </label>
+            <input
+              className="inputSubmitAttraction"
+              type="text"
+              placeholder="Name of the attraction..."
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </div>
+          <br />
+          <div className="submitAttractionDiv">
+            <label for="city">
+              <b>City: </b>{" "}
+            </label>
+            <input
+              className="inputSubmitAttraction"
+              type="text"
+              placeholder="In which city..."
+              value={city}
+              onChange={(e) => setCity(e.target.value)}
+              required
+            />
+          </div>
       <br />
-      <label>
-        City:
-        <input type="text" value={city} onChange={(e) => setCity(e.target.value)} />
-      </label>
+
+      <div className="submitAttractionDiv">
+            <label for="description">
+              <b>Description: </b>{" "}
+            </label>
+            <input
+              className="inputSubmitAttraction"
+              type="text"
+              placeholder="Describe this place..."
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              required
+            />
+          </div>
       <br />
-      <label>
-        Description:
-        <input type="text" value={description} onChange={(e) => setDescription(e.target.value)} />
-      </label>
-      <br />
-      <label>
-        Picture:
-        <input type="text" value={picture} onChange={(e) => setPicture(e.target.value)} />
-      </label>
-      <br />
-      <button type="submit">Publish</button>
+
+      <div className="submitAttractionDiv">
+            <label for="picture">
+              <b>Upload picture: </b>{" "}
+            </label>
+            <input
+              className="inputSubmitAttraction"
+              type="text"
+              placeholder="Paste your picture address..."
+              value={picture}
+              onChange={(e) => setPicture(e.target.value)}
+              required
+            />
+          </div>
+
+          <div className="clearfix">
+            <button className="signupbtn" type="submit">Publish</button>
+          </div>
+    </div>
     </form>
-    
+    </div>
     </>
   );
 }
