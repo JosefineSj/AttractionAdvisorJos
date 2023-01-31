@@ -94,8 +94,8 @@ namespace AttractionAdvisor.DataAccess.migrations
                     b.Property<int>("AttractionId")
                         .HasColumnType("int");
 
-                    b.Property<byte>("Likes")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("Likes")
+                        .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
