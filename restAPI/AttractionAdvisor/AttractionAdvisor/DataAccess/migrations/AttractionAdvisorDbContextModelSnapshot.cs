@@ -91,8 +91,8 @@ namespace AttractionAdvisor.DataAccess.migrations
                     b.Property<int>("AttractionId")
                         .HasColumnType("int");
 
-                    b.Property<byte>("Rank")
-                        .HasColumnType("tinyint");
+                    b.Property<int>("Likes")
+                        .HasColumnType("int");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -112,11 +112,11 @@ namespace AttractionAdvisor.DataAccess.migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("PasswordHash")
+                    b.Property<string>("Password")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("UserName")
+                    b.Property<string>("Username")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 

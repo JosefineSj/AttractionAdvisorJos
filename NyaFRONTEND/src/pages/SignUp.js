@@ -12,10 +12,15 @@ export default function SignUp() {
           const handleSubmit = event => {
             event.preventDefault();
             // Send form data to server for registration
+            const headers = new Headers();
+          headers.append('Content-Type', 'application/json'); 
+          //headers.append('Access-Control-Allow-Origin', 'https://localhost:7216/api/Users'); 
+
             const requestOptions = {
               method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({ Username: 'SignUpTest', Password: 'Hej' })
+              headers: headers,
+              mode: 'cors',
+            body: JSON.stringify({userName:  `${formData.username}`, passwordHash: `${formData.password}` })
           };
           fetch('https://localhost:7216/api/Users', requestOptions)
               .then(response => response.json())

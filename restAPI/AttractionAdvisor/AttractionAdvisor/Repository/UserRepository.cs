@@ -32,11 +32,11 @@ namespace AttractionAdvisor.Repository
         public async Task<User> AddUser(User user)
         {
             var userExists = await _context.Users.AnyAsync(
-             x => x.UserName == user.UserName);
+             x => x.Username == user.Username);
              if (userExists)
                 throw new Exception("user already exists");
 
-            user.SetPassword(user.PasswordHash);
+            user.SetPassword(user.Password);
             var result = await _context.Users.AddAsync(user);
            
             await _context.SaveChangesAsync();
@@ -51,8 +51,8 @@ namespace AttractionAdvisor.Repository
             if (result == null)
                 return null;
 
-            result.UserName = user.UserName;
-            result.PasswordHash = user.PasswordHash;
+            result.Username = user.Username;
+            result.SetPassword(user.Password);
             
             await _context.SaveChangesAsync();
 
@@ -75,7 +75,7 @@ namespace AttractionAdvisor.Repository
         public async Task<User?> LoginUser(string userName, string password)
         {
             var user = await _context.Users
-            .SingleOrDefaultAsync(u => u.UserName == userName);
+            .SingleOrDefaultAsync(u => u.Username == userName);
 
             if (user == null) 
                 return null;

@@ -3,29 +3,48 @@ import LoginApi from "../loginCheck";
 import './login.css';
 
 export default function SignIn() {
-  const [username, setUsername] = useState("");
+  const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
 
+  const logOut = () => {
+    setUser(null);
+  }
+
   const handleSubmit = (event) => {
     event.preventDefault();
-    // Perform sign-in logic here, such as sending a request to a server
-    /*       const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ UserName: username, Password: password })
-    };
-    fetch('https://reqres.in/api/posts', requestOptions)
-        .then(response => response.json())
-        .then(data => {
-          setUser(data)   
-        }); */
+    
+    const headers = new Headers();
+          headers.append('Content-Type', 'application/json'); 
+          //headers.append('Access-Control-Allow-Origin', 'https://localhost:7216/api/Users'); 
 
-    const data = LoginApi.CheckLogin(username, password);
-    setUser(data);
+            const requestOptions = {
+              method: 'POST',
+              headers: headers,
+              Accept: 'application/json',
+              mode: 'cors',
+            body: JSON.stringify({username: `${userName}`, password: `${password}` })
+          };
+          fetch('https://localhost:7216/api/Users/login', requestOptions)
+              .then(response => {
+                console.log(response);
+                if(response.status === 200) {
+                  alert("You are now signed in!")
+                  setUser(1)
+                }
+                else alert("Incorrect username or password");
+                
+                console.log(response.status)});
+              //.then(data => this.setState({ postId: data.id }))
+              //.then(data => console.log(data));
+           
 
-    if (data === null) alert("Incorrect username or password");
-    else alert("You are now signed in!");
+
+    // const data = LoginApi.CheckLogin(username, password);
+    // setUser(data);
+
+    // if (data === null) alert("Incorrect username or password");
+    // else alert("You are now signed in!");
   };
   console.log(user);
   if (user === null) {
@@ -50,7 +69,7 @@ export default function SignIn() {
               className="inputSignUp"
               type="text"
               placeholder="Your name..."
-              value={username}
+              value={userName}
               onChange={(e) => setUsername(e.target.value)}
               required
             />
@@ -81,8 +100,9 @@ export default function SignIn() {
     );
   } else {
     return (
-      <div>
+      <div className="LogIn">
         <h1>You are in!</h1>
+        <button className="logout" onClick={logOut}>Logga ut</button>
       </div>
     );
   }

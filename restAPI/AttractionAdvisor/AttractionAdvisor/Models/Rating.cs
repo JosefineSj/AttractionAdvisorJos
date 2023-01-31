@@ -14,6 +14,6 @@ namespace AttractionAdvisor.Models
 
         [JsonIgnore]
         public User? User { get; set; }
-        public byte Rank { get; set; }
+        public int Likes { get; set; }
     }
 }

@@ -6,10 +6,21 @@ function Navbar() {
     <nav className='navbar'>
       <Link to='/' className='site-title'>Attraction Advisor</Link>
       <ul>
+
+     <div className="dropdown">
+       <button className="drop-btn">My Page 
+       <i className="fa fa-caret-down"></i></button>
+      <div className="dropdown-content">
+        <CustomLink to='/my-account'>My Account</CustomLink>
+        <CustomLink to='/add-attraction'>Add Attraction</CustomLink>
+        <CustomLink to='/my-uploads'>My Uploads</CustomLink>
+        <CustomLink to='/my-comments'>My Comments</CustomLink>
+      </div>
+     </div> 
+
         <CustomLink to='/attractions'>Attractions</CustomLink>
         <CustomLink to='/signup'>Sign Up</CustomLink>
         <CustomLink to='/login'>Sign In</CustomLink>
-        <CustomLink to='/my-page'>My Page</CustomLink>
       </ul>
     </nav> 
   );
