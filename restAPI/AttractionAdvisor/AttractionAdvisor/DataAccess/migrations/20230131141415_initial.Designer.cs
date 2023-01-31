@@ -11,11 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AttractionAdvisor.DataAccess.migrations
 {
     [DbContext(typeof(AttractionAdvisorDbContext))]
-<<<<<<< HEAD:restAPI/AttractionAdvisor/AttractionAdvisor/DataAccess/migrations/20230131121443_initial.Designer.cs
-    [Migration("20230131121443_initial")]
-=======
-    [Migration("20230131093207_initial")]
->>>>>>> 50f91da05c5175947b0a6d6a38559c65121cb6db:restAPI/AttractionAdvisor/AttractionAdvisor/DataAccess/migrations/20230131093207_initial.Designer.cs
+    [Migration("20230131141415_initial")]
     partial class initial
     {
         /// <inheritdoc />
