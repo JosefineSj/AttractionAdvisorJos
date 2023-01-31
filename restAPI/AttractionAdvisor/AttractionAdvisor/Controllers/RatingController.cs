@@ -71,30 +71,30 @@ namespace AttractionAdvisor.Controllers
         }
 
         [HttpPut]
-        public async Task<ActionResult<Rating>> UpdateRating(Rating rating)
-        {
-            if (rating.Id <= 0)
-                return BadRequest();
+        //public async Task<ActionResult<Rating>> UpdateRating(Rating rating)
+        //{
+        //    if (rating.Id <= 0)
+        //        return BadRequest();
 
-            try
-            {
-                var ratingToUpdate = await _ratingRepository.GetRating(rating.Id);
-                if (ratingToUpdate == null)
-                    return NotFound();
+        //    try
+        //    {
+        //        var ratingToUpdate = await _ratingRepository.GetRating(rating.Id);
+        //        if (ratingToUpdate == null)
+        //            return NotFound();
 
-                var updatedRating = await _ratingRepository.UpdateRating(rating);
-                if (updatedRating == null)
-                    return BadRequest();
+        //        var updatedRating = await _ratingRepository.UpdateRating(rating);
+        //        if (updatedRating == null)
+        //            return BadRequest();
 
-                return Ok(updatedRating.Id);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(
-                        StatusCodes.Status500InternalServerError,
-                        ex.Message);
-            }
-        }
+        //        return Ok(updatedRating.Id);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return StatusCode(
+        //                StatusCodes.Status500InternalServerError,
+        //                ex.Message);
+        //    }
+        //}
 
         [HttpDelete("{id:int}")]
         public async Task<ActionResult<bool>> DeleteRating(int id)

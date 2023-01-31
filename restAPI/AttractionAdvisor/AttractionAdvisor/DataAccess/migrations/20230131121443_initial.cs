@@ -34,7 +34,7 @@ namespace AttractionAdvisor.DataAccess.migrations
                     City = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     ImageSource = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    UserId = table.Column<int>(type: "int", nullable: true)
+                    UserId = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -60,17 +60,15 @@ namespace AttractionAdvisor.DataAccess.migrations
                 {
                     table.PrimaryKey("PK_Comments", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Comments_Attractions_AttractionId",
-                        column: x => x.AttractionId,
+                        name: "FK_Comments_Attractions_UserId",
+                        column: x => x.UserId,
                         principalTable: "Attractions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Comments_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateTable(
@@ -87,17 +85,15 @@ namespace AttractionAdvisor.DataAccess.migrations
                 {
                     table.PrimaryKey("PK_Ratings", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Ratings_Attractions_AttractionId",
-                        column: x => x.AttractionId,
+                        name: "FK_Ratings_Attractions_UserId",
+                        column: x => x.UserId,
                         principalTable: "Attractions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                     table.ForeignKey(
                         name: "FK_Ratings_Users_UserId",
                         column: x => x.UserId,
                         principalTable: "Users",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
+                        principalColumn: "Id");
                 });
 
             migrationBuilder.CreateIndex(
@@ -106,19 +102,9 @@ namespace AttractionAdvisor.DataAccess.migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Comments_AttractionId",
-                table: "Comments",
-                column: "AttractionId");
-
-            migrationBuilder.CreateIndex(
                 name: "IX_Comments_UserId",
                 table: "Comments",
                 column: "UserId");
-
-            migrationBuilder.CreateIndex(
-                name: "IX_Ratings_AttractionId",
-                table: "Ratings",
-                column: "AttractionId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Ratings_UserId",
