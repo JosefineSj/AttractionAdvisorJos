@@ -16,7 +16,7 @@ namespace AttractionAdvisor.Controllers
         }
         
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<Attraction>>> GetAttractions()
+        public async Task<ActionResult<IEnumerable<Attraction>>> GetAggregatedAttractions()
         {
             try
             {
