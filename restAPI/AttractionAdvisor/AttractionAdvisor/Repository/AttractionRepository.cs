@@ -13,6 +13,70 @@ namespace AttractionAdvisor.Repository
             _context = context;
 
         }
+        
+        public async Task<List<AttractionDto>> GetAllAttractionDto()
+        {
+            var allAttractionDto = await _context.Attractions
+                .Include(a => a.Ratings)
+                .Include(a => a.Comments)
+                .Select(a => new AttractionDto
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    City = a.City,
+                    Description = a.Description,
+                    ImageSource = a.ImageSource,
+                    Ratings = a.Ratings!.ToList(),
+                    Comments = a.Comments!.ToList()
+                })
+                .ToListAsync();
+
+            return allAttractionDto;
+        }
+        
+        public async Task<List<AttractionDto>> GetAllAttractionDtoByUserId(int userId)
+        {
+            var allAttractionDto = await _context.Attractions
+                .Where(a => a.Comments != null && a.Ratings != null && (a.Ratings.Any(
+                    r => r.UserId == userId) || a.Comments.Any(c => c.UserId == userId)))
+                .Include(a => a.Ratings)
+                .Include(a => a.Comments)
+                .Select(a => new AttractionDto
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    City = a.City,
+                    Description = a.Description,
+                    ImageSource = a.ImageSource,
+                    Ratings = a.Ratings!.Where(r => r.UserId == userId).ToList(),
+                    Comments = a.Comments!.Where(c => c.UserId == userId).ToList()
+                })
+                .ToListAsync();
+
+            return allAttractionDto;
+        }
+
+        public async Task<AttractionDto?> GetAttractionDto(int id)
+        {
+            var attractionDto = await _context.Attractions
+                .Where(a => a.Comments != null && a.Ratings != null && (a.Ratings.Any(
+                    r => r.UserId == id) || a.Comments.Any(c => c.UserId == id)))
+                .Include(a => a.Ratings)
+                .Include(a => a.Comments)
+                .Select(a => new AttractionDto
+                {
+                    Id = a.Id,
+                    Name = a.Name,
+                    City = a.City,
+                    Description = a.Description,
+                    ImageSource = a.ImageSource,
+                    Ratings = a.Ratings!.Where(r => r.UserId == id).ToList(),
+                    Comments = a.Comments!.Where(c => c.UserId == id).ToList()
+                })
+                .FirstOrDefaultAsync();
+
+            return attractionDto;
+        }
         public async Task<IEnumerable<Attraction>> GetAttractions()
         {
             return await _context.Attractions.ToListAsync();
@@ -25,50 +89,8 @@ namespace AttractionAdvisor.Repository
             
 
             return result ?? null;
-
         }
         
-        public async Task<List<AttractionDto>> GetAggregatedAttractions()
-        {
-            var attractionDtos = await _context.Attractions
-                .Include(a => a.Ratings)
-                .Include(a => a.Comments)
-                .Select(a => new AttractionDto
-                {
-                    Id = a.Id,
-                    Name = a.Name,
-                    City = a.City,
-                    Description = a.Description,
-                    ImageSource = a.ImageSource,
-                    Ratings = a.Ratings.ToList(),
-                    Comments = a.Comments.ToList()
-                })
-                .ToListAsync();
-
-            return attractionDtos;
-        }
-        
-        public async Task<List<AttractionDto>> GetAggregatedAttractionsByUserId(int userId)
-        {
-            var attractionDtos = await _context.Attractions
-                .Where(a => a.Ratings.Any(
-                    r => r.UserId == userId) || a.Comments.Any(c => c.UserId == userId))
-                .Include(a => a.Ratings)
-                .Include(a => a.Comments)
-                .Select(a => new AttractionDto
-                {
-                    Id = a.Id,
-                    Name = a.Name,
-                    City = a.City,
-                    Description = a.Description,
-                    ImageSource = a.ImageSource,
-                    Ratings = a.Ratings.Where(r => r.UserId == userId).ToList(),
-                    Comments = a.Comments.Where(c => c.UserId == userId).ToList()
-                })
-                .ToListAsync();
-
-            return attractionDtos;
-        }
 
         public async Task<Attraction> AddAttraction(Attraction attraction)
         {
