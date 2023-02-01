@@ -22,12 +22,35 @@ namespace AttractionAdvisor.Controllers
         {
             try
             {
-                return Ok(await _attractionRepository.GetAttractions());
+                return Ok(await _attractionRepository.GetAllAttractionDto());
             }
             catch (Exception ex)
             {
                 return StatusCode(StatusCodes.Status500InternalServerError,
                     ex.Message);
+            }
+        }
+        
+        [HttpGet("{userId:int}")]
+        public async Task<ActionResult<Attraction>> GetAttractionsByUserId(int userId)
+        {
+            if (userId <= 0)
+                return BadRequest();
+            try
+            {
+                var result = await _attractionRepository.GetAllAttractionDtoByUserId(
+                    userId);
+
+                if (result.Count < 1)
+                    return NotFound();
+
+                return Ok(result);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(
+                        StatusCodes.Status500InternalServerError,
+                        ex.Message);
             }
         }
 
@@ -38,7 +61,7 @@ namespace AttractionAdvisor.Controllers
                 return BadRequest();
             try
             {
-                var result = await _attractionRepository.GetAttraction(id);
+                var result = await _attractionRepository.GetAttractionDto(id);
 
                 if (result == null)
                     return NotFound();
@@ -54,7 +77,7 @@ namespace AttractionAdvisor.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult<Attraction>> AddAttraction(Attraction attraction)
+        public async Task<ActionResult<Attraction>> CreateAttraction(Attraction attraction)
         {
            
             try
