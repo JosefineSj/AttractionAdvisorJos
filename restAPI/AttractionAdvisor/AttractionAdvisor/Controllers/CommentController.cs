@@ -53,7 +53,7 @@ public class CommentController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<Comment>> AddComment(Comment comment)
+    public async Task<ActionResult<Comment>> CreateComment(Comment comment)
     {
         try
         {
@@ -69,25 +69,24 @@ public class CommentController : ControllerBase
         }
     }
 
-    [HttpPut]
-        
-    public async Task<ActionResult<Comment>> UpdateComment(Comment comment)
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult<Comment>> UpdateComment(Comment comment, int id)
     {
-        if (comment.Id <= 0)
+        if (id <= 0)
             return BadRequest();
 
         try
         {
-            var commentToUpdate = await _commentRepository.GetComment(
-                comment.Id);
+            var commentToUpdate = await _commentRepository.GetComment(id);
             if (commentToUpdate == null)
                 return NotFound();
+
+            comment.Id = id;
 
             var updatedComment = await _commentRepository.UpdateComment(
                 comment);
             if (updatedComment == null)
                 BadRequest();
-
 
             return Ok(updatedComment!.Id);
         }
@@ -100,7 +99,7 @@ public class CommentController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
-    public async Task<ActionResult<bool>> DeleteComment(int id)
+    public async Task<ActionResult> DeleteComment(int id)
     {
         try
         {

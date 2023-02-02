@@ -9,5 +9,5 @@ public class AttractionDto
         public string ImageSource { get; set; }
         public int Likes { get; set; }
         public int Dislikes { get; set; }
-        public List<Comment>? Comments { get; set; }
+        public List<CommentDto>? Comments { get; set; }
 }

@@ -15,17 +15,16 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult<User>> Login([FromBody] LoginDto login)
+    public async Task<ActionResult> Login(User user)
     {
         try
         {
             var result = await _userRepository.LoginUser(
-                login.username,login.password);
+                user.Username,user.Password);
             if(result == null) 
                 return Unauthorized();
 
-
-            return Ok(result);
+            return Ok();
         }
         catch (Exception ex)
         {
@@ -35,7 +34,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult> GetUsers()
+    public async Task<ActionResult<IEnumerable<User>>> GetUsers()
     {
         try
         {
@@ -49,7 +48,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<User>> GetUser(int id)
+    public async Task<ActionResult<UserDto>> GetUser(int id)
     {
         if (id <= 0)
             return BadRequest();
@@ -60,7 +59,7 @@ public class UsersController : ControllerBase
             if (result == null) 
                 return NotFound();
 
-            return Ok(result);
+            return Ok(result.Username);
         }
         catch (Exception ex)
         {
@@ -85,17 +84,19 @@ public class UsersController : ControllerBase
         }
     }
 
-    [HttpPut]
-    public async Task<ActionResult<User>> UpdateUser(User user)
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult<int>> UpdateUser(User user, int id)
     {
-        if (user.Id <= 0)
+        if (id <= 0)
             return BadRequest();
 
         try
         {
-            var userToUpdate = await _userRepository.GetUser(user.Id);
-            if (userToUpdate == null)
+            var userExists = await _userRepository.GetUser(id);
+            if (userExists == null)
                 return NotFound();
+
+            user.Id = id;
 
             var updatedUser = await _userRepository.UpdateUser(user);
             if (updatedUser == null)
@@ -111,11 +112,10 @@ public class UsersController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
-    public async Task<ActionResult<bool>> DeleteUser(int id)
+    public async Task<ActionResult> DeleteUser(int id)
     {
         try
         {
-
             if (!await _userRepository.DeleteUser(id))
                 return NotFound();
 

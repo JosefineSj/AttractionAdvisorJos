@@ -1,6 +1,7 @@
 ﻿using AttractionAdvisor.DataAccess;
 using AttractionAdvisor.Interfaces;
 using AttractionAdvisor.Models;
+using AttractionAdvisor.Utils;
 using Microsoft.EntityFrameworkCore;
 
 namespace AttractionAdvisor.Repository;
@@ -29,6 +30,9 @@ public class RatingRepository : IRatingRepository
 
     public async Task<Rating> AddRating(Rating rating)
     {
+        if (!Validation.IsValid(rating))
+            throw new Exception("rating is not valid");
+        
         var result = await _context.Ratings.AddAsync(rating);
         await _context.SaveChangesAsync();
         return result.Entity;
@@ -40,6 +44,9 @@ public class RatingRepository : IRatingRepository
             .FirstOrDefaultAsync(r => r.Id == rating.Id);
 
         if (result == null)
+            return null;
+
+        if (!Validation.IsValid(rating))
             return null;
 
         result.AttractionId = rating.AttractionId;

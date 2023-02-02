@@ -1,27 +1,35 @@
+using AttractionAdvisor.DataAccess;
 using AttractionAdvisor.Models;
 
 namespace AttractionAdvisor.Utils;
 
 public class Validation
 {
-    public static bool ValdiateAttraction(Attraction attraction)
+    private static AttractionAdvisorDbContext _context;
+
+    public Validation(AttractionAdvisorDbContext context)
     {
-        if (String.IsNullOrEmpty(attraction.Name))
-            return false;
-
-        if (String.IsNullOrEmpty(attraction.City))
-            return false;
-
-        if (String.IsNullOrEmpty(attraction.Description))
-            return false;
-
-        if (String.IsNullOrEmpty(attraction.ImageSource))
-            return false;
-        
-        return true;
+        _context = context;
     }
 
-    public static bool ValidateComment(Comment comment)
+    public static bool IsValid(Attraction attraction)
+    {
+        if (string.IsNullOrEmpty(attraction.Name))
+            return false;
+
+        if (string.IsNullOrEmpty(attraction.City))
+            return false;
+
+        if (string.IsNullOrEmpty(attraction.Description))
+            return false;
+
+        if (attraction.UserId <= 0)
+            return false;
+
+        return !string.IsNullOrEmpty(attraction.ImageSource);
+    }
+
+    public static bool IsValid(Comment comment)
     {
         if (comment.AttractionId <= 0)
             return false;
@@ -29,31 +37,28 @@ public class Validation
         if (comment.UserId <= 0)
             return false;
 
-        if (String.IsNullOrEmpty(comment.Commentary))
+        var attraction = _context.Attractions.Find(comment.AttractionId);
+        var user = _context.Users.Find(comment.UserId);
+
+        if (attraction == null || user == null)
             return false;
 
-        return true;
+        return !string.IsNullOrEmpty(comment.Commentary);
     }
 
-    public bool ValidateRating(Rating rating)
+    public static bool IsValid(Rating rating)
     {
         if (rating.AttractionId <= 0)
             return false;
 
-        if (rating.UserId <= 0)
-            return false;
-
-        return true;
+        return rating.UserId > 0;
     }
 
-    public static bool ValidateUser(User user)
+    public static bool IsValid(User user)
     {
-        if (String.IsNullOrEmpty(user.Username))
+        if (string.IsNullOrEmpty(user.Username))
             return false;
         
-        if (String.IsNullOrEmpty(user.Password))
-            return false;
-        
-        return true;
+        return !string.IsNullOrEmpty(user.Password);
     }
 }

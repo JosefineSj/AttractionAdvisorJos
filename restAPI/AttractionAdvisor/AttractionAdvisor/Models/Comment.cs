@@ -5,6 +5,7 @@ namespace AttractionAdvisor.Models
 
     public class Comment
     {
+        [JsonIgnore]
         public int Id { get; set; }
         public int AttractionId { get; set; }
 

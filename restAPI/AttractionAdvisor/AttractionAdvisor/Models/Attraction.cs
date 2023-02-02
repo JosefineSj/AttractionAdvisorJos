@@ -4,6 +4,7 @@ namespace AttractionAdvisor.Models
 {
     public class Attraction
     {
+        [JsonIgnore]
         public int Id { get; set; }
         public string Name { get; set; }
         public string City { get; set; }

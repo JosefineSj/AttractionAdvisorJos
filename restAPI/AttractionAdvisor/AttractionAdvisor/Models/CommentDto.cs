@@ -1,6 +1,7 @@
 namespace AttractionAdvisor.Models;
 
-public class UserDto
+public class CommentDto
 {
     public string Username { get; set; }
+    public string Comment { get; set; }
 }
