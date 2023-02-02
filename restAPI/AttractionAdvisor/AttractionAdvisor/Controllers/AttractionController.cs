@@ -53,6 +53,19 @@ namespace AttractionAdvisor.Controllers
             }
         }
 
+        [HttpGet("{id}/thumbsup")]
+        public async Task<IActionResult> GetThumbsUpCount(int id)
+        {
+            var count = await _attractionRepository.GetThumbsUpCount(id);
+            return Ok(count);
+        }
+        [HttpGet("{id}/thumbsdown")]
+        public async Task<IActionResult> GetThumbDownCount(int id)
+        {
+            var count = await _attractionRepository.GetThumbsUpCount(id);
+            return Ok(count);
+        }
+
         [HttpPost]
         public async Task<ActionResult<Attraction>> AddAttraction(Attraction attraction)
         {

@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AttractionAdvisor.DataAccess.migrations
 {
     [DbContext(typeof(AttractionAdvisorDbContext))]
-    [Migration("20230131141415_initial")]
+    [Migration("20230201105253_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -94,10 +94,10 @@ namespace AttractionAdvisor.DataAccess.migrations
                     b.Property<int>("AttractionId")
                         .HasColumnType("int");
 
-                    b.Property<int>("Likes")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
-                    b.Property<int>("UserId")
+                    b.Property<int>("Value")
                         .HasColumnType("int");
 
                     b.HasKey("Id");

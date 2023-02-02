@@ -44,7 +44,7 @@ namespace AttractionAdvisor.Repository
 
             result.AttractionId = rating.AttractionId;
             result.UserId = rating.UserId;
-            result.Likes = rating.Likes;
+            result.Value = rating.Value;
 
             await _context.SaveChangesAsync();
 
