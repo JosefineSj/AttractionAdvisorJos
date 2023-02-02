@@ -1,41 +1,41 @@
 # REST API written in C#
 ```bash
-GET api/attractions
+GET api/Attraction
 ```
 *expected response body*
 ```bash
 [
  {
-  "Id": 1,
-  "Name": "The Grand Canyon",
-  "City": "Arizona",
-  "Description": "A beautiful natural wonder of the world",
-  "ImageSource": "https://www.grandcanyon.com/uploads/GCNP-Hero-Banner.jpg",
-  "Likes": 5
-  "Dislikes": 6
-  "Comments": [
+  "id": 1,
+  "name": "The Grand Canyon",
+  "city": "Arizona",
+  "description": "A beautiful natural wonder of the world",
+  "imageSource": "https://www.grandcanyon.com/uploads/GCNP-Hero-Banner.jpg",
+  "likes": 5
+  "dislikes": 6
+  "comments": [
     {
-      "User": "Mina Simons",
-      "Comment": "Amazing experience, a must-visit!"
+      "user": "Mina Simons",
+      "comment": "Amazing experience, a must-visit!"
     },
     {
-      "User": "John Doe",
-      "Comment": "Beautiful and breathtaking, highly recommended!"
+      "user": "John Doe",
+      "comment": "Beautiful and breathtaking, highly recommended!"
     }
   ]
 },
  {
-  "Id": 2,
-  "Name": "Yellow beach",
-  "City": "Lisbon",
-  "Description": "A beautiful beach",
-  "ImageSource": "https://www.beach.com/sand.jpg",
-  "Likes": 5
-  "Dislikes": 6
-  "Comments": [
+  "id": 2,
+  "name": "Yellow beach",
+  "city": "Lisbon",
+  "description": "A beautiful beach",
+  "imageSource": "https://www.beach.com/sand.jpg",
+  "likes": 5
+  "dislikes": 6
+  "comments": [
     {
-      "User": "Jerry Simons",
-      "Comment": "Wowzers"
+      "user": "Jerry Simons",
+      "comment": "Wowzers"
     },
   ]
 },
@@ -56,48 +56,48 @@ GET api/attractions
 ---
 
 ```bash
-GET api/attractions:userId
+GET api/Attraction/User/{userId}
 ```
 *expected request body*
 ```bash
 {
-    "UserId" : 1
+    "userId" : 1
 }
 ```
 *expected response body*
 ```bash
  [
  {
-  "Id": 1,
-  "Name": "The Grand Canyon",
-  "City": "Arizona",
-  "Description": "A beautiful natural wonder of the world",
-  "ImageSource": "https://www.grandcanyon.com/uploads/GCNP-Hero-Banner.jpg",
-  "Likes": 5
-  "Dislikes": 6
-  "Comments": [
+  "id": 1,
+  "name": "The Grand Canyon",
+  "city": "Arizona",
+  "description": "A beautiful natural wonder of the world",
+  "imageSource": "https://www.grandcanyon.com/uploads/GCNP-Hero-Banner.jpg",
+  "likes": 5
+  "dislikes": 6
+  "comments": [
     {
-      "User": "Mina Simons",
-      "Comment": "Amazing experience, a must-visit!"
+      "user": "Mina Simons",
+      "comment": "Amazing experience, a must-visit!"
     },
     {
-      "User": "John Doe",
-      "Comment": "Beautiful and breathtaking, highly recommended!"
+      "user": "John Doe",
+      "comment": "Beautiful and breathtaking, highly recommended!"
     }
   ]
 },
 {
-  "Id": 2,
-  "Name": "Yello Beach ",
-  "City": "Lisbon",
-  "Description": "Sick beach",
-  "ImageSource": "www.beach.com",
-  "Likes": 5
-  "Dislikes": 6
-  "Comments": [
+  "id": 2,
+  "name": "Yello Beach ",
+  "city": "Lisbon",
+  "description": "Sick beach",
+  "imageSource": "www.beach.com",
+  "likes": 5
+  "dislikes": 6
+  "comments": [
     {
-      "User": "Mina Simons",
-      "Comment": "Amazing experience, a must-visit!"
+      "user": "Mina Simons",
+      "comment": "Amazing experience, a must-visit!"
     }
   ]
 },
@@ -120,32 +120,32 @@ GET api/attractions:userId
 ---
 
 ```bash
-GET api/attractions:id
+GET api/Attraction/{id}
 ```
 *expected request body*
 ```bash
 {
-    "Id" : 1
+    "id" : 1
 }
 ```
 *expected response body*
 ```bash
  {
-  "Id": 1,
-  "Name": "The Grand Canyon",
-  "City": "Arizona",
-  "Description": "A beautiful natural wonder of the world",
-  "ImageSource": "https://www.grandcanyon.com/uploads/GCNP-Hero-Banner.jpg",
-  "Likes": 5
-  "Dislikes": 6
-  "Comments": [
+  "id": 1,
+  "name": "The Grand Canyon",
+  "city": "Arizona",
+  "description": "A beautiful natural wonder of the world",
+  "imageSource": "https://www.grandcanyon.com/uploads/GCNP-Hero-Banner.jpg",
+  "likes": 5
+  "dislikes": 6
+  "comments": [
     {
-      "User": "Mina Simons",
-      "Comment": "Amazing experience, a must-visit!"
+      "user": "Mina Simons",
+      "comment": "Amazing experience, a must-visit!"
     },
     {
-      "User": "John Doe",
-      "Comment": "Beautiful and breathtaking, highly recommended!"
+      "user": "John Doe",
+      "comment": "Beautiful and breathtaking, highly recommended!"
     }
   ]
 }
@@ -166,84 +166,16 @@ GET api/attractions:id
 ---
 
 ```bash
-GET api/attractions:city
+POST api/Attraction
 ```
 *expected request body*
 ```bash
 {
-    "City" : "Arizona"
-}
-```
-*expected response body*
-```bash
-[
- {
-  "Id": 1,
-  "Name": "The Grand Canyon",
-  "City": "Arizona",
-  "Description": "A beautiful natural wonder of the world",
-  "ImageSource": "https://www.grandcanyon.com/uploads/GCNP-Hero-Banner.jpg",
-  "Likes": 5
-  "Dislikes": 6
-  "Comments": [
-    {
-      "User": "Mina Simons",
-      "Comment": "Amazing experience, a must-visit!"
-    },
-    {
-      "User": "John Doe",
-      "Comment": "Beautiful and breathtaking, highly recommended!"
-    }
-  ]
-},
- {
-  "Id": 2,
-  "Name": "Big Shack",
-  "City": "Arizona",
-  "Description": "It's big",
-  "ImageSource": "www.shack.com",
-  "Ratings": [
-    {
-      "User": "John Doe",
-      "Likes": true
-    }
-  ],
-  "Comments": [
-    {
-      "User": "John Doe",
-      "Comment": "Nice shack"
-    }
-  ]
-},
-}
-]
-```
-
-*expected ok*
-
->Status : 200
-
-*expected not found*
->Status 404
-
-*expected bad request*
->Status 400
-
-*expected internal server error*
->Status 500
----
-
-```bash
-POST api/attractions
-```
-*expected request body*
-```bash
-{
-  "Name": "The Grand Canyon",
-  "City": "Arizona",
-  "Description": "A beautiful natural wonder of the world",
-  "ImageSource": "https://www.grandcanyon.com/wp-content/uploads/GCNP-Hero-Banner.jpg",
-  "UserId": 1
+  "name": "The Grand Canyon",
+  "city": "Arizona",
+  "description": "A beautiful natural wonder of the world",
+  "imageSource": "https://www.grandcanyon.com/wp-content/uploads/GCNP-Hero-Banner.jpg",
+  "userId": 1
 }
 ```
 *expected response body*
@@ -265,22 +197,22 @@ POST api/attractions
 >Status 500
 ---
 ```bash
-PUT api/attractions
+PUT api/Attraction
 ```
 *expected request body*
 ```bash
 {
-  "Name": "The Grand Canyon",
-  "City": "Arizona",
-  "Description": "A beautiful natural wonder of the world",
-  "ImageSource": "https://www.grandcanyon.com/wp-content/uploads/GCNP-Hero-Banner.jpg",
-  "UserId": 1
+  "name": "The Grand Canyon",
+  "city": "Arizona",
+  "description": "A beautiful natural wonder of the world",
+  "imageSource": "https://www.grandcanyon.com/wp-content/uploads/GCNP-Hero-Banner.jpg",
+  "userId": 1
 }
 ```
 *expected response body*
 ```bash
 {
-"Id": 1
+"id": 1
 }
 ```
 *expected ok*
@@ -297,12 +229,12 @@ PUT api/attractions
 ---
 
 ```bash
-DELETE api/attractions:id
+DELETE api/Attraction/{id}
 ```
 *expected request body*
 ```bash
 {
-  "Id": 1
+  "id": 1
 }
 ```
 *expected ok*
@@ -319,20 +251,20 @@ DELETE api/attractions:id
 ---
 
 ```bash
-GET api/Users:id
+GET api/Users/{id}
 ```
 *expected request body*
 ```bash
 {
-  "Id": 1
+  "id": 1
 }
 ```
 
 *expected response body*
 ```bash
 {
-  "Id": 1
-  "Username": "Rocco"
+  "id": 1
+  "username": "Rocco"
 }
 ```
 *expected ok*
@@ -354,15 +286,15 @@ POST api/Users
 *expected request body*
 ```bash
 {
-    "Username": "dog_fighter32"
-    "Password": "secret"
+    "username": "dog_fighter32"
+    "password": "secret"
 }
 ```
 
 *expected response body*
 ```bash
 {
-  "Id": 1
+  "id": 1
 }
 ```
 *expected ok*
@@ -384,15 +316,15 @@ PUT api/Users
 *expected request body*
 ```bash
 {
-    "Username": "dog_fighter32"
-    "Password": "secret"
+    "username": "dog_fighter32"
+    "password": "secret"
 }
 ```
 
 *expected response body*
 ```bash
 {
-  "Id": 1
+  "id": 1
 }
 ```
 *expected ok*
@@ -409,12 +341,12 @@ PUT api/Users
 ---
 
 ```bash
-DELETE api/Users:id
+DELETE api/Users/{id}
 ```
 *expected request body*
 ```bash
 {
-    "Id": 1
+    "id": 1
 }
 ```
 
@@ -432,21 +364,21 @@ DELETE api/Users:id
 ---
 
 ```bash
-POST api/Comments
+POST api/Comment
 ```
 *expected request body*
 ```bash
 {
-    "AttractionId": 1
-    "UserId": 2,
-    "Comment": "So pretty!!!"
+    "attractionId": 1
+    "userId": 2,
+    "comment": "So pretty!!!"
 }
 ```
 
 *expected response body*
 ```bash
 {
-  "Id": 1
+  "id": 1
 }
 ```
 *expected ok*
@@ -463,23 +395,23 @@ POST api/Comments
 ---
 
 ```bash
-PUT api/Comments
+PUT api/Comment
 ```
 *expected request body*
 ```bash
 {
-    "AttractionId": 1
-    "UserId": 2,
-    "Comment": "So pretty!!!"
+    "attractionId": 1
+    "userId": 2,
+    "comment": "So pretty!!!"
 }
 ```
 
 *expected response body*
 ```bash
 {
-  "Id": 1
-  "Username": "JimmyBongo"
-  "Comment": "So pretty!!!"
+  "id": 1
+  "username": "JimmyBongo"
+  "comment": "So pretty!!!"
 }
 ```
 *expected ok*
@@ -496,12 +428,12 @@ PUT api/Comments
 ---
 
 ```bash
-DELETE api/Comments:id
+DELETE api/Comment/{id}
 ```
 *expected request body*
 ```bash
 {
-    "Id": 1
+    "id": 1
 }
 ```
 
@@ -518,14 +450,14 @@ DELETE api/Comments:id
 >Status 500
 ---
 ```bash
-POST api/Ratings
+POST api/Rating
 ```
 *expected request body*
 ```bash
 {
-    "AttractionId": 2,
-    "UserId": 3,
-    "Likes": true
+  "attractionId": 3,
+  "userId": 2,
+  "value": 1 // 1 for like, 2 for dislike
 }
 ```
 *expected ok*
@@ -542,14 +474,14 @@ POST api/Ratings
 ---
 
 ```bash
-PUT api/Ratings
+PUT api/Rating
 ```
 *expected request body*
 ```bash
 {
-    "AttractionId": 2,
-    "UserId": 3,
-    "Likes": 4
+  "attractionId": 3,
+  "userId": 2,
+  "value": 1 // 1 for like, 2 for dislike
 }
 ```
 
@@ -567,7 +499,7 @@ PUT api/Ratings
 ---
 
 ```bash
-DELETE api/Ratings:id
+DELETE api/Rating/{id}
 ```
 *expected request body*
 ```bash
