@@ -68,18 +68,20 @@ public class RatingController : ControllerBase
         }
     }
 
-    [HttpPut]
-    public async Task<ActionResult<Rating>> UpdateRating(Rating rating)
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult<Rating>> UpdateRating(Rating rating, int id)
     {
-        if (rating.Id <= 0)
+        if (id <= 0)
             return BadRequest();
 
         try
         {
-            var ratingToUpdate = await _ratingRepository.GetRating(rating.Id);
+            var ratingToUpdate = await _ratingRepository.GetRating(id);
             if (ratingToUpdate == null)
                 return NotFound();
 
+            rating.Id = id;
+            
             var updatedRating = await _ratingRepository.UpdateRating(rating);
             if (updatedRating == null)
                 return BadRequest();
