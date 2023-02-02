@@ -31,7 +31,7 @@ public class AttractionController : ControllerBase
     }
         
     [HttpGet]
-    [Route("api/Attractions/User/{userId:int}")]
+    [Route("User/{userId:int}")]
     public async Task<ActionResult<Attraction>> GetAttractionsByUserId(int userId)
     {
         if (userId <= 0)
