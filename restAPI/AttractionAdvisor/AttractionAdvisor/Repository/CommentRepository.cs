@@ -3,66 +3,65 @@ using AttractionAdvisor.Interfaces;
 using AttractionAdvisor.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace AttractionAdvisor.Repository
+namespace AttractionAdvisor.Repository;
+
+public class CommentRepository : ICommentRepository
 {
-    public class CommentRepository : ICommentRepository
-    {
-        private readonly AttractionAdvisorDbContext _context;
+    private readonly AttractionAdvisorDbContext _context;
         
 
-        public CommentRepository(AttractionAdvisorDbContext context)
-        {
-            _context = context;
-        }
+    public CommentRepository(AttractionAdvisorDbContext context)
+    {
+        _context = context;
+    }
 
-        public async Task<IEnumerable<Comment>> GetComments()
-        {
-            return await _context.Comments.ToListAsync();
-        }
+    public async Task<IEnumerable<Comment>> GetComments()
+    {
+        return await _context.Comments.ToListAsync();
+    }
 
-        public async Task<Comment?> GetComment(int id)
-        {
-            var comment = await _context.Comments.FirstOrDefaultAsync(
-                    c => c.Id == id);
+    public async Task<Comment?> GetComment(int id)
+    {
+        var comment = await _context.Comments.FirstOrDefaultAsync(
+            c => c.Id == id);
 
-            return comment ?? null;
-        }
+        return comment ?? null;
+    }
 
-        public async Task<Comment> AddComment(Comment comment)
-        {
-            var result = await _context.Comments.AddAsync(comment);
-            await _context.SaveChangesAsync();
+    public async Task<Comment> AddComment(Comment comment)
+    {
+        var result = await _context.Comments.AddAsync(comment);
+        await _context.SaveChangesAsync();
             
-            return result.Entity;
-        }
+        return result.Entity;
+    }
 
-        public async Task<Comment?> UpdateComment(Comment comment)
-        {
-            var result = await _context.Comments
-               .FirstOrDefaultAsync(c => c.Id == comment.Id);
+    public async Task<Comment?> UpdateComment(Comment comment)
+    {
+        var result = await _context.Comments
+            .FirstOrDefaultAsync(c => c.Id == comment.Id);
 
-            if (result == null)
-                return null;
+        if (result == null)
+            return null;
                     
-            result.AttractionId = comment.AttractionId;
-            result.UserId = comment.UserId;
-            result.Commentary = comment.Commentary;
+        result.AttractionId = comment.AttractionId;
+        result.UserId = comment.UserId;
+        result.Commentary = comment.Commentary;
 
-            await _context.SaveChangesAsync();
+        await _context.SaveChangesAsync();
 
-            return result;
-        }
-        public async Task<bool> DeleteComment(int id)
-        {
-            var result = await _context.Comments
-                .FirstOrDefaultAsync(c => c.Id == id);
-            if (result == null)
-                return false;
+        return result;
+    }
+    public async Task<bool> DeleteComment(int id)
+    {
+        var result = await _context.Comments
+            .FirstOrDefaultAsync(c => c.Id == id);
+        if (result == null)
+            return false;
             
-            _context.Remove(result);
-            await _context.SaveChangesAsync();
+        _context.Remove(result);
+        await _context.SaveChangesAsync();
 
-            return true;
-        }
+        return true;
     }
 }
