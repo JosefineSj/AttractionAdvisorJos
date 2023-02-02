@@ -61,13 +61,19 @@ namespace AttractionAdvisor.Controllers
         [HttpPost]
         public async Task<ActionResult<Comment>> AddComment(Comment comment)
         {
-            var attraction = await _attractionRepository.GetAttraction(comment.AttractionId);
-            var user = await _userRepository.GetUser(comment.UserId);
-
-            if(attraction == null || user == null)
+            if(comment != null)
             {
-                return BadRequest("Attraction or user does not exist.");
+                var attraction = await _attractionRepository.GetAttraction(comment.AttractionId);
+                var user = await _userRepository.GetUser(comment.UserId);
+
+                if (attraction == null || user == null)
+                {
+                    return BadRequest("Attraction or user does not exist.");
+                }
             }
+           
+
+            
             try
             {
                 var createdComment = await _commentRepository.AddComment(comment);

@@ -69,16 +69,6 @@ namespace AttractionAdvisor.Repository
             return attractionDtos;
         }
 
-        public Task<int> GetThumbsUpCount(int attractionId)
-        {
-            return _context.Ratings.Where(r => r.AttractionId == attractionId && r.Value == ThumbsValue.ThumbsUp).CountAsync();
-             
-        }
-        public Task<int> GetThumbsDownCount(int attractionId)
-        {
-            return _context.Ratings.Where(r => r.AttractionId == attractionId && r.Value == ThumbsValue.ThumbsDown).CountAsync();
-            
-        }
         public async Task<Attraction> AddAttraction(Attraction attraction)
         {
             var result = await _context.Attractions.AddAsync(attraction);
