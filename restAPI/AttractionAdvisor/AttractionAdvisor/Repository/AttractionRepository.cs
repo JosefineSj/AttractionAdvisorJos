@@ -1,6 +1,7 @@
 ﻿using AttractionAdvisor.DataAccess;
 using AttractionAdvisor.Interfaces;
 using AttractionAdvisor.Models;
+using AttractionAdvisor.Utils;
 using Microsoft.EntityFrameworkCore;
 
 namespace AttractionAdvisor.Repository;
@@ -24,7 +25,13 @@ public class AttractionRepository : IAttractionRepository
                 City = a.City,
                 Description = a.Description,
                 ImageSource = a.ImageSource,
-                Comments = a.Comments!.ToList()
+                Comments = a.Comments!
+                    .Select(c => new CommentDto
+                        {
+                            Username = c.User!.Username,
+                            Comment = c.Commentary
+                        })
+                    .ToList()
             })
             .ToListAsync();
 
@@ -56,7 +63,12 @@ public class AttractionRepository : IAttractionRepository
                 City = a.City,
                 Description = a.Description,
                 ImageSource = a.ImageSource,
-                Comments = a.Comments!.Where(c => c.UserId == userId).ToList()
+                Comments = a.Comments!.Where(c => c.UserId == userId).
+                    Select(c => new CommentDto
+                    {
+                        Username = c.User!.Username,
+                        Comment = c.Commentary
+                    }).ToList()
             })
             .ToListAsync();
 
@@ -88,7 +100,11 @@ public class AttractionRepository : IAttractionRepository
                 City = a.City,
                 Description = a.Description,
                 ImageSource = a.ImageSource,
-                Comments = a.Comments!.Where(c => c.UserId == id).ToList()
+                Comments = a.Comments!.Where(c => c.UserId == id).Select(c => new CommentDto
+                {
+                    Username = c.User!.Username,
+                    Comment = c.Commentary
+                }).ToList()
             })
             .FirstOrDefaultAsync();
 
@@ -112,7 +128,6 @@ public class AttractionRepository : IAttractionRepository
 
     public async Task<Attraction?> GetAttraction(int id)
     {
-            
         var result = await _context.Attractions.FirstOrDefaultAsync(
             a => a.Id == id);
 
@@ -122,6 +137,9 @@ public class AttractionRepository : IAttractionRepository
 
     public async Task<Attraction> AddAttraction(Attraction attraction)
     {
+        if (!Validation.IsValid(attraction))
+            throw new Exception("not a valid attraction");
+                
         var result = await _context.Attractions.AddAsync(attraction);
         await _context.SaveChangesAsync();
             
@@ -134,7 +152,10 @@ public class AttractionRepository : IAttractionRepository
             .FirstOrDefaultAsync(a => a.Id == attraction.Id);
 
         if (result == null)
-            return null; 
+            return null;
+
+        if (!Validation.IsValid(attraction))
+            return null;
 
         result.Name = attraction.Name;
         result.City = attraction.City;
