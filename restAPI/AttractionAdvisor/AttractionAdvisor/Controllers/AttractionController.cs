@@ -17,7 +17,7 @@ public class AttractionController : ControllerBase
     }
 
     [HttpGet]
-    public async Task<ActionResult<IEnumerable<Attraction>>> GetAttractions()
+    public async Task<ActionResult<IEnumerable<AttractionDto>>> GetAttractions()
     {
         try
         {
@@ -32,7 +32,7 @@ public class AttractionController : ControllerBase
         
     [HttpGet]
     [Route("User/{userId:int}")]
-    public async Task<ActionResult<Attraction>> GetAttractionsByUserId(int userId)
+    public async Task<ActionResult<IEnumerable<AttractionDto>>> GetAttractionsByUserId(int userId)
     {
         if (userId <= 0)
             return BadRequest();
@@ -55,7 +55,7 @@ public class AttractionController : ControllerBase
     }
 
     [HttpGet("{id:int}")]
-    public async Task<ActionResult<Attraction>> GetAttraction(int id)
+    public async Task<ActionResult<AttractionDto>> GetAttraction(int id)
     {
         if (id <= 0)
             return BadRequest();
@@ -77,7 +77,7 @@ public class AttractionController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<ActionResult<Attraction>> CreateAttraction(Attraction attraction)
+    public async Task<ActionResult<int>> CreateAttraction(Attraction attraction)
     {
         try
         {
@@ -93,20 +93,19 @@ public class AttractionController : ControllerBase
         }
     }
 
-    [HttpPut]
-
-    public async Task<ActionResult<Attraction>> UpdateAttraction(Attraction attraction)
+    [HttpPut("{id:int}")]
+    public async Task<ActionResult<int>> UpdateAttraction(Attraction attraction, int id)
     {
-        if (attraction.Id <= 0)
+        if (id <= 0)
             return BadRequest();
 
         try
         {
-            var attractionToUpdate = await _attractionRepository.GetAttraction(attraction.Id);
+            var attractionToUpdate = await _attractionRepository.GetAttraction(id);
             if (attractionToUpdate == null)
                 return NotFound();
 
-
+            attraction.Id = id;
 
             var updatedAttraction = await _attractionRepository.UpdateAttraction(attraction);
             if (updatedAttraction == null)
@@ -123,7 +122,7 @@ public class AttractionController : ControllerBase
     }
 
     [HttpDelete("{id:int}")]
-    public async Task<ActionResult<bool>> DeleteAttraction(int id)
+    public async Task<ActionResult> DeleteAttraction(int id)
     {
         try
         {
