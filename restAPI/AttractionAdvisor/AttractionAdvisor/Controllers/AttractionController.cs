@@ -1,149 +1,141 @@
 ﻿using AttractionAdvisor.Interfaces;
 using AttractionAdvisor.Models;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
-namespace AttractionAdvisor.Controllers
+namespace AttractionAdvisor.Controllers;
+
+[Route("api/[controller]")]
+[ApiController]
+public class AttractionController : ControllerBase
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class AttractionController : ControllerBase
+    private readonly IAttractionRepository _attractionRepository;
+
+    public AttractionController(IAttractionRepository attractionRepository)
     {
-        private readonly IAttractionRepository _attractionRepository;
-
-        public AttractionController(IAttractionRepository attractionRepository)
-        {
         
-            _attractionRepository = attractionRepository;
-        }
+        _attractionRepository = attractionRepository;
+    }
 
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Attraction>>> GetAttractions()
+    [HttpGet]
+    public async Task<ActionResult<IEnumerable<Attraction>>> GetAttractions()
+    {
+        try
         {
-            try
-            {
-                return Ok(await _attractionRepository.GetAllAttractionDto());
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                    ex.Message);
-            }
+            return Ok(await _attractionRepository.GetAllAttractionDto());
         }
+        catch (Exception ex)
+        {
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                ex.Message);
+        }
+    }
         
-        [HttpGet("{userId:int}")]
-        public async Task<ActionResult<Attraction>> GetAttractionsByUserId(int userId)
+    [HttpGet]
+    [Route("api/Attractions/User/{userId:int}")]
+    public async Task<ActionResult<Attraction>> GetAttractionsByUserId(int userId)
+    {
+        if (userId <= 0)
+            return BadRequest();
+        try
         {
-            if (userId <= 0)
+            var result = await _attractionRepository.GetAllAttractionDtoByUserId(
+                userId);
+
+            if (result.Count < 1)
+                return NotFound();
+
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(
+                StatusCodes.Status500InternalServerError,
+                ex.Message);
+        }
+    }
+
+    [HttpGet("{id:int}")]
+    public async Task<ActionResult<Attraction>> GetAttraction(int id)
+    {
+        if (id <= 0)
+            return BadRequest();
+        try
+        {
+            var result = await _attractionRepository.GetAttractionDto(id);
+
+            if (result == null)
+                return NotFound();
+
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(
+                StatusCodes.Status500InternalServerError,
+                ex.Message);
+        }
+    }
+
+    [HttpPost]
+    public async Task<ActionResult<Attraction>> CreateAttraction(Attraction attraction)
+    {
+        try
+        {
+            var createdAttraction = await _attractionRepository.AddAttraction(attraction);
+
+            return Ok(createdAttraction.Id);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(
+                StatusCodes.Status500InternalServerError,
+                ex.Message);
+        }
+    }
+
+    [HttpPut]
+
+    public async Task<ActionResult<Attraction>> UpdateAttraction(Attraction attraction)
+    {
+        if (attraction.Id <= 0)
+            return BadRequest();
+
+        try
+        {
+            var attractionToUpdate = await _attractionRepository.GetAttraction(attraction.Id);
+            if (attractionToUpdate == null)
+                return NotFound();
+
+
+
+            var updatedAttraction = await _attractionRepository.UpdateAttraction(attraction);
+            if (updatedAttraction == null)
                 return BadRequest();
-            try
-            {
-                var result = await _attractionRepository.GetAllAttractionDtoByUserId(
-                    userId);
 
-                if (result.Count < 1)
-                    return NotFound();
-
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(
-                        StatusCodes.Status500InternalServerError,
-                        ex.Message);
-            }
+            return Ok(updatedAttraction.Id);
         }
-
-        [HttpGet("{id:int}")]
-        public async Task<ActionResult<Attraction>> GetAttraction(int id)
+        catch (Exception ex)
         {
-            if (id <= 0)
-                return BadRequest();
-            try
-            {
-                var result = await _attractionRepository.GetAttractionDto(id);
-
-                if (result == null)
-                    return NotFound();
-
-                return Ok(result);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(
-                        StatusCodes.Status500InternalServerError,
-                        ex.Message);
-            }
+            return StatusCode(
+                StatusCodes.Status500InternalServerError,
+                ex.Message);
         }
+    }
 
-    
-
-        [HttpPost]
-        public async Task<ActionResult<Attraction>> CreateAttraction(Attraction attraction)
+    [HttpDelete("{id:int}")]
+    public async Task<ActionResult<bool>> DeleteAttraction(int id)
+    {
+        try
         {
-           
-            try
-            {
-                var createdAttraction = await _attractionRepository.AddAttraction(attraction);
-                
-                return Ok(CreatedAtAction(nameof(GetAttraction),
-                    new { id = createdAttraction.Id }, createdAttraction));
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(
-                        StatusCodes.Status500InternalServerError,
-                       ex.Message);
-            }
+            if (!await _attractionRepository.DeleteAttraction(id))
+                return NotFound();
+
+            return Ok();
         }
-
-        [HttpPut]
-
-        public async Task<ActionResult<Attraction>> UpdateAttraction(Attraction attraction)
+        catch (Exception ex)
         {
-           
-
-            if (attraction.Id <= 0)
-                return BadRequest();
-
-            try
-            {
-                var attractionToUpdate = await _attractionRepository.GetAttraction(attraction.Id);
-                if (attractionToUpdate == null)
-                    return NotFound();
-
-
-
-                var updatedAttraction = await _attractionRepository.UpdateAttraction(attraction);
-                if (updatedAttraction == null)
-                    return BadRequest();
-
-                return Ok(updatedAttraction.Id);
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(
-                        StatusCodes.Status500InternalServerError,
-                        ex.Message);
-            }
+            return StatusCode(StatusCodes.Status500InternalServerError,
+                ex.Message);
         }
-
-        [HttpDelete("{id:int}")]
-       public async Task<ActionResult<bool>> DeleteAttraction(int id)
-        {
-            try
-            {
-                if (!await _attractionRepository.DeleteAttraction(id))
-                    return NotFound();
-
-                return Ok();
-            }
-            catch (Exception ex)
-            {
-                return StatusCode(StatusCodes.Status500InternalServerError,
-                   ex.Message);
-            }
-        }
-
     }
 }
