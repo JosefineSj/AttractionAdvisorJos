@@ -5,6 +5,7 @@ namespace AttractionAdvisor.Models
 
     public class Rating
     {
+        [JsonIgnore]
         public int Id { get; set; }
         public int AttractionId { get; set; }
 
