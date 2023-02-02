@@ -9,6 +9,6 @@ namespace AttractionAdvisor.Interfaces
         Task<User> AddUser(User user);
         Task<User?> UpdateUser(User user);
         Task<bool> DeleteUser(int id);
-        Task<User?> LoginUser(string userName, string password);
+        Task<User?> LoginUser(string username, string password);
     }
 }
