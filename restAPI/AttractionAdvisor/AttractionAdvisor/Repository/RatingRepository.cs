@@ -3,65 +3,64 @@ using AttractionAdvisor.Interfaces;
 using AttractionAdvisor.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace AttractionAdvisor.Repository
+namespace AttractionAdvisor.Repository;
+
+public class RatingRepository : IRatingRepository
 {
-    public class RatingRepository : IRatingRepository
+    private readonly AttractionAdvisorDbContext _context;
+
+    public RatingRepository(AttractionAdvisorDbContext context)
     {
-        private readonly AttractionAdvisorDbContext _context;
+        _context = context;
+    }
 
-        public RatingRepository(AttractionAdvisorDbContext context)
-        {
-            _context = context;
-        }
+    public async Task<IEnumerable<Rating>> GetRatings()
+    {
+        return await _context.Ratings.ToListAsync();
+    }
 
-        public async Task<IEnumerable<Rating>> GetRatings()
-        {
-            return await _context.Ratings.ToListAsync();
-        }
+    public async Task<Rating?> GetRating(int id)
+    {
+        var result = await _context.Ratings.FirstOrDefaultAsync(
+            r => r.Id == id);
 
-        public async Task<Rating?> GetRating(int id)
-        {
-            var result = await _context.Ratings.FirstOrDefaultAsync(
-                r => r.Id == id);
+        return result ?? null;
+    }
 
-            return result ?? null;
-        }
+    public async Task<Rating> AddRating(Rating rating)
+    {
+        var result = await _context.Ratings.AddAsync(rating);
+        await _context.SaveChangesAsync();
+        return result.Entity;
+    }
 
-        public async Task<Rating> AddRating(Rating rating)
-        {
-            var result = await _context.Ratings.AddAsync(rating);
-            await _context.SaveChangesAsync();
-            return result.Entity;
-        }
+    public async Task<Rating?> UpdateRating(Rating rating)
+    {
+        var result = await _context.Ratings
+            .FirstOrDefaultAsync(r => r.Id == rating.Id);
 
-        public async Task<Rating?> UpdateRating(Rating rating)
-        {
-            var result = await _context.Ratings
-               .FirstOrDefaultAsync(r => r.Id == rating.Id);
+        if (result == null)
+            return null;
 
-            if (result == null)
-                return null;
+        result.AttractionId = rating.AttractionId;
+        result.UserId = rating.UserId;
+        result.Value = rating.Value;
 
-            result.AttractionId = rating.AttractionId;
-            result.UserId = rating.UserId;
-            result.Value = rating.Value;
+        await _context.SaveChangesAsync();
 
-            await _context.SaveChangesAsync();
+        return result;
+    }
 
-            return result;
-        }
-
-        public async Task<bool> DeleteRating(int id)
-        {
-            var result = await _context.Ratings
-                .FirstOrDefaultAsync(r => r.Id == id);
-            if (result == null)
-                return false;
+    public async Task<bool> DeleteRating(int id)
+    {
+        var result = await _context.Ratings
+            .FirstOrDefaultAsync(r => r.Id == id);
+        if (result == null)
+            return false;
             
-            _context.Remove(result);
-            await _context.SaveChangesAsync();
+        _context.Remove(result);
+        await _context.SaveChangesAsync();
 
-            return true;
-        }
+        return true;
     }
 }
