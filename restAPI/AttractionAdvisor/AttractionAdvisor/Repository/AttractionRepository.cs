@@ -17,7 +17,6 @@ namespace AttractionAdvisor.Repository
         public async Task<List<AttractionDto>> GetAllAttractionDto()
         {
             var allAttractionDto = await _context.Attractions
-                .Include(a => a.Ratings)
                 .Include(a => a.Comments)
                 .Select(a => new AttractionDto
                 {
@@ -26,10 +25,20 @@ namespace AttractionAdvisor.Repository
                     City = a.City,
                     Description = a.Description,
                     ImageSource = a.ImageSource,
-                    Ratings = a.Ratings!.ToList(),
                     Comments = a.Comments!.ToList()
                 })
                 .ToListAsync();
+
+            foreach (var attraction in allAttractionDto)
+            {
+                attraction.Dislikes = await _context.Ratings.Where(
+                    r => r.AttractionId == attraction.Id 
+                         && r.Value == ThumbsValue.ThumbsDown).CountAsync();
+                
+                attraction.Likes = await _context.Ratings.Where(
+                    r => r.AttractionId == attraction.Id 
+                         && r.Value == ThumbsValue.ThumbsUp).CountAsync();
+            }
 
             return allAttractionDto;
         }
@@ -48,11 +57,21 @@ namespace AttractionAdvisor.Repository
                     City = a.City,
                     Description = a.Description,
                     ImageSource = a.ImageSource,
-                    Ratings = a.Ratings!.Where(r => r.UserId == userId).ToList(),
                     Comments = a.Comments!.Where(c => c.UserId == userId).ToList()
                 })
                 .ToListAsync();
 
+            foreach (var attraction in allAttractionDto)
+            {
+                attraction.Dislikes = await _context.Ratings.Where(
+                    r => r.AttractionId == attraction.Id 
+                         && r.Value == ThumbsValue.ThumbsDown).CountAsync();
+                
+                attraction.Likes = await _context.Ratings.Where(
+                    r => r.AttractionId == attraction.Id 
+                         && r.Value == ThumbsValue.ThumbsUp).CountAsync();
+            }
+            
             return allAttractionDto;
         }
 
@@ -70,11 +89,21 @@ namespace AttractionAdvisor.Repository
                     City = a.City,
                     Description = a.Description,
                     ImageSource = a.ImageSource,
-                    Ratings = a.Ratings!.Where(r => r.UserId == id).ToList(),
                     Comments = a.Comments!.Where(c => c.UserId == id).ToList()
                 })
                 .FirstOrDefaultAsync();
 
+            if (attractionDto != null)
+            {
+                attractionDto.Dislikes = await _context.Ratings.Where(
+                    r => r.AttractionId == attractionDto.Id
+                         && r.Value == ThumbsValue.ThumbsDown).CountAsync();
+                
+                attractionDto.Likes = await _context.Ratings.Where(
+                    r => r.AttractionId == attractionDto.Id
+                         && r.Value == ThumbsValue.ThumbsUp).CountAsync();
+            }
+            
             return attractionDto;
         }
         public async Task<IEnumerable<Attraction>> GetAttractions()
