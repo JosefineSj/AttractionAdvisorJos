@@ -79,7 +79,7 @@ namespace AttractionAdvisor.DataAccess.migrations
                         .Annotation("SqlServer:Identity", "1, 1"),
                     AttractionId = table.Column<int>(type: "int", nullable: false),
                     UserId = table.Column<int>(type: "int", nullable: false),
-                    Likes = table.Column<int>(type: "int", nullable: false)
+                    Value = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {

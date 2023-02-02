@@ -3,6 +3,7 @@ using AttractionAdvisor.Models;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
+
 namespace AttractionAdvisor.Controllers
 {
     [Route("api/[controller]")]
@@ -10,10 +11,14 @@ namespace AttractionAdvisor.Controllers
     public class CommentController : ControllerBase
     {
         private readonly ICommentRepository _commentRepository;
+        private readonly IAttractionRepository _attractionRepository;
+        private readonly IUserRepository _userRepository;
 
-        public CommentController(ICommentRepository commentRepository)
+        public CommentController(ICommentRepository commentRepository, IAttractionRepository _attractionRepository, IUserRepository _userRepository)
         {
             _commentRepository = commentRepository;
+            _attractionRepository = _attractionRepository;
+            _userRepository = _userRepository;
         }
 
         [HttpGet]
@@ -56,6 +61,15 @@ namespace AttractionAdvisor.Controllers
         [HttpPost]
         public async Task<ActionResult<Comment>> AddComment(Comment comment)
         {
+            
+                var attraction = await _attractionRepository.GetAttraction(comment.AttractionId);
+                var user = await _userRepository.GetUser(comment.UserId);
+
+                if (attraction == null || user == null)
+                {
+                    return BadRequest("Attraction or user does not exist.");
+                }
+            
             try
             {
                 var createdComment = await _commentRepository.AddComment(comment);

@@ -14,6 +14,12 @@ namespace AttractionAdvisor.Models
 
         [JsonIgnore]
         public User? User { get; set; }
-        public int Likes { get; set; }
+        public ThumbsValue Value { get; set; }
+    }
+
+    public enum ThumbsValue
+    {
+        ThumbsUp = 1,
+        ThumbsDown = 2
     }
 }

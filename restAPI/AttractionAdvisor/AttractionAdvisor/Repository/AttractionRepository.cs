@@ -84,9 +84,9 @@ namespace AttractionAdvisor.Repository
 
         public async Task<Attraction?> GetAttraction(int id)
         {
+            
             var result = await _context.Attractions.FirstOrDefaultAsync(
                 a => a.Id == id);
-            
 
             return result ?? null;
         }
@@ -130,5 +130,7 @@ namespace AttractionAdvisor.Repository
 
             return true;
         }
+
+       
     }
 }

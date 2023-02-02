@@ -76,6 +76,8 @@ namespace AttractionAdvisor.Controllers
             }
         }
 
+    
+
         [HttpPost]
         public async Task<ActionResult<Attraction>> CreateAttraction(Attraction attraction)
         {
