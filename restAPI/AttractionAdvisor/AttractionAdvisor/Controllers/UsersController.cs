@@ -15,7 +15,6 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost("login")]
-
     public async Task<ActionResult<User>> Login([FromBody] LoginDto login)
     {
         try

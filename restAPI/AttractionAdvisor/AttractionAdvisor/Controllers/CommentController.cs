@@ -2,7 +2,6 @@
 using AttractionAdvisor.Models;
 using Microsoft.AspNetCore.Mvc;
 
-
 namespace AttractionAdvisor.Controllers;
 
 [Route("api/[controller]")]
