@@ -11,16 +11,8 @@ GET api/attractions
   "City": "Arizona",
   "Description": "A beautiful natural wonder of the world",
   "ImageSource": "https://www.grandcanyon.com/uploads/GCNP-Hero-Banner.jpg",
-  "Ratings": [
-    {
-      "User": "Mina Simons",
-      "Likes": false 
-    },
-    {
-      "User": "John Doe",
-      "Likes": true
-    }
-  ],
+  "Likes": 5
+  "Dislikes": 6
   "Comments": [
     {
       "User": "Mina Simons",
@@ -38,12 +30,8 @@ GET api/attractions
   "City": "Lisbon",
   "Description": "A beautiful beach",
   "ImageSource": "https://www.beach.com/sand.jpg",
-  "Ratings": [
-    {
-      "User": "Mina Simons",
-      "Likes": false 
-    }
-  ],
+  "Likes": 5
+  "Dislikes": 6
   "Comments": [
     {
       "User": "Jerry Simons",
@@ -85,16 +73,8 @@ GET api/attractions:userId
   "City": "Arizona",
   "Description": "A beautiful natural wonder of the world",
   "ImageSource": "https://www.grandcanyon.com/uploads/GCNP-Hero-Banner.jpg",
-  "Ratings": [
-    {
-      "User": "Mina Simons",
-      "Likes": false 
-    },
-    {
-      "User": "John Doe",
-      "Likes": true
-    }
-  ],
+  "Likes": 5
+  "Dislikes": 6
   "Comments": [
     {
       "User": "Mina Simons",
@@ -112,12 +92,8 @@ GET api/attractions:userId
   "City": "Lisbon",
   "Description": "Sick beach",
   "ImageSource": "www.beach.com",
-  "Ratings": [
-    {
-      "User": "Mina Simons",
-      "Likes": false 
-    }
-  ],
+  "Likes": 5
+  "Dislikes": 6
   "Comments": [
     {
       "User": "Mina Simons",
@@ -160,16 +136,8 @@ GET api/attractions:id
   "City": "Arizona",
   "Description": "A beautiful natural wonder of the world",
   "ImageSource": "https://www.grandcanyon.com/uploads/GCNP-Hero-Banner.jpg",
-  "Ratings": [
-    {
-      "User": "Mina Simons",
-      "Likes": false 
-    },
-    {
-      "User": "John Doe",
-      "Likes": true
-    }
-  ],
+  "Likes": 5
+  "Dislikes": 6
   "Comments": [
     {
       "User": "Mina Simons",
@@ -215,16 +183,8 @@ GET api/attractions:city
   "City": "Arizona",
   "Description": "A beautiful natural wonder of the world",
   "ImageSource": "https://www.grandcanyon.com/uploads/GCNP-Hero-Banner.jpg",
-  "Ratings": [
-    {
-      "User": "Mina Simons",
-      "Likes": false 
-    },
-    {
-      "User": "John Doe",
-      "Likes": true
-    }
-  ],
+  "Likes": 5
+  "Dislikes": 6
   "Comments": [
     {
       "User": "Mina Simons",
