@@ -1,6 +1,7 @@
 ﻿using AttractionAdvisor.DataAccess;
 using AttractionAdvisor.Interfaces;
 using AttractionAdvisor.Models;
+using AttractionAdvisor.Utils;
 using Microsoft.EntityFrameworkCore;
 
 namespace AttractionAdvisor.Repository;
@@ -34,6 +35,9 @@ public class UserRepository : IUserRepository
             x => x.Username == user.Username);
         if (userExists)
             throw new Exception("user already exists");
+        
+        if (!Validation.IsValid(user))
+            throw new Exception("user is not valid");
 
         user.SetPassword(user.Password);
         var result = await _context.Users.AddAsync(user);
@@ -48,6 +52,9 @@ public class UserRepository : IUserRepository
             .FirstOrDefaultAsync(e => e.Id == user.Id);
 
         if (result == null)
+            return null;
+
+        if (!Validation.IsValid(user))
             return null;
 
         result.Username = user.Username;
@@ -71,17 +78,14 @@ public class UserRepository : IUserRepository
         return true;
     }
 
-    public async Task<User?> LoginUser(string userName, string password)
+    public async Task<User?> LoginUser(string username, string password)
     {
         var user = await _context.Users
-            .SingleOrDefaultAsync(u => u.Username == userName);
+            .SingleOrDefaultAsync(u => u.Username == username);
 
         if (user == null) 
             return null;
 
-        if (!user.ValidatePassword(password))
-            return null;
-
-        return user;
+        return !user.ValidatePassword(password) ? null : user;
     }       
 }
