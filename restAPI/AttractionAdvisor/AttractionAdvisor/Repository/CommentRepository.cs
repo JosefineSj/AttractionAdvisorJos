@@ -1,6 +1,7 @@
 ﻿using AttractionAdvisor.DataAccess;
 using AttractionAdvisor.Interfaces;
 using AttractionAdvisor.Models;
+using AttractionAdvisor.Utils;
 using Microsoft.EntityFrameworkCore;
 
 namespace AttractionAdvisor.Repository;
@@ -30,6 +31,9 @@ public class CommentRepository : ICommentRepository
 
     public async Task<Comment> AddComment(Comment comment)
     {
+        if (!Validation.IsValid(comment))
+            throw new Exception("comment is not valid");
+        
         var result = await _context.Comments.AddAsync(comment);
         await _context.SaveChangesAsync();
             
@@ -42,6 +46,9 @@ public class CommentRepository : ICommentRepository
             .FirstOrDefaultAsync(c => c.Id == comment.Id);
 
         if (result == null)
+            return null;
+
+        if (!Validation.IsValid(comment))
             return null;
                     
         result.AttractionId = comment.AttractionId;
