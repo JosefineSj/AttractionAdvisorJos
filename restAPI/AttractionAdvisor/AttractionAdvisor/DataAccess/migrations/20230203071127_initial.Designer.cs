@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace AttractionAdvisor.DataAccess.migrations
 {
     [DbContext(typeof(AttractionAdvisorDbContext))]
-    [Migration("20230201105253_initial")]
+    [Migration("20230203071127_initial")]
     partial class initial
     {
         /// <inheritdoc />
@@ -56,6 +56,44 @@ namespace AttractionAdvisor.DataAccess.migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Attractions");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            City = "Stockholm",
+                            Description = "The world's oldest open-air museum",
+                            ImageSource = "https://skansen.se/wp-content/uploads/2022/10/Hazeliusporten_skansen-600x450.jpg",
+                            Name = "Skansen",
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            City = "Götebog",
+                            Description = "Amusement park in the centre of Gothenburg",
+                            ImageSource = "https://www.liseberg.se/optimized/facebook/046e6139/globalassets/parken/parkvyer/hela-parken-vy.jpg",
+                            Name = "Liseberg",
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            City = "Malmö",
+                            Description = "One of the leading art museums in scandinavia",
+                            ImageSource = "https://upload.wikimedia.org/wikipedia/commons/e/ea/Malmo_art_museum-malmo_castle.jpg",
+                            Name = "Malmö Art Museum",
+                            UserId = 6
+                        },
+                        new
+                        {
+                            Id = 4,
+                            City = "Paris",
+                            Description = "Wrought-iron tower on the Champ de Mars in Paris",
+                            ImageSource = "https://cdn.britannica.com/54/75854-050-E27E66C0/Eiffel-Tower-Paris.jpg",
+                            Name = "Eiffel tower",
+                            UserId = 4
+                        });
                 });
 
             modelBuilder.Entity("AttractionAdvisor.Models.Comment", b =>
@@ -126,6 +164,50 @@ namespace AttractionAdvisor.DataAccess.migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Password = "saha68",
+                            Username = "Sahar"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Password = "han53",
+                            Username = "Hanna"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Password = "jos22",
+                            Username = "Josefin"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Password = "ch111",
+                            Username = "Carl-Henrik"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Password = "kam33",
+                            Username = "Kamran"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Password = "js44",
+                            Username = "Jessica"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Password = "ty6y7",
+                            Username = "Alfons"
+                        });
                 });
 
             modelBuilder.Entity("AttractionAdvisor.Models.Attraction", b =>

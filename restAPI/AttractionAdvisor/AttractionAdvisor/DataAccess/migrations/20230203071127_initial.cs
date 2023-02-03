@@ -2,6 +2,8 @@
 
 #nullable disable
 
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
 namespace AttractionAdvisor.DataAccess.migrations
 {
     /// <inheritdoc />
@@ -94,6 +96,31 @@ namespace AttractionAdvisor.DataAccess.migrations
                         column: x => x.UserId,
                         principalTable: "Users",
                         principalColumn: "Id");
+                });
+
+            migrationBuilder.InsertData(
+                table: "Users",
+                columns: new[] { "Id", "Password", "Username" },
+                values: new object[,]
+                {
+                    { 1, "saha68", "Sahar" },
+                    { 2, "han53", "Hanna" },
+                    { 3, "jos22", "Josefin" },
+                    { 4, "ch111", "Carl-Henrik" },
+                    { 5, "kam33", "Kamran" },
+                    { 6, "js44", "Jessica" },
+                    { 7, "ty6y7", "Alfons" }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Attractions",
+                columns: new[] { "Id", "City", "Description", "ImageSource", "Name", "UserId" },
+                values: new object[,]
+                {
+                    { 1, "Stockholm", "The world's oldest open-air museum", "https://skansen.se/wp-content/uploads/2022/10/Hazeliusporten_skansen-600x450.jpg", "Skansen", 1 },
+                    { 2, "Götebog", "Amusement park in the centre of Gothenburg", "https://www.liseberg.se/optimized/facebook/046e6139/globalassets/parken/parkvyer/hela-parken-vy.jpg", "Liseberg", 2 },
+                    { 3, "Malmö", "One of the leading art museums in scandinavia", "https://upload.wikimedia.org/wikipedia/commons/e/ea/Malmo_art_museum-malmo_castle.jpg", "Malmö Art Museum", 6 },
+                    { 4, "Paris", "Wrought-iron tower on the Champ de Mars in Paris", "https://cdn.britannica.com/54/75854-050-E27E66C0/Eiffel-Tower-Paris.jpg", "Eiffel tower", 4 }
                 });
 
             migrationBuilder.CreateIndex(
