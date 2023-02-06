@@ -15,7 +15,7 @@ public class UsersController : ControllerBase
     }
 
     [HttpPost("login")]
-    public async Task<ActionResult> Login(User user)
+    public async Task<ActionResult<int>> Login(User user)
     {
         try
         {
@@ -24,7 +24,7 @@ public class UsersController : ControllerBase
             if(result == null) 
                 return Unauthorized();
 
-            return Ok();
+            return Ok(user.Id);
         }
         catch (Exception ex)
         {
