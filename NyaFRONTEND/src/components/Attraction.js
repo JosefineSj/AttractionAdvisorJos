@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import ListOfAttractions from './ListOfAttractions';
 import SearchBox from './search-box';
+import ApiFetch from '../webService/WebApi';
 
 const Attraction = () => {
   
@@ -12,21 +13,16 @@ const Attraction = () => {
     setSearchField(searchFieldString);  
     }
 
-    const filteredPlaces = places.filter((place) => {
-      console.log(places)
+  const filteredPlaces = places.filter((place) => {
       return place.city.toLowerCase().includes(searchField)})
 
-      useEffect(() => {
-        fetch('data.json'
-            ,{
-               headers : { 
-                 'Content-Type': 'application/json',
-                 'Accept': 'application/json'
-                }
-             }
-             )
-             .then((response) => response.json())
-             .then((placesResponse) => setPlaces(placesResponse))
+  useEffect(   () => {    
+      console.log("Kallar på metod")  
+      async function fetchData() {
+        const data = await ApiFetch('/Attraction');  
+        setPlaces(data);
+        }
+        fetchData()
       }, []);
  
       

@@ -1,6 +1,7 @@
-import { useState, useEffect } from "react";
-import LoginApi from "../loginCheck";
+import { useState } from "react";
 import './login.css';
+import ApiFetch from "../webService/WebApi";
+import userData from "../userData";
 
 export default function SignIn() {
   const [userName, setUsername] = useState("");
@@ -9,44 +10,23 @@ export default function SignIn() {
 
   const logOut = () => {
     setUser(null);
+    userData.userName = null;
   }
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    
-    const headers = new Headers();
-          headers.append('Content-Type', 'application/json'); 
-          //headers.append('Access-Control-Allow-Origin', 'https://localhost:7216/api/Users'); 
-
-            const requestOptions = {
-              method: 'POST',
-              headers: headers,
-              Accept: 'application/json',
-              mode: 'cors',
-            body: JSON.stringify({username: `${userName}`, password: `${password}` })
-          };
-          fetch('https://localhost:7216/api/Users/login', requestOptions)
-              .then(response => {
-                console.log(response);
-                if(response.status === 200) {
-                  alert("You are now signed in!")
-                  setUser(1)
-                }
-                else alert("Incorrect username or password");
-                
-                console.log(response.status)});
-              //.then(data => this.setState({ postId: data.id }))
-              //.then(data => console.log(data));
-           
-
-
-    // const data = LoginApi.CheckLogin(username, password);
-    // setUser(data);
-
-    // if (data === null) alert("Incorrect username or password");
-    // else alert("You are now signed in!");
+    const data = await ApiFetch('/Users/login', 'POST', {username:  `${userName}`, password: `${password}` });
+      console.log(data.id)
+      if (data === null || data === undefined) alert("Incorrect username or password");
+        else {
+          console.log(data);
+          alert("You are now signed in!");
+          setUser(data.userName);
+          userData.userName = data.username;
+          userData.id = data.id;
+        }
   };
-  console.log(user);
+
   if (user === null) {
     return (
       <div className="LogIn">

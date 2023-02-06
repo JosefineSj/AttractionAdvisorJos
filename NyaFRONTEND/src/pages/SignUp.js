@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './signup.css';
-
+import ApiFetch from '../webService/WebApi';
 
 export default function SignUp() {
 
@@ -9,24 +9,19 @@ export default function SignUp() {
             password: ''
           });
         
-          const handleSubmit = event => {
+          const handleSubmit = async event => {
             event.preventDefault();
             // Send form data to server for registration
-            const headers = new Headers();
-          headers.append('Content-Type', 'application/json'); 
-          //headers.append('Access-Control-Allow-Origin', 'https://localhost:7216/api/Users'); 
 
-            const requestOptions = {
-              method: 'POST',
-              headers: headers,
-              mode: 'cors',
-            body: JSON.stringify({userName:  `${formData.username}`, passwordHash: `${formData.password}` })
-          };
-          fetch('https://localhost:7216/api/Users', requestOptions)
-              .then(response => response.json())
-              //.then(data => this.setState({ postId: data.id }))
-              .then(data => console.log(data));
-            console.log(formData);
+            const data = await ApiFetch('/Users', 'POST', {username:  `${formData.username}`, password: `${formData.password}` });
+            console.log(data);
+            if(data != null) {
+              alert("Ny användare skapad");
+            } else {
+              alert("Något gick fel");
+            }
+            
+
           };
         
           const handleChange = event => {
@@ -78,4 +73,5 @@ export default function SignUp() {
           </div>
     );
 }
+ 
         

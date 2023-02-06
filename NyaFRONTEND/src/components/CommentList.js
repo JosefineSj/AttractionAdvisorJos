@@ -9,7 +9,7 @@ const CommentList = ({comments}) => {
 
             comments.map((comment) => {
                 return (
-                  <CommentListElement key={comment.id} id={comment.id}  user={comment.User} comment={comment.Commentary}/>
+                  <CommentListElement key={comment.id} id={comment.id}  user={comment.username} comment={comment.comment}/>
                 )
                 })
     );
