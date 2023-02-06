@@ -11,10 +11,8 @@ function Navbar() {
        <button className="drop-btn">My Page 
        <i className="fa fa-caret-down"></i></button>
       <div className="dropdown-content">
-        <CustomLink to='/my-account'>My Account</CustomLink>
         <CustomLink to='/add-attraction'>Add Attraction</CustomLink>
         <CustomLink to='/my-uploads'>My Uploads</CustomLink>
-        <CustomLink to='/my-comments'>My Comments</CustomLink>
       </div>
      </div> 
 

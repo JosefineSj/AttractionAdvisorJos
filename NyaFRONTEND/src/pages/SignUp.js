@@ -16,7 +16,8 @@ export default function SignUp() {
             const data = await ApiFetch('/Users', 'POST', {username:  `${formData.username}`, password: `${formData.password}` });
             console.log(data);
             if(data != null) {
-              alert("Ny användare skapad");
+              window.location.href = "https://localhost:3000/login";
+              
             } else {
               alert("Något gick fel");
             }

@@ -3540,25 +3540,25 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\sahar\\.nuget\\packages\\": {},
+    "C:\\Users\\Josef\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
     "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\sahar\\OneDrive\\Dokument\\Visual Studio 2022\\AttractionAdvisor\\restAPI\\AttractionAdvisor\\AttractionAdvisor\\AttractionAdvisor.csproj",
+      "projectUniqueName": "C:\\Users\\Josef\\OneDrive\\Dokument\\ÄMNESÖVERGRIPANDE 2023\\AttractionAdvisor\\AttractionAdvisor\\restAPI\\AttractionAdvisor\\AttractionAdvisor\\AttractionAdvisor.csproj",
       "projectName": "AttractionAdvisor",
-      "projectPath": "C:\\Users\\sahar\\OneDrive\\Dokument\\Visual Studio 2022\\AttractionAdvisor\\restAPI\\AttractionAdvisor\\AttractionAdvisor\\AttractionAdvisor.csproj",
-      "packagesPath": "C:\\Users\\sahar\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\sahar\\OneDrive\\Dokument\\Visual Studio 2022\\AttractionAdvisor\\restAPI\\AttractionAdvisor\\AttractionAdvisor\\obj\\",
+      "projectPath": "C:\\Users\\Josef\\OneDrive\\Dokument\\ÄMNESÖVERGRIPANDE 2023\\AttractionAdvisor\\AttractionAdvisor\\restAPI\\AttractionAdvisor\\AttractionAdvisor\\AttractionAdvisor.csproj",
+      "packagesPath": "C:\\Users\\Josef\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Josef\\OneDrive\\Dokument\\ÄMNESÖVERGRIPANDE 2023\\AttractionAdvisor\\AttractionAdvisor\\restAPI\\AttractionAdvisor\\AttractionAdvisor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
         "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\sahar\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Josef\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
@@ -3627,7 +3627,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.200\\RuntimeIdentifierGraph.json"
       }
     }
   }

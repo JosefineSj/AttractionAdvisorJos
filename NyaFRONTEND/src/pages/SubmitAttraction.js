@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import userData from '../userData';
+import ApiFetch from '../webService/WebApi';
 import './submitAttraction.css';
 
 
@@ -9,31 +11,19 @@ function SubmitAttraction() {
   const [description, setDescription] = useState('');
   const [picture, setPicture] = useState('');
 
+  const handleSubmit = async (event) => {event.preventDefault(); 
+  // Perform sign-in logic here, such as sending a request to a server
+  await ApiFetch('/Attraction', 'POST', {name: name, city: city, description: description, imageSource: picture, userId: userData.id });
 
-  const handleSubmit = (event) => {
-    event.preventDefault();
-    // Perform sign-in logic here, such as sending a request to a server
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ Name: {name}, City: {city}, Description: {description}, Picture: {picture} })
-    };
-    fetch('https://reqres.in/api/posts', requestOptions)
-        .then(response => response.json())
-        //.then(data => this.setState({ postId: data.id }))
-        //.then(data => console.log(data));
-        //console.log(formData);
-
-
-    //console.log(username, password);
-  };
-
+  console.log("Posted?")
+};
+  
   return (
     <>
     <div className="SubmitAttraction">
 
     <form className="formController" onSubmit={handleSubmit} action="action_page.php">
-    <div className="containerForm">
+    <div className="submitAttractionForm">
 
      <div className="submitAttractionHeader">
             <h1>Register new attraction:</h1>

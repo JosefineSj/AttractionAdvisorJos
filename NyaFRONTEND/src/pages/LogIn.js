@@ -24,6 +24,7 @@ export default function SignIn() {
           setUser(data.userName);
           userData.userName = data.username;
           userData.id = data.id;
+          window.location.href = "https://localhost:3000/add-attraction";
         }
   };
 

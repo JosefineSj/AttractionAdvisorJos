@@ -7,7 +7,7 @@ export default function Attractions() {
     <>
 
     <div className="attractionContainer">
-      <Attraction /> 
+      <Attraction apiUrl = {'/Attraction/'} header = {'All available attractions'}/> 
     </div>
 
 

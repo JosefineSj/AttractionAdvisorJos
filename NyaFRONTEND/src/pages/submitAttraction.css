@@ -1,8 +1,8 @@
-.LogIn{
-   /* background-image: url("https://thumbs.dreamstime.com/b/landscape-nature-view-background-view-window-landscape-nature-view-background-view-window-wonderful-landscape-121459679.jpg");*/
+.SubmitAttraction{
+    background-image: url("https://thumbs.dreamstime.com/b/golden-retriever-dog-wearing-sun-glasses-laying-down-wooden-floor-travel-accessories-hat-camera-passport-cover-golden-160419033.jpg");
     height:100vh;
     width: 100vw;
-    background-size: cover;
+    background-size: contain;
     background-position: center; 
     padding-left: 0px;
   }
@@ -14,8 +14,12 @@
     padding: 20px;
   }
 
-  .containerForm {
+  .submitAttractionForm {
     padding: 14px;
+    background-color: rgba(255,255,255, 0.8);
+    margin-top: 40px;
+    border: 1px solid #888;
+    border-radius: 5px;
   }
 
   .submitAttractionHeader{
