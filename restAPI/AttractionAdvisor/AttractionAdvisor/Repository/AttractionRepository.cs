@@ -16,45 +16,43 @@ public class AttractionRepository : IAttractionRepository
         
     public async Task<List<AttractionDto>> GetAllAttractionDto()
     {
-        var allAttractionDto = await _context.Attractions
+        var allAttractions = await _context.Attractions
             .Include(a => a.Comments)
-            .Select(a => new AttractionDto
-            {
-                Id = a.Id,
-                Name = a.Name,
-                City = a.City,
-                Description = a.Description,
-                ImageSource = a.ImageSource,
-                Comments = a.Comments!
-                    .Select(c => new CommentDto
-                        {
-                            Username = c.User!.Username,
-                            Comment = c.Commentary
-                        })
-                    .ToList()
-            })
             .ToListAsync();
+
+        var allAttractionDto = allAttractions.Select(a => new AttractionDto
+        {
+            Id = a.Id,
+            Name = a.Name,
+            City = a.City,
+            Description = a.Description,
+            ImageSource = a.ImageSource,
+            Comments = a.Comments != null
+                ? a.Comments.Select(c => new CommentDto
+                {
+                    Username = c.User?.Username ?? string.Empty,
+                    Comment = c.Commentary
+                }).ToList()
+                : new List<CommentDto>()
+        }).ToList();
 
         foreach (var attraction in allAttractionDto)
         {
-            attraction.Dislikes = await _context.Ratings.Where(
+            attraction.Dislikes = await _context.Ratings.CountAsync(
                 r => r.AttractionId == attraction.Id 
-                     && r.Value == ThumbsValue.ThumbsDown).CountAsync();
+                     && r.Value == ThumbsValue.ThumbsDown);
                 
-            attraction.Likes = await _context.Ratings.Where(
+            attraction.Likes = await _context.Ratings.CountAsync(
                 r => r.AttractionId == attraction.Id 
-                     && r.Value == ThumbsValue.ThumbsUp).CountAsync();
+                     && r.Value == ThumbsValue.ThumbsUp);
         }
-
         return allAttractionDto;
     }
         
     public async Task<List<AttractionDto>> GetAllAttractionDtoByUserId(int userId)
     {
         var allAttractionDto = await _context.Attractions
-            .Where(a => a.Comments != null && a.Ratings != null && (a.Ratings.Any(
-                r => r.UserId == userId) || a.Comments.Any(c => c.UserId == userId)))
-            .Include(a => a.Ratings)
+            .Where(a => a.UserId == userId)
             .Include(a => a.Comments)
             .Select(a => new AttractionDto
             {
@@ -88,37 +86,39 @@ public class AttractionRepository : IAttractionRepository
 
     public async Task<AttractionDto?> GetAttractionDto(int id)
     {
-        var attractionDto = await _context.Attractions
-            .Where(a => a.Comments != null && a.Ratings != null && (a.Ratings.Any(
-                r => r.UserId == id) || a.Comments.Any(c => c.UserId == id)))
-            .Include(a => a.Ratings)
+        var attraction = await _context.Attractions
             .Include(a => a.Comments)
-            .Select(a => new AttractionDto
-            {
-                Id = a.Id,
-                Name = a.Name,
-                City = a.City,
-                Description = a.Description,
-                ImageSource = a.ImageSource,
-                Comments = a.Comments!.Where(c => c.UserId == id).Select(c => new CommentDto
-                {
-                    Username = c.User!.Username,
-                    Comment = c.Commentary
-                }).ToList()
-            })
-            .FirstOrDefaultAsync();
-
-        if (attractionDto != null)
+            .FirstOrDefaultAsync(a => a.Id == id);
+        
+        if (attraction == null)
         {
-            attractionDto.Dislikes = await _context.Ratings.Where(
-                r => r.AttractionId == attractionDto.Id
-                     && r.Value == ThumbsValue.ThumbsDown).CountAsync();
-                
-            attractionDto.Likes = await _context.Ratings.Where(
-                r => r.AttractionId == attractionDto.Id
-                     && r.Value == ThumbsValue.ThumbsUp).CountAsync();
+            return null;
         }
-            
+        
+        var attractionDto = new AttractionDto
+        {
+            Id = attraction.Id,
+            Name = attraction.Name,
+            City = attraction.City,
+            Description = attraction.Description,
+            ImageSource = attraction.ImageSource,
+            Comments = attraction.Comments?.Where(c => c.UserId == id)
+                .Select(c => new CommentDto
+                {
+                    Username = c.User?.Username ?? string.Empty,
+                    Comment = c.Commentary
+                })
+                .ToList() ?? new List<CommentDto>()
+        };
+        
+        attractionDto.Likes = await _context.Ratings.CountAsync(
+            r => r.AttractionId == attractionDto.Id 
+                 && r.Value == ThumbsValue.ThumbsUp);
+                
+        attractionDto.Dislikes = await _context.Ratings.CountAsync(
+            r => r.AttractionId == attractionDto.Id 
+                 && r.Value == ThumbsValue.ThumbsDown);
+        
         return attractionDto;
     }
     public async Task<IEnumerable<Attraction>> GetAttractions()
