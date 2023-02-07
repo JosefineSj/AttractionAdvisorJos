@@ -91,9 +91,16 @@ label{
   font-weight: bold;
 }
 
-/* Change styles for cancel button and signup button on extra small screens */
-@media screen and (max-width: 300px) {
-  .signupbtn {
-    width: 100%;
-  }
+
+
+@media screen and (max-width: 768px){
+    .containerForm{
+      width: 90vw;
+    }
+
+    .signUpParagraph{
+      white-space: normal;
+    }
+
+   
 }

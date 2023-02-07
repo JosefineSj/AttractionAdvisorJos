@@ -125,3 +125,30 @@ p{
     
 }
 
+@media screen and (max-width: 768px){
+    .attractionContainer{
+     margin-top: 100px;
+        
+}
+.myAttractionContainer{
+    margin-top: 100px;
+}
+.searchBox{
+    margin-top: 30px;
+    padding-bottom: 70px;
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    height: 70%;
+    background: rgba(255, 255, 255, 0.6);
+}
+
+    .attractionList{
+        justify-content: space-around;
+    }
+
+
+}
+
+
+

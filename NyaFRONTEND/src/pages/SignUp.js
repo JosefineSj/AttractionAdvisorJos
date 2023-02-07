@@ -39,7 +39,7 @@ export default function SignUp() {
               <div className='containerForm'>
               <div className='signUpHeader'>
                <h1 >Hi, User!</h1>
-               <p >Enter a username and password of your choice:</p>
+               <p className='signUpParagraph'>Enter a username and password of your choice:</p>
                <hr/>
               </div>
               <div className='signUpUserNamePassWordDiv'>

@@ -6,9 +6,9 @@ import Rating from "./Rating";
 import ApiFetch from "../webService/WebApi";
 import userData from "../userData";
 
-export default function Modal({hideModal, id,}) {
+export default function Modal({hideModal, id}) {
   const [modal, setModal] = useState(false);
-  const [attraktionData, setAttraktionData] = useState([]);
+  const [attractionData, setAttractionData] = useState([]);
   const [likes, setLikes] = useState(0);
   const [dislikes, setDislikes] = useState(0);
   const [commentlist, setCommentlist] = useState([]);
@@ -18,7 +18,7 @@ export default function Modal({hideModal, id,}) {
     async function fetchData() {
       const data = await ApiFetch(`/Attraction/${id}`);
       //await data.json();  
-      setAttraktionData(data);
+      setAttractionData(data);
       setDislikes(data.dislikes);
       setLikes(data.likes);
       setCommentlist(data.comments);
@@ -50,10 +50,10 @@ export default function Modal({hideModal, id,}) {
           <div className="modal-content">
             <div
               className="modalBox">
-              <h1>{attraktionData.name}</h1>
-              <p>{attraktionData.city}</p>
-              <div>{attraktionData.description}</div>
-              <img src={`${attraktionData.imageSource}`} alt="trt"  id="modalImg"/>
+              <h1>{attractionData.name}</h1>
+              <p>{attractionData.city}</p>
+              <div>{attractionData.description}</div>
+              <img src={`${attractionData.imageSource}`} alt="trt"  id="modalImg"/>
             </div>
             <Rating attractionId={id} likes={likes} dislikes={dislikes} />
             <Comments commentslist={commentlist}/>
