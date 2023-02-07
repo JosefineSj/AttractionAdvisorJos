@@ -90,6 +90,51 @@ namespace AttractionAdvisor.DataAccess.migrations
                             ImageSource = "https://cdn.britannica.com/54/75854-050-E27E66C0/Eiffel-Tower-Paris.jpg",
                             Name = "Eiffel tower",
                             UserId = 4
+                        },
+                        new
+                        {
+                            Id = 5,
+                            City = "New York City",
+                            Description = "Is a 102-story Art Deco skyscraper in Midtown Manhattan, New York City",
+                            ImageSource = "https://lh5.googleusercontent.com/p/AF1QipNVlM5lo7fIJrmvjN4EOrTMiQjDgDyTfw7ATdV6=w243-h174-n-k-no-nu",
+                            Name = "Empire State Building",
+                            UserId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            City = "Cairo",
+                            Description = "",
+                            ImageSource = "https://media.architecturaldigest.com/photos/58e2a407c0e88d1a6a20066b/2:1/w_1287,h_643,c_limit/Pyramid%20of%20Giza%201.jpg",
+                            Name = "Great Pyramid of Giza",
+                            UserId = 7
+                        },
+                        new
+                        {
+                            Id = 7,
+                            City = "Rome",
+                            Description = "The Colosseum is an oval amphitheatre in the centre of the city of Rome",
+                            ImageSource = "https://jwttravel.ie/app/uploads/2022/04/Rome-Colosseum-travel-lessons-blog-JWT-Travel-Schools.jpg",
+                            Name = "Colosseum",
+                            UserId = 8
+                        },
+                        new
+                        {
+                            Id = 8,
+                            City = "London",
+                            Description = "The Tower of London is an internationally famous monument and one of England's most iconic structures.",
+                            ImageSource = "https://upload.wikimedia.org/wikipedia/commons/2/2c/Tower_of_London_viewed_from_the_River_Thames.jpg",
+                            Name = "Tower of London",
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 9,
+                            City = "Rome",
+                            Description = "Trevi Fountain is perhaps the most famous fountain in the world and definitely in Rome.",
+                            ImageSource = "https://www.italiandualcitizenship.net/wp-content/uploads/2019/03/Historic-Trevi-Fountain-in-Rome-Italy.jpg",
+                            Name = "Trevi Fountain",
+                            UserId = 9
                         });
                 });
 
@@ -116,6 +161,71 @@ namespace AttractionAdvisor.DataAccess.migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Comments");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AttractionId = 1,
+                            Commentary = "I didn't expect such nice place at all.PErfect way to spend time in Stockholm.",
+                            UserId = 1
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AttractionId = 2,
+                            Commentary = "Beautiful place and the kids enjoyed the few rides they could have, but they were dissapointed when they had to wait more than 2 hours to ride the rollercoaster.",
+                            UserId = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AttractionId = 4,
+                            Commentary = "You will spend half a day only to visit the Eiffel tower. The interest is huge and the crowds are humongous.",
+                            UserId = 4
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AttractionId = 3,
+                            Commentary = "Oftast mycket intressanta utställningar,alltid gratis inträde och en gratis visning varje dag av kunniga guider",
+                            UserId = 6
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AttractionId = 5,
+                            Commentary = "Helt klart värt ett besök!Otroligt häftig film visas i hissen både påväg upp pch påväg ner vilket gör att man glömmer var man är påväg! Här finns inget att klaga på!",
+                            UserId = 5
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AttractionId = 6,
+                            Commentary = "Excellent visit Sunny January. Bring bottle of water and snack. Hat or a cap to protect ur head",
+                            UserId = 7
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AttractionId = 7,
+                            Commentary = "Good but there aare so much better places in Rome. If you don't jave a lot of time in Rome dont go inside of it cause its a waste of time",
+                            UserId = 8
+                        },
+                        new
+                        {
+                            Id = 8,
+                            AttractionId = 8,
+                            Commentary = "The history alone is a reason to go. Go early, the lines get long especially for the crown jewels! A lot of walking and narrow stairs and cobblestones.Plan on a good couple of hours here.",
+                            UserId = 3
+                        },
+                        new
+                        {
+                            Id = 9,
+                            AttractionId = 9,
+                            Commentary = "This was on my bucket list & I can happily say it’s been done but it wasn’t the best time of day to visit (late afternoon in the height of Summer) as the crowds were thick.",
+                            UserId = 9
+                        });
                 });
 
             modelBuilder.Entity("AttractionAdvisor.Models.Rating", b =>
@@ -140,6 +250,71 @@ namespace AttractionAdvisor.DataAccess.migrations
                     b.HasIndex("UserId");
 
                     b.ToTable("Ratings");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            AttractionId = 1,
+                            UserId = 1,
+                            Value = 2
+                        },
+                        new
+                        {
+                            Id = 2,
+                            AttractionId = 2,
+                            UserId = 2,
+                            Value = 2
+                        },
+                        new
+                        {
+                            Id = 3,
+                            AttractionId = 3,
+                            UserId = 6,
+                            Value = 1
+                        },
+                        new
+                        {
+                            Id = 4,
+                            AttractionId = 4,
+                            UserId = 4,
+                            Value = 1
+                        },
+                        new
+                        {
+                            Id = 5,
+                            AttractionId = 5,
+                            UserId = 5,
+                            Value = 1
+                        },
+                        new
+                        {
+                            Id = 6,
+                            AttractionId = 6,
+                            UserId = 7,
+                            Value = 1
+                        },
+                        new
+                        {
+                            Id = 7,
+                            AttractionId = 7,
+                            UserId = 8,
+                            Value = 2
+                        },
+                        new
+                        {
+                            Id = 8,
+                            AttractionId = 8,
+                            UserId = 3,
+                            Value = 1
+                        },
+                        new
+                        {
+                            Id = 9,
+                            AttractionId = 9,
+                            UserId = 9,
+                            Value = 2
+                        });
                 });
 
             modelBuilder.Entity("AttractionAdvisor.Models.User", b =>
@@ -166,44 +341,56 @@ namespace AttractionAdvisor.DataAccess.migrations
                         new
                         {
                             Id = 1,
-                            Password = "saha68",
+                            Password = "$2a$11$ESJwzQmXQ8JSGqR01jfpQeAeE5UfpJLC6oNMCAyztQiAhGtrHLrrC",
                             Username = "Sahar"
                         },
                         new
                         {
                             Id = 2,
-                            Password = "han53",
+                            Password = "$2a$11$T/ExdpfhemHrEQfbD1FOQudx.lnkA3gdlucC4HpkPO7mOZS32M8HK",
                             Username = "Hanna"
                         },
                         new
                         {
                             Id = 3,
-                            Password = "jos22",
-                            Username = "Josefin"
+                            Password = "$2a$11$nH3fAIvWF0CVplTC6XYA9.ZOBO2gu0vZCXWfSTVwHwOXkWeDnBfru",
+                            Username = "Josefine"
                         },
                         new
                         {
                             Id = 4,
-                            Password = "ch111",
+                            Password = "$2a$11$ut9fbLOR79EukWoA4a7theoCPyH3XM2m0.riEQBhzLfFINLbzTIE.",
                             Username = "Carl-Henrik"
                         },
                         new
                         {
                             Id = 5,
-                            Password = "kam33",
+                            Password = "$2a$11$X2gzDbvFnOFDUbuosLJBfuhALoglZ4ZzoS.KQPc8T/eqdU.svYoHq",
                             Username = "Kamran"
                         },
                         new
                         {
                             Id = 6,
-                            Password = "js44",
+                            Password = "$2a$11$rPQVYz7d2VlgNGP7kTGaPuoQFj0qHXBtBEKIE68BZiNFvF6Ort/7S",
                             Username = "Jessica"
                         },
                         new
                         {
                             Id = 7,
-                            Password = "ty6y7",
+                            Password = "$2a$11$Psgc6AF6rh.GEkvy3c5dieSWy0zuc7u92c3UQ07SYuKrctSST8o2S",
                             Username = "Alfons"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            Password = "$2a$11$HaZo9BfiMrSi1zBDNFEYV.S.mCNSYEoP48X6yH6AqniTbSg.y7eYi",
+                            Username = "Sophie"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            Password = "$2a$11$kvnLhOmGQswWMC1TY3Ahoe0FBAuci78F4py/DmpB/4hZ7/VlGytDy",
+                            Username = "Jenny"
                         });
                 });
 
