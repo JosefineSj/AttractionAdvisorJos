@@ -179,7 +179,7 @@ namespace AttractionAdvisor.DataAccess.migrations
                         {
                             Id = 3,
                             Password = "jos22",
-                            Username = "Josefin"
+                            Username = "Josefine"
                         },
                         new
                         {
