@@ -37,12 +37,6 @@ public class Validation
         if (comment.UserId <= 0)
             return false;
 
-        var attraction = _context.Attractions.Find(comment.AttractionId);
-        var user = _context.Users.Find(comment.UserId);
-
-        if (attraction == null || user == null)
-            return false;
-
         return !string.IsNullOrEmpty(comment.Commentary);
     }
 

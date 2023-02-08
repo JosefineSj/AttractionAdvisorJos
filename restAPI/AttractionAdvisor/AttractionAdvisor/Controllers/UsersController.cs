@@ -24,7 +24,7 @@ public class UsersController : ControllerBase
             if(result == null) 
                 return Unauthorized();
 
-            return Ok(user.Id);
+            return Ok(result.Id);
         }
         catch (Exception ex)
         {

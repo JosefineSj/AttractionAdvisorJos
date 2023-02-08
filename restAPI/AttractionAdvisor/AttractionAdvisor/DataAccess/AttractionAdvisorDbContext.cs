@@ -70,6 +70,10 @@ namespace AttractionAdvisor.DataAccess
                 .WithMany(u => u.Ratings)
                 .HasForeignKey(a => a.UserId)
                 .OnDelete(DeleteBehavior.NoAction);
+            
+            modelBuilder.Entity<Rating>()
+                .HasIndex(r => new { r.UserId, r.AttractionId })
+                .IsUnique();
 
             modelBuilder.Entity<User>().HasData(
                new User
