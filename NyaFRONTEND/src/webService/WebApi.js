@@ -4,6 +4,7 @@ async function ApiFetch(url, method = null, body = null) {
  
     const headers = new Headers();
     headers.append('Content-Type', 'application/json');
+    headers.append('accept', 'text/plain');
  
    
      try {
@@ -20,13 +21,13 @@ async function ApiFetch(url, method = null, body = null) {
     
      }
      else {
-    console.log(`Failed to recieve data from server: ${res.status}`);
-    alert(`Failed to recieve data from server: ${res.status}`);
+    console.log(`Failed to receive data from server: ${res.status}`);
+    //alert(`Failed to receive data from server: ${res.status}`);
      }
      }
      catch (err) {
-    console.log(`Failed to recieve data from server: ${err.message}`);
-    alert(`Failed to recieve data from server: ${err.message}`);
+    console.log(`Failed to receive data from server: ${err.message}`);
+    alert(`Failed to receive data from server: ${err.message}`);
      }
     }
  

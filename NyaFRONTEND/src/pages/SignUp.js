@@ -19,7 +19,7 @@ export default function SignUp() {
               window.location.href = "https://localhost:3000/login";
               
             } else {
-              alert("Något gick fel");
+              alert("Something went wrong");
             }
             
 

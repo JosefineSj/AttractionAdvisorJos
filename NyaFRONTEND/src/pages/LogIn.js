@@ -1,34 +1,45 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import './login.css';
 import ApiFetch from "../webService/WebApi";
 import userData from "../userData";
+import {UserContext} from '../App';
+import {useNavigate} from "react-router-dom";
+
+
 
 export default function SignIn() {
+
+  const navigate = useNavigate();
+  
+  const {state, dispatch} = useContext(UserContext);
+
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
 
-  const logOut = () => {
-    setUser(null);
-    userData.userName = null;
-  }
-
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = await ApiFetch('/Users/login', 'POST', {username:  `${userName}`, password: `${password}` });
-      console.log(data.id)
+      console.log(data.result)
+
       if (data === null || data === undefined) alert("Incorrect username or password");
         else {
-          console.log(data);
+          console.log("data", data, "username", userName);
+
           alert("You are now signed in!");
-          setUser(data.userName);
-          userData.userName = data.username;
-          userData.id = data.id;
-          window.location.href = "https://localhost:3000/add-attraction";
+          dispatch({type: 'USER', payload: true})
+
+          setUser(userName);
+          userData.userName = userName;
+          userData.id = data;
+          navigate("/add-attraction");
         }
   };
 
   if (user === null) {
+
+    dispatch({type: 'USER', payload: false})
+
     return (
       <div className="LogIn">
       <form
@@ -78,13 +89,6 @@ export default function SignIn() {
         </div>
       </form>
       </div>
-    );
-  } else {
-    return (
-      <div className="LogIn">
-        <h1>You are in!</h1>
-        <button className="logout" onClick={logOut}>Logga ut</button>
-      </div>
-    );
+    ); 
   }
 }

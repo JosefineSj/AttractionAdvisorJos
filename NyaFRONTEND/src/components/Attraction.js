@@ -20,7 +20,7 @@ const Attraction = ({apiUrl, header}) => {
       console.log("Kallar på metod")  
       async function fetchData() {
         const data = await ApiFetch(apiUrl);  
-        setPlaces(data);
+        if(data) setPlaces(data);
         }
         fetchData()
       }, [apiUrl]);

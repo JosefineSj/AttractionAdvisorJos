@@ -13,7 +13,7 @@ function SubmitAttraction() {
 
   const handleSubmit = async (event) => {event.preventDefault(); 
   // Perform sign-in logic here, such as sending a request to a server
-  await ApiFetch('/Attraction', 'POST', {name: name, city: city, description: description, imageSource: picture, userId: userData.id });
+  const data = await ApiFetch('/Attraction', 'POST', {name: name, city: city, description: description, imageSource: picture, userId: userData.id });
 
   console.log("Posted?")
 };

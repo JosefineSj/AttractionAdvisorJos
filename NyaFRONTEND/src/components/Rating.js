@@ -34,12 +34,12 @@ export default function Rating({attractionId, likes, dislikes}) {
     
     <div className="buttons">
         <div>
-            <a href="#" onClick={thumbsUp}><img className="ratingImg"  src="https://em-content.zobj.net/source/microsoft-teams/337/thumbs-up_1f44d.png"  alt=""/></a>
+            <button onClick={thumbsUp}><img className="ratingImg"  src="https://em-content.zobj.net/source/microsoft-teams/337/thumbs-up_1f44d.png"  alt=""/></button>
             <p id="likeCount">{numberOfthumbsUp}</p>
         </div>
 
         <div>
-            <a href="#" onClick={thumbsDown}><img className="ratingImg" src="https://em-content.zobj.net/source/microsoft-teams/337/thumbs-down_1f44e.png" alt=""/></a>
+            <button onClick={thumbsDown}><img className="ratingImg" src="https://em-content.zobj.net/source/microsoft-teams/337/thumbs-down_1f44e.png" alt=""/></button>
             <p id="dislikeCount">{numberOfthumbsDown}</p>
         </div>
         
