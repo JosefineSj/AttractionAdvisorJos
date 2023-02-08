@@ -103,15 +103,15 @@ namespace AttractionAdvisor.DataAccess.migrations
                 columns: new[] { "Id", "Password", "Username" },
                 values: new object[,]
                 {
-                    { 1, "$2a$11$ESJwzQmXQ8JSGqR01jfpQeAeE5UfpJLC6oNMCAyztQiAhGtrHLrrC", "Sahar" },
-                    { 2, "$2a$11$T/ExdpfhemHrEQfbD1FOQudx.lnkA3gdlucC4HpkPO7mOZS32M8HK", "Hanna" },
-                    { 3, "$2a$11$nH3fAIvWF0CVplTC6XYA9.ZOBO2gu0vZCXWfSTVwHwOXkWeDnBfru", "Josefine" },
-                    { 4, "$2a$11$ut9fbLOR79EukWoA4a7theoCPyH3XM2m0.riEQBhzLfFINLbzTIE.", "Carl-Henrik" },
-                    { 5, "$2a$11$X2gzDbvFnOFDUbuosLJBfuhALoglZ4ZzoS.KQPc8T/eqdU.svYoHq", "Kamran" },
-                    { 6, "$2a$11$rPQVYz7d2VlgNGP7kTGaPuoQFj0qHXBtBEKIE68BZiNFvF6Ort/7S", "Jessica" },
-                    { 7, "$2a$11$Psgc6AF6rh.GEkvy3c5dieSWy0zuc7u92c3UQ07SYuKrctSST8o2S", "Alfons" },
-                    { 8, "$2a$11$HaZo9BfiMrSi1zBDNFEYV.S.mCNSYEoP48X6yH6AqniTbSg.y7eYi", "Sophie" },
-                    { 9, "$2a$11$kvnLhOmGQswWMC1TY3Ahoe0FBAuci78F4py/DmpB/4hZ7/VlGytDy", "Jenny" }
+                    { 1, "$2a$11$MuseL0b0MrZHDvTwG6/ZnOqYKIlBfc/v5wpiZ4OtuL7t.eH9sjUwu", "Sahar" },
+                    { 2, "$2a$11$Cqp89KEgxO8FE2oa4TI6OOX1LA1oJFeENtyDqgCBbwurLPEsMnOg6", "Hanna" },
+                    { 3, "$2a$11$hLvfWhSUgDybQtqprffJy.Rlph/sjX9Ou9RvV6BYQjHqNkAWgR6y6", "Josefine" },
+                    { 4, "$2a$11$rWIek.BBprnN5h60kXmvfe3xI9WjIhnE6xBJwwWDVWevFJj7TUkke", "Carl-Henrik" },
+                    { 5, "$2a$11$JrSO2qf2BfGT7K288kBP6eJUhw9/A0yOod5lb12N2P1YHL0pcWw0O", "Kamran" },
+                    { 6, "$2a$11$MPiU4d9YFnZX9AXeduR.Derd7uBedLzLQSrZLzmmHxIJQkVwmgMYe", "Jessica" },
+                    { 7, "$2a$11$TX72BTGLJkYd.GO533/kL.6JdKtX1kNkCUhZPI9wWNH9khiVcqAd.", "Alfons" },
+                    { 8, "$2a$11$bJMJYybsxKs4T20AVirSOOg21KhHFuMZ8jRU6v8ko36TfoG.R0sIK", "Sophie" },
+                    { 9, "$2a$11$SR0u62UtnoyG1iEOrmCV5.cbnm/HWbwban0sWFGddxWhB1mWHcIJW", "Jenny" }
                 });
 
             migrationBuilder.InsertData(
@@ -120,7 +120,7 @@ namespace AttractionAdvisor.DataAccess.migrations
                 values: new object[,]
                 {
                     { 1, "Stockholm", "The world's oldest open-air museum", "https://skansen.se/wp-content/uploads/2022/10/Hazeliusporten_skansen-600x450.jpg", "Skansen", 1 },
-                    { 2, "Götebog", "Amusement park in the centre of Gothenburg", "https://www.liseberg.se/optimized/facebook/046e6139/globalassets/parken/parkvyer/hela-parken-vy.jpg", "Liseberg", 2 },
+                    { 2, "Göteborg", "Amusement park in the centre of Gothenburg", "https://www.liseberg.se/optimized/facebook/046e6139/globalassets/parken/parkvyer/hela-parken-vy.jpg", "Liseberg", 2 },
                     { 3, "Malmö", "One of the leading art museums in scandinavia", "https://upload.wikimedia.org/wikipedia/commons/e/ea/Malmo_art_museum-malmo_castle.jpg", "Malmö Art Museum", 6 },
                     { 4, "Paris", "Wrought-iron tower on the Champ de Mars in Paris", "https://cdn.britannica.com/54/75854-050-E27E66C0/Eiffel-Tower-Paris.jpg", "Eiffel tower", 4 },
                     { 5, "New York City", "Is a 102-story Art Deco skyscraper in Midtown Manhattan, New York City", "https://lh5.googleusercontent.com/p/AF1QipNVlM5lo7fIJrmvjN4EOrTMiQjDgDyTfw7ATdV6=w243-h174-n-k-no-nu", "Empire State Building", 5 },
@@ -173,9 +173,10 @@ namespace AttractionAdvisor.DataAccess.migrations
                 column: "UserId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Ratings_UserId",
+                name: "IX_Ratings_UserId_AttractionId",
                 table: "Ratings",
-                column: "UserId");
+                columns: new[] { "UserId", "AttractionId" },
+                unique: true);
         }
 
         /// <inheritdoc />

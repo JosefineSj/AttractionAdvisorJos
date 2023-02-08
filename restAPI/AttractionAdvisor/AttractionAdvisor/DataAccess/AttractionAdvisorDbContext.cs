@@ -143,7 +143,7 @@ namespace AttractionAdvisor.DataAccess
                    {
                        Id = 2,
                        Name = "Liseberg",
-                       City = "Götebog",
+                       City = "Göteborg",
                        Description = "Amusement park in the centre of Gothenburg",
                        ImageSource = "https://www.liseberg.se/optimized/facebook/046e6139/globalassets/parken/parkvyer/hela-parken-vy.jpg",
                        UserId = 2,

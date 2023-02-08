@@ -67,7 +67,7 @@ namespace AttractionAdvisor.DataAccess.migrations
                         new
                         {
                             Id = 2,
-                            City = "Götebog",
+                            City = "Göteborg",
                             Description = "Amusement park in the centre of Gothenburg",
                             ImageSource = "https://www.liseberg.se/optimized/facebook/046e6139/globalassets/parken/parkvyer/hela-parken-vy.jpg",
                             Name = "Liseberg",
@@ -247,7 +247,8 @@ namespace AttractionAdvisor.DataAccess.migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("UserId");
+                    b.HasIndex("UserId", "AttractionId")
+                        .IsUnique();
 
                     b.ToTable("Ratings");
 
@@ -341,55 +342,55 @@ namespace AttractionAdvisor.DataAccess.migrations
                         new
                         {
                             Id = 1,
-                            Password = "$2a$11$ESJwzQmXQ8JSGqR01jfpQeAeE5UfpJLC6oNMCAyztQiAhGtrHLrrC",
+                            Password = "$2a$11$MuseL0b0MrZHDvTwG6/ZnOqYKIlBfc/v5wpiZ4OtuL7t.eH9sjUwu",
                             Username = "Sahar"
                         },
                         new
                         {
                             Id = 2,
-                            Password = "$2a$11$T/ExdpfhemHrEQfbD1FOQudx.lnkA3gdlucC4HpkPO7mOZS32M8HK",
+                            Password = "$2a$11$Cqp89KEgxO8FE2oa4TI6OOX1LA1oJFeENtyDqgCBbwurLPEsMnOg6",
                             Username = "Hanna"
                         },
                         new
                         {
                             Id = 3,
-                            Password = "$2a$11$nH3fAIvWF0CVplTC6XYA9.ZOBO2gu0vZCXWfSTVwHwOXkWeDnBfru",
+                            Password = "$2a$11$hLvfWhSUgDybQtqprffJy.Rlph/sjX9Ou9RvV6BYQjHqNkAWgR6y6",
                             Username = "Josefine"
                         },
                         new
                         {
                             Id = 4,
-                            Password = "$2a$11$ut9fbLOR79EukWoA4a7theoCPyH3XM2m0.riEQBhzLfFINLbzTIE.",
+                            Password = "$2a$11$rWIek.BBprnN5h60kXmvfe3xI9WjIhnE6xBJwwWDVWevFJj7TUkke",
                             Username = "Carl-Henrik"
                         },
                         new
                         {
                             Id = 5,
-                            Password = "$2a$11$X2gzDbvFnOFDUbuosLJBfuhALoglZ4ZzoS.KQPc8T/eqdU.svYoHq",
+                            Password = "$2a$11$JrSO2qf2BfGT7K288kBP6eJUhw9/A0yOod5lb12N2P1YHL0pcWw0O",
                             Username = "Kamran"
                         },
                         new
                         {
                             Id = 6,
-                            Password = "$2a$11$rPQVYz7d2VlgNGP7kTGaPuoQFj0qHXBtBEKIE68BZiNFvF6Ort/7S",
+                            Password = "$2a$11$MPiU4d9YFnZX9AXeduR.Derd7uBedLzLQSrZLzmmHxIJQkVwmgMYe",
                             Username = "Jessica"
                         },
                         new
                         {
                             Id = 7,
-                            Password = "$2a$11$Psgc6AF6rh.GEkvy3c5dieSWy0zuc7u92c3UQ07SYuKrctSST8o2S",
+                            Password = "$2a$11$TX72BTGLJkYd.GO533/kL.6JdKtX1kNkCUhZPI9wWNH9khiVcqAd.",
                             Username = "Alfons"
                         },
                         new
                         {
                             Id = 8,
-                            Password = "$2a$11$HaZo9BfiMrSi1zBDNFEYV.S.mCNSYEoP48X6yH6AqniTbSg.y7eYi",
+                            Password = "$2a$11$bJMJYybsxKs4T20AVirSOOg21KhHFuMZ8jRU6v8ko36TfoG.R0sIK",
                             Username = "Sophie"
                         },
                         new
                         {
                             Id = 9,
-                            Password = "$2a$11$kvnLhOmGQswWMC1TY3Ahoe0FBAuci78F4py/DmpB/4hZ7/VlGytDy",
+                            Password = "$2a$11$SR0u62UtnoyG1iEOrmCV5.cbnm/HWbwban0sWFGddxWhB1mWHcIJW",
                             Username = "Jenny"
                         });
                 });
