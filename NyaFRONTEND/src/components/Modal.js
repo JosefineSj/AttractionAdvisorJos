@@ -41,7 +41,7 @@ export default function Modal({hideModal, id}) {
    const handleSubmitAddComment = async (event) => {
     event.preventDefault();
     if(userData.userName === null) {
-       alert("Du måste vara inlogad för att kommentera"); }
+       alert("Du måste vara inloggad för att kommentera"); }
        else {
          await ApiFetch('/Comment', 'POST', {AttractionId: attractionData.id, UserId: userData.id, Commentary: `${comment}` });
          async function fetchData() {

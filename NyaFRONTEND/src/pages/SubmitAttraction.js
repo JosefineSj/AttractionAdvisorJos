@@ -2,10 +2,14 @@ import React, { useState } from 'react';
 import userData from '../userData';
 import ApiFetch from '../webService/WebApi';
 import './submitAttraction.css';
+import {useNavigate} from "react-router-dom";
+
 
 
 
 function SubmitAttraction() {
+  const navigate = useNavigate();
+
   const [name, setName] = useState('');
   const [city, setCity] = useState('');
   const [description, setDescription] = useState('');
@@ -14,6 +18,10 @@ function SubmitAttraction() {
   const handleSubmit = async (event) => {event.preventDefault(); 
   // Perform sign-in logic here, such as sending a request to a server
   const data = await ApiFetch('/Attraction', 'POST', {name: name, city: city, description: description, imageSource: picture, userId: userData.id });
+  if(data != null) {
+    alert("Your attraction is uploaded!");
+    navigate("/my-uploads");
+  }
 
   console.log("Posted?")
 };
