@@ -15,19 +15,16 @@ export default function Rating({attractionId, likes, dislikes}) {
       }, [dislikes]);
 
 
-
-
-
-
-
     const thumbsUp = async () => {
         await ApiFetch('/Rating', 'POST', {attractionId:  attractionId, userId: `${userData.id}`, value: 1 });
-        SetNumberOfthumbsUp(numberOfthumbsUp + 1);
+        const data = await ApiFetch(`/Attraction/${attractionId}`);
+        SetNumberOfthumbsUp(data.likes);
     }
 
     const thumbsDown = async () => {
         await ApiFetch('/Rating', 'POST', {attractionId:  attractionId, userId: `${userData.id}`, value: 2 });
-        SetNumberOfthumbsDown(numberOfthumbsDown + 1);
+        const data = await ApiFetch(`/Attraction/${attractionId}`);
+        SetNumberOfthumbsDown(data.dislikes);
     }
 
     return (
