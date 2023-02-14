@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useCallback } from "react";
 import "./modal.css";
-import AddComment from "./AddComment";
 import Comments from "./Comments";
 import Rating from "./Rating";
 import ApiFetch from "../webService/WebApi";
@@ -12,6 +11,7 @@ export default function Modal({hideModal, id}) {
   const [likes, setLikes] = useState(0);
   const [dislikes, setDislikes] = useState(0);
   const [commentlist, setCommentlist] = useState([]);
+  const [comment, setComment] = useState('');
   console.log(id);
 
   useEffect(   () => {      
@@ -27,10 +27,6 @@ export default function Modal({hideModal, id}) {
       fetchData();
     }, [])
 
-    const wrapperSetCommentlistState = useCallback(val => {
-      setCommentlist(val);
-    }, [setCommentlist]);
-
   
   const toggleModal = () => {
     setModal(!modal);
@@ -41,6 +37,23 @@ export default function Modal({hideModal, id}) {
   } else {
     document.body.classList.remove("active-modal");
   }
+
+   const handleSubmitAddComment = async (event) => {
+    event.preventDefault();
+    if(userData.userName === null) {
+       alert("Du måste vara inlogad för att kommentera"); }
+       else {
+         await ApiFetch('/Comment', 'POST', {AttractionId: attractionData.id, UserId: userData.id, Commentary: `${comment}` });
+         async function fetchData() {
+          const data = await ApiFetch(`/Attraction/${id}`);
+          setAttractionData(data);
+          setDislikes(data.dislikes);
+          setLikes(data.likes);
+          setCommentlist(data.comments);
+          console.log(commentlist);
+   }      await fetchData();
+ }
+};
 
   return (
     <>
@@ -57,7 +70,17 @@ export default function Modal({hideModal, id}) {
             </div>
             <Rating attractionId={id} likes={likes} dislikes={dislikes} />
             <Comments commentslist={commentlist}/>
-            <AddComment attractionId={id} commentList={commentlist} setCommentList={wrapperSetCommentlistState}/>
+            <form onSubmit={handleSubmitAddComment}>
+              <div id='addCommentBox'>
+                <textarea id='addCommentInput'
+                          type="textarea"
+                          placeholder='Your comment...'
+                          value={comment} onChange={(e) => setComment(e.target.value)} />
+                          <button id='addCommentBtn'
+                                  type="submit">Publish comment
+                          </button>
+               </div>
+            </form>
             <button className="close-modal" onClick={hideModal}>
               CLOSE
             </button>
