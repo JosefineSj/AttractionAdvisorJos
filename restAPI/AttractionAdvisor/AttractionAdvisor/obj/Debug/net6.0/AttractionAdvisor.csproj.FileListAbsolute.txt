@@ -413,3 +413,4 @@ C:\Users\Josef\OneDrive\Dokument\ÄMNESÖVERGRIPANDE 2023\AttractionAdvisor\Attr
 C:\Users\Josef\OneDrive\Dokument\ÄMNESÖVERGRIPANDE 2023\AttractionAdvisor\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\AttractionAdvisor.pdb
 C:\Users\Josef\OneDrive\Dokument\ÄMNESÖVERGRIPANDE 2023\AttractionAdvisor\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\AttractionAdvisor.genruntimeconfig.cache
 C:\Users\Josef\OneDrive\Dokument\ÄMNESÖVERGRIPANDE 2023\AttractionAdvisor\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\obj\Debug\net6.0\ref\AttractionAdvisor.dll
+C:\Users\hante\source\repos\AttractionAdvisor\restAPI\AttractionAdvisor\AttractionAdvisor\bin\Debug\net6.0\Bogus.dll
