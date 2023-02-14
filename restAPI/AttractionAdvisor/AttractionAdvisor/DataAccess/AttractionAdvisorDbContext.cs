@@ -51,7 +51,7 @@ namespace AttractionAdvisor.DataAccess
             modelBuilder.Entity<Comment>()
                  .HasOne(c => c.Attraction)
                  .WithMany(a => a.Comments)
-                 .HasForeignKey(a => a.AttractionId)
+                 .HasForeignKey(a => a.UserId)
                  .OnDelete(DeleteBehavior.NoAction);
 
             modelBuilder.Entity<Comment>()
