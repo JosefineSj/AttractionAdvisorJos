@@ -1172,7 +1172,7 @@
       ]
     },
     "Microsoft.CSharp/4.5.0": {
-      "sha512": "EGoBmf3Na2ppbhPePDE9PlX81r1HuOZH5twBrq7couJZiPTjUnD3648balerQJO6EJ8Sj+43+XuRwQ7r+3tE3w==",
+      "sha512": "kaj6Wb4qoMuH3HySFJhxwQfe8R/sJsNJnANrvv8WdFPMoNbKY5htfNscv+LHCu5ipz+49m2e+WQXpLXr9XYemQ==",
       "type": "package",
       "path": "microsoft.csharp/4.5.0",
       "files": [
@@ -3569,27 +3569,28 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\hante\\.nuget\\packages\\": {},
+    "C:\\Users\\sahar\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\hante\\source\\repos\\AttractionAdvisor\\restAPI\\AttractionAdvisor\\AttractionAdvisor\\AttractionAdvisor.csproj",
+      "projectUniqueName": "C:\\Users\\sahar\\OneDrive\\Dokument\\Visual Studio 2022\\AttractionAdvisor\\restAPI\\AttractionAdvisor\\AttractionAdvisor\\AttractionAdvisor.csproj",
       "projectName": "AttractionAdvisor",
-      "projectPath": "C:\\Users\\hante\\source\\repos\\AttractionAdvisor\\restAPI\\AttractionAdvisor\\AttractionAdvisor\\AttractionAdvisor.csproj",
-      "packagesPath": "C:\\Users\\hante\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\hante\\source\\repos\\AttractionAdvisor\\restAPI\\AttractionAdvisor\\AttractionAdvisor\\obj\\",
+      "projectPath": "C:\\Users\\sahar\\OneDrive\\Dokument\\Visual Studio 2022\\AttractionAdvisor\\restAPI\\AttractionAdvisor\\AttractionAdvisor\\AttractionAdvisor.csproj",
+      "packagesPath": "C:\\Users\\sahar\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\sahar\\OneDrive\\Dokument\\Visual Studio 2022\\AttractionAdvisor\\restAPI\\AttractionAdvisor\\AttractionAdvisor\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Program Files (x86)\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\hante\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\sahar\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
+        "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
       "originalTargetFrameworks": [
         "net6.0"
@@ -3647,8 +3648,7 @@
           "net47",
           "net471",
           "net472",
-          "net48",
-          "net481"
+          "net48"
         ],
         "assetTargetFallback": true,
         "warn": true,
@@ -3660,7 +3660,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.405\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.201\\RuntimeIdentifierGraph.json"
       }
     }
   }
