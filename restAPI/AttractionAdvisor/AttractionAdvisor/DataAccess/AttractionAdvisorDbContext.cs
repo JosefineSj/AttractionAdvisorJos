@@ -84,7 +84,7 @@ namespace AttractionAdvisor.DataAccess
                     .RuleFor(u => u.Username, f => f.Person.UserName)
                     .RuleFor(u => u.Password, f => BCrypt.Net.BCrypt.HashPassword(f.Internet.Password()));
 
-            var usersList = users.GenerateBetween(500, 500);
+            var usersList = users.GenerateBetween(50, 50);
 
             var idsA = 1;
             var attractions = new Faker<Attraction>()
@@ -95,7 +95,7 @@ namespace AttractionAdvisor.DataAccess
                 .RuleFor(a => a.ImageSource, f => f.Image.PicsumUrl())
                 .RuleFor(a => a.UserId, f => f.PickRandom(usersList).Id);
 
-            var attractionsList = attractions.GenerateBetween(500, 500);
+            var attractionsList = attractions.GenerateBetween(100, 100);
 
             var idsC = 1;
             var comments = new Faker<Comment>()
@@ -119,11 +119,11 @@ namespace AttractionAdvisor.DataAccess
             .HasData(attractionsList);
              modelBuilder
             .Entity<Comment>()
-            .HasData(comments.GenerateBetween(1000, 1000));
+            .HasData(comments.GenerateBetween(300, 300));
 
             var existingRatings = new HashSet<(int UserId, int AttractionId)>();
 
-            foreach (var rating in ratings.GenerateBetween(500, 500))
+            foreach (var rating in ratings.GenerateBetween(2000, 2000))
             {
                 if (!existingRatings.Add((rating.UserId, rating.AttractionId)))
                 {
