@@ -165,8 +165,16 @@ body.active-modal {
     margin-bottom: 20px;
     outline: none;
     
-
 }
+
+.viewRatingStartPage {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    outline: none;
+    
+}
+
 
 
 .ratingImg {

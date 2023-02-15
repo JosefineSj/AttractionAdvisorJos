@@ -10,8 +10,6 @@ import MyUploads from './pages/MyUploads';
 
 import {initialState, reducer} from '../src/reducer/UseReducer';
 
-/*import AddComment from './components/AddComment'; */
-
 export const UserContext = createContext(); 
 
 const Routing = () =>{

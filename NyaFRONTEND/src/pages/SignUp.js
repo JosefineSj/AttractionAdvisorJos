@@ -23,9 +23,6 @@ export default function SignUp() {
             if(data != null) {
               alert("You are now signed up!");
               navigate("/login");
-              
-            }else if(data === null){
-              alert("Something went wrong");
             }
             else {
               alert("User already exists! Go to 'Sign In' page");

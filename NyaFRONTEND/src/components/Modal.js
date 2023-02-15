@@ -4,8 +4,13 @@ import Comments from "./Comments";
 import Rating from "./Rating";
 import ApiFetch from "../webService/WebApi";
 import userData from "../userData";
+import {useNavigate} from "react-router-dom";
+
 
 export default function Modal({hideModal, id}) {
+
+  const navigate = useNavigate();
+
   const [modal, setModal] = useState(false);
   const [attractionData, setAttractionData] = useState([]);
   const [likes, setLikes] = useState(0);
@@ -41,7 +46,9 @@ export default function Modal({hideModal, id}) {
    const handleSubmitAddComment = async (event) => {
     event.preventDefault();
     if(userData.userName === null) {
-       alert("Du måste vara inloggad för att kommentera"); }
+       alert("You need to be signed in to be able to add a comment");
+       navigate('/login');
+      }
        else {
          await ApiFetch('/Comment', 'POST', {AttractionId: attractionData.id, UserId: userData.id, Commentary: `${comment}` });
          async function fetchData() {
@@ -66,7 +73,13 @@ export default function Modal({hideModal, id}) {
               <h1>{attractionData.name}</h1>
               <p>{attractionData.city}</p>
               <div>{attractionData.description}</div>
-              <img src={`${attractionData.imageSource}`} alt="trt"  id="modalImg"/>
+              <img src={`${attractionData.imageSource}`}
+              alt="trt"
+              id="modalImg"
+              onError={event => {
+                event.target.src = "https://this-person-does-not-exist.com/img/avatar-44717e7f4527b85605810e37d89a58fe.jpg"
+                event.onerror = null
+              }}/>
             </div>
             <Rating attractionId={id} likes={likes} dislikes={dislikes} />
             <Comments commentslist={commentlist}/>

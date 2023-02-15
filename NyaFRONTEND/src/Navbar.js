@@ -1,9 +1,8 @@
 import React from 'react';
 import {useContext} from 'react';
 import {Link, useMatch, useResolvedPath} from 'react-router-dom';
-
+import userData from "./userData";
 import {UserContext} from './App';
-
 
 function Navbar() {
 
@@ -24,7 +23,7 @@ const RenderMenu = () => {
      </div> 
 
         <CustomLink to='/attractions'>Attractions</CustomLink>
-        <CustomLink to='/log-out' onClick={() => {dispatch({type: 'USER', payload: false})}}>Sign Out</CustomLink>
+        <CustomLink to='/log-out' onClick={() => {dispatch({type: 'USER', payload: false}); userData.id = 0; userData.userName = null}}>Sign Out</CustomLink>
     
       </>
     )

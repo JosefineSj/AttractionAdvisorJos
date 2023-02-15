@@ -20,9 +20,11 @@ export default function SignIn() {
   const handleSubmit = async (event) => {
     event.preventDefault();
     const data = await ApiFetch('/Users/login', 'POST', {username:  `${userName}`, password: `${password}` });
-      console.log(data.result)
 
-      if (data === null || data === undefined) alert("Incorrect username or password");
+      if (isNaN(data) || data === undefined){
+        alert("Incorrect input or user does not exist");
+        console.log(data, "data");
+      }
         else {
           console.log("data", data, "username", userName);
 
