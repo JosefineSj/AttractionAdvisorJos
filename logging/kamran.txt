@@ -1,44 +1,77 @@
-2022-01-12 
+2023-01-12 
 Suggested API and database structure
 
-2022-01-13 
+2023-01-13 
 Research on which web framework to use
 
-2022-01-16 
+2023-01-16 
 Research of minimal api structure
 
-2022-01-17 
+2023-01-17 
 Research and implementation of minimal api structure
 
-2022-01-18 
+2023-01-18 
 Refactoring of minimal api structure and implementation of the endpoints.
 
-2022-01-19 
+2023-01-19 
 Decide on Controller Web API web framework and research on how to implement it.
 
-2022-01-19 
-Controller Web API web framework and research on how to implement it.
+2023-01-19 
+Start implementing the Controller Web API web framework by working on CRUD operations.
 
-2022-01-20 
+2023-01-20 
 Refactor all Handlers and Controllers to make them work
 
-2022-01-23 
+2023-01-23 
 Refactor all Handlers and Controllers to make them more readable and maintainable.
 
-2022-01-24 
+2023-01-24 
 Refactor all Handlers and Controllers error handling
 
-2022-01-25 
+2023-01-25 
 Test endpoints and fix bugs
 
-2022-01-26 
+2023-01-26 
 Test endpoints, make adjustments and fix bugs
 
-2022-01-27 
+2023-01-27 
 Try to solve the CORS problem together with the frontend team
 
-2022-01-30
+2023-01-30
 Create an endpoint that aggregates all relevant attraction data for the frontend
 
-2022-01-31
+2023-01-31
 Testing endpoints and working together with team to present the project to PO
+
+2023-02-01
+Further work on aggregations endpoints by working with dto's.
+
+2023-02-02
+Further work on aggregations endpoints by working with dto's. 
+
+2023-02-03
+Further work on aggregations endpoints by working with dto's. 
+
+2023-02-06
+Further work on aggregations endpoints by working with dto's. 
+
+2023-02-07
+Further work on aggregations endpoints by working with dto's. 
+
+2023-02-08
+Fix bugs and test endpoints
+
+2023-02-09
+Work on endpoint documentation
+
+2023-02-09
+Work on endpoint documentation
+
+2023-02-13
+Try find and solve bugs 
+
+2023-02-14
+Try find and solve bugs 
+
+2023-02-15
+Final bug fixing, testing and documenting of endpoints
