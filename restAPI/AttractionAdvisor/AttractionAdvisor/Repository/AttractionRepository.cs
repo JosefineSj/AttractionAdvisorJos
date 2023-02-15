@@ -55,6 +55,7 @@ public class AttractionRepository : IAttractionRepository
         var allAttractionDto = await _context.Attractions
             .Where(a => a.UserId == userId)
             .Include(a => a.Comments)
+            
             .Select(a => new AttractionDto
             {
                 Id = a.Id,
@@ -62,7 +63,7 @@ public class AttractionRepository : IAttractionRepository
                 City = a.City,
                 Description = a.Description,
                 ImageSource = a.ImageSource,
-                Comments = a.Comments!.Where(c => c.UserId == userId).
+                Comments = a.Comments!.
                     Select(c => new CommentDto
                     {
                         Username = c.User!.Username,
