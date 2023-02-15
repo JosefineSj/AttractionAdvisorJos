@@ -59,6 +59,15 @@ body.active-modal {
     top: 10px;
     right: 10px;
     padding: 5px 7px;
+    border-radius: 50%;
+    font-style: bold;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    cursor: pointer;
+    height: 50px;
+    width: 70px;
+    background-color: white;
+    font-size: 16px;
+    
 }
 
 #modalImg{
@@ -70,8 +79,9 @@ body.active-modal {
     border-radius: 12px;
 }
 
-.buttons{
+.buttonsRating{
     margin-top: 0;
+
 }
 
 .commentHeader {
@@ -147,12 +157,13 @@ body.active-modal {
     align-self: center;
 }
 
-.buttons {
+.buttonsRating {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     margin-top: 20px;
     margin-bottom: 20px;
+    outline: none;
     
 
 }

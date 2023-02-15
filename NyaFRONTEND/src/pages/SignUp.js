@@ -1,8 +1,13 @@
 import React, { useState } from 'react';
 import './signup.css';
 import ApiFetch from '../webService/WebApi';
+import {useNavigate} from "react-router-dom";
+
 
 export default function SignUp() {
+
+  const navigate = useNavigate();
+
 
         const [formData, setFormData] = useState({
             username: '',
@@ -16,10 +21,16 @@ export default function SignUp() {
             const data = await ApiFetch('/Users', 'POST', {username:  `${formData.username}`, password: `${formData.password}` });
             console.log(data);
             if(data != null) {
-              window.location.href = "https://localhost:3000/login";
+              alert("You are now signed up!");
+              navigate("/login");
               
-            } else {
+            }else if(data === null){
               alert("Something went wrong");
+            }
+            else {
+              alert("User already exists! Go to 'Sign In' page");
+              navigate("/login");
+
             }
             
 
