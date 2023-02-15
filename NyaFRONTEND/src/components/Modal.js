@@ -77,7 +77,7 @@ export default function Modal({hideModal, id}) {
               alt="trt"
               id="modalImg"
               onError={event => {
-                event.target.src = "https://this-person-does-not-exist.com/img/avatar-44717e7f4527b85605810e37d89a58fe.jpg"
+                event.target.src = "Bakelser.jpg"
                 event.onerror = null
               }}/>
             </div>
