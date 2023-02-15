@@ -18,7 +18,7 @@ public class AttractionRepository : IAttractionRepository
     {
         var allAttractions = await _context.Attractions
             .Include(a => a.Comments)
-            .Include(a => a.User)
+            .ThenInclude(a => a.User)
             .ToListAsync();
 
         var allAttractionDto = allAttractions.Select(a => new AttractionDto
@@ -89,7 +89,7 @@ public class AttractionRepository : IAttractionRepository
     {
         var attraction = await _context.Attractions
             .Include(a => a.Comments)
-            .Include(a => a.User)
+            .ThenInclude(a => a.User)
             .FirstOrDefaultAsync(a => a.Id == id);
         
         if (attraction == null)
@@ -104,7 +104,7 @@ public class AttractionRepository : IAttractionRepository
             City = attraction.City,
             Description = attraction.Description,
             ImageSource = attraction.ImageSource,
-            Comments = attraction.Comments?.Where(c => c.UserId == id)
+            Comments = attraction.Comments?
                 .Select(c => new CommentDto
                 {
                     Username = c.User?.Username ?? string.Empty,
