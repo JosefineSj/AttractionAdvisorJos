@@ -1,1 +1,108 @@
 2023-01-14 :Sahar and Hanna created a new project Attraction Advisor and also created database.
+Tisdag 10-01-2023
+
+Fixat discord kanal och skickat ut till gruppmedlemmar.
+
+Onsdag 11-01-2023
+
+Första mötet med gruppen. Genomgång av projektet och diskussion om vilka som vill jobba med frontend och backend.
+
+
+Torsdag 12-01-2023
+
+vecka 2:
+Scrum master: Sahar
+PO: Hanna
+
+vecka 3:
+Scrum master : Jossefin
+PO: Carl-Henrik
+
+vecka 4:
+Scrum master:Hanna
+PO:Jossefin
+
+vecka: 5:
+
+Scrum master:
+Kamran
+PO: Sahar
+
+vecka: 6
+
+Scrum master : Carl-Henrik
+PO: Kamran
+
+Skapat Trello.
+Sprint planering varje måndag,
+Sprint review varje fredag.
+
+Gruppregler!
+
+Fredag 13-01-2023
+
+Första Scrum möte, blir planering!
+Diskussion om upplägg: fokusera på funktionalitet.
+Vi kör code first eftersom vi inte vet hur databasen ska se ut.
+
+Upplägg:
+FrontEnd - Carl-Henrik och Kamran
+BackEnd - Hanna och Sahar
+Fullstack - Josefine (flygande)
+Databas  - Alla i gruppen
+
+Struktur och arkitektur 
+            Frontend : React Next.js (Neovim & VSC)         
+Backend: C#, code first i EF core, Restful webapi (Visual Studio 2022, .NET 6)
+Databas : SSMS
+
+Tekniska utmaningar 
+Vi är betydligt färre i vår grupp än i resterande grupper.
+Vi har inte så stora förkunskaper i varesig React eller EF Core Code First
+
+
+
+
+Måndag 2023-01-23;
+
+Vi börjar dagen med Scrum möte. Jag jobbar i backend och är nästan klar med UsersController som jag jobbat med sen förra veckan. Kommer även behöva jobba med den idag eftersom jag behöver lägga in password. vi ändrade oss och bestämde oss för att jobba med controllers istället för minimum API och därför går det lite långsammare för mig, eftersom jag inte har så mycket kunskaper inom Rest APi. Satt med Hanna och Kamran och fixade merge konflikter. Utmaning i gruppen är när jag gjorde klart och pushade upp så ändrade Kamran i min kod så det blev väldigt rörigt. 
+
+Tisdag 24-01-23;
+Scrum möte med gruppen. Kolla igenom kod med Kamran och Hanna och lösa ifall det finns merge konflikter. Annars är vi klara med users controllers Börja med ny ticket . Hoppas vara klara med sprintplanning 1.
+
+Onsdag 25-01-23
+
+Inget scrum möte pga lektion. Jobbat med metoder för validering samt testa endpoints.
+Torsdag 26-01-23
+
+Scrum möte med teamet. Gjort ändringar i Attraction Module och lagt till en konstruktor bla. Börja fixa metoder till frontend.
+
+Fredag 27-01-23
+
+Individuellt arbete med projektet på förmiddagen. Hela eftermiddagen satt vi alla i gruppen och försökte koppla ihop backend med frontend. Gick inte så bra och vi kom inte vidare.
+
+Måndag 30-01
+
+Scrum möte. Vi har lyckats koppla ihop backend med frontend. Jobbar med funktioner som frontend behöver. Även gjort en sprint review och sprint plannering.
+
+Tisdag 31-01
+
+Testning av att alla endpoints fungerar gemensamt med alla som jobbar med  back end(Kamran och Hanna)
+
+
+onsdag 01-02
+
+Fortsätta jobba med att skapa metoder för random User, Attraction i databasen.
+
+Torsdag 02-02
+
+Fortsätta jobba med att skapa random data. problem med att lägga till i databasen.
+
+Måndag 13-02 Jobbade med random metoden med Hanna. Dock så har jag inte jobbat med projektet senaste veckan eftersom vi behövde arbeta med Agila projektet.
+
+Tisdag 14-02  Möte med gruppen! Små pill med lite små buggar. jobbat med bugg i comments. När man lägger till en comment så hamnar den fel i atttractions.
+Oense med en gruppmedlem om hur vi ska använda random metoden.
+
+Onsdag 15-02
+
+Vi i backend  fixade alla buggar samt satt med frontend teamet och testade allt. Vi har en liten bugg kvar med att en söka med använder med alla attractions. Vi blev klara med alla buggar. 

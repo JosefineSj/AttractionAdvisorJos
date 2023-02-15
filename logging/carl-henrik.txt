@@ -1,0 +1,23 @@
+12/1 - Planerade rollindelning, struktuerade arbetet, samt diskutera teknik.
+13/1 - Skapade USER-stories, och lade till det i Trello. Planerade arketuren. Bokade möte med Martin.
+16/1 - Möte med Martin om kravspecifikation. Vi utvecklade våra User-Stories. Vi arbetade tillsammans med back-end.
+17/1 - 
+18/1 - Skapade ett react-projekt i VSC, och skapade grundstruktur. Login och Sign-up funktion skapades.
+19/1 - Vi lade till det Nya front-end-projektet i GitHub. Vi lade till sökfunktion/filtrering, attraction-komponent och testdata. Och ändrade klasser till componenter.
+20/1 - Navbar och navigering via customlink.
+23/1 - Navbar
+24/1 - Modal, sign up, sign in, och styling.
+25/1 - Modal - uppdaterade design i attrraction-modalen, kommentarsfält och tummen ned och upp.
+26/1 - Ännu mer modal-styling.
+27/1 - Testade med API-anrop till back-end. 
+30/1 - Utvecklade API-anropen och andra navbaren på mina sidor. Dropdown.
+1/2 - 
+2/2 -
+3/2 -
+4/2 -
+5/2 -
+6/2
+7/2
+8/2
+9/2
+10/2
