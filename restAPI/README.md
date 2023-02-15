@@ -1,5 +1,4 @@
 # REST API written in C#
-## WARNING THE FOLLOWING IS NOT UP TO DATE WITH LATEST PUSH TO MAIN. SEE SWAGGER FOR DOCUMENTATION FOR NOW.
 ```bash
 GET api/Attraction
 ```
@@ -59,7 +58,7 @@ GET api/Attraction
 ```bash
 GET api/Attraction/User/{userId}
 ```
-*expected request body*
+*expected request parameter*
 ```bash
 {
     "userId" : 1
@@ -123,7 +122,7 @@ GET api/Attraction/User/{userId}
 ```bash
 GET api/Attraction/{id}
 ```
-*expected request body*
+*expected request parameter*
 ```bash
 {
     "id" : 1
@@ -198,10 +197,18 @@ POST api/Attraction
 >Status 500
 ---
 ```bash
-PUT api/Attraction
+PUT api/Attraction/{id}
 ```
+*expected request parameter*
+```bash
+{
+    "id" : 1
+}
+```
+
 *expected request body*
 ```bash
+
 {
   "name": "The Grand Canyon",
   "city": "Arizona",
@@ -232,7 +239,7 @@ PUT api/Attraction
 ```bash
 DELETE api/Attraction/{id}
 ```
-*expected request body*
+*expected request parameter*
 ```bash
 {
   "id": 1
@@ -254,7 +261,7 @@ DELETE api/Attraction/{id}
 ```bash
 GET api/Users/{id}
 ```
-*expected request body*
+*expected request parameter*
 ```bash
 {
   "id": 1
@@ -264,7 +271,6 @@ GET api/Users/{id}
 *expected response body*
 ```bash
 {
-  "id": 1
   "username": "Rocco"
 }
 ```
@@ -312,8 +318,15 @@ POST api/Users
 ---
 
 ```bash
-PUT api/Users
+PUT api/Users/{id}
 ```
+*expected request parameter*
+```bash
+{
+  "id": 1
+}
+```
+
 *expected request body*
 ```bash
 {
@@ -396,8 +409,15 @@ POST api/Comment
 ---
 
 ```bash
-PUT api/Comment
+PUT api/Comment/{id}
 ```
+*expected request parameter*
+```bash
+{
+    "id": 1
+}
+```
+
 *expected request body*
 ```bash
 {
@@ -431,7 +451,7 @@ PUT api/Comment
 ```bash
 DELETE api/Comment/{id}
 ```
-*expected request body*
+*expected request parameter*
 ```bash
 {
     "id": 1
@@ -475,8 +495,15 @@ POST api/Rating
 ---
 
 ```bash
-PUT api/Rating
+PUT api/Rating/{id}
 ```
+*expected request parameter*
+```bash
+{
+    "Id": 1
+}
+```
+
 *expected request body*
 ```bash
 {
@@ -521,4 +548,3 @@ DELETE api/Rating/{id}
 *expected internal server error*
 >Status 500
 ---
-## Admin endpoints WIP?
