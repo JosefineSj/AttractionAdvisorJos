@@ -7,7 +7,7 @@ import userData from "../userData";
 import {useNavigate} from "react-router-dom";
 
 
-export default function Modal({hideModal, id}) {
+export default function Modal({hideModal, id, updatePlaces}) {
 
   const navigate = useNavigate();
 
@@ -62,6 +62,7 @@ export default function Modal({hideModal, id}) {
  }
 };
 
+    
   return (
     <>
       {
@@ -81,7 +82,7 @@ export default function Modal({hideModal, id}) {
                 event.onerror = null
               }}/>
             </div>
-            <Rating attractionId={id} likes={likes} dislikes={dislikes} />
+            <Rating attractionId={id} likes={likes} dislikes={dislikes} updatePlaces={updatePlaces} />
             <Comments commentslist={commentlist}/>
             <form onSubmit={handleSubmitAddComment}>
               <div id='addCommentBox'>

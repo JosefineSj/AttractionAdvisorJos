@@ -5,6 +5,8 @@
     background-size: contain;
     background-position: center; 
     padding-left: 0px;
+    overflow-y: scroll;
+
   }
 
   .formController{

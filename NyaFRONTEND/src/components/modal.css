@@ -161,20 +161,9 @@ body.active-modal {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    margin-top: 20px;
-    margin-bottom: 20px;
     outline: none;
     
 }
-
-.viewRatingStartPage {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    outline: none;
-    
-}
-
 
 
 .ratingImg {

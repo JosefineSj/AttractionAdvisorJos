@@ -2,12 +2,9 @@ import '../pages/attractions.css';
 import "./modal.css";
 import Modal from "./Modal";
 import React, { useState } from "react";
-import {useNavigate} from "react-router-dom";
 
 
-const AttractionListElement = ({id, name, pictureLink, city, description, likes, dislikes}) => { 
-
-    const navigate = useNavigate();
+const AttractionListElement = ({id, name, pictureLink, city, description, likes, dislikes, updatePlaces}) => { 
   
     const [showModal, setShowModal] = useState(false);
     return(  
@@ -21,7 +18,7 @@ const AttractionListElement = ({id, name, pictureLink, city, description, likes,
           event.target.src = "Bakelser.jpg"
           event.onerror = null
         }}/>
-         <div className="viewRatingStartPage">
+         <div className="buttonsRating">
         <div>
             <img className="ratingImg"  src="https://em-content.zobj.net/source/microsoft-teams/337/thumbs-up_1f44d.png"  alt=""/>
             <p id="likeCount">{likes}</p>
@@ -34,7 +31,7 @@ const AttractionListElement = ({id, name, pictureLink, city, description, likes,
         
     </div>
      </div> 
-        {showModal && <Modal hideModal = {() => setShowModal(false)}  pictureLink = {pictureLink} name = {name} city = {city} description = {description} id= {id}/>}
+        {showModal && <Modal hideModal = {() => setShowModal(false)}  pictureLink = {pictureLink} name = {name} city = {city} description = {description} id= {id} updatePlaces={updatePlaces}/>}
     
     </>
 )}

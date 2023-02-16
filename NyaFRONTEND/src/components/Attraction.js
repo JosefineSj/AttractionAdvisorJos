@@ -16,14 +16,16 @@ const Attraction = ({apiUrl, header}) => {
   const filteredPlaces = places.filter((place) => {
       return place.city.toLowerCase().includes(searchField)})
 
-  useEffect(   () => {    
-      console.log("Kallar på metod")  
       async function fetchData() {
         const data = await ApiFetch(apiUrl);  
         if(data) setPlaces(data);
         }
+
+  useEffect(() => {    
+      console.log("Kallar på metod")  
+        console.log(apiUrl);
         fetchData()
-      }, [apiUrl]);
+      }, []);
  
       
   return(
@@ -33,7 +35,7 @@ const Attraction = ({apiUrl, header}) => {
         </div>  
 
         <div className="attractionList">
-          <ListOfAttractions places = {filteredPlaces} />
+          <ListOfAttractions places = {filteredPlaces} updatePlaces={fetchData} />
 
         </div>
       </div>
