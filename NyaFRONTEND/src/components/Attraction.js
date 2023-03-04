@@ -2,43 +2,43 @@ import { useState, useEffect } from 'react';
 import ListOfAttractions from './ListOfAttractions';
 import SearchBox from './search-box';
 import ApiFetch from '../webService/WebApi';
-
-const Attraction = ({apiUrl, header}) => {
-  
+// if apiUrl is a constant it can be saved in a constant file, prevent prop drilling
+const Attraction = ({ apiUrl, header }) => {
   const [searchField, setSearchField] = useState('');
   const [places, setPlaces] = useState([]);
 
-  const onSearchChange = (event) => { 
+  const onSearchChange = (event) => {
     const searchFieldString = event.target.value.toLowerCase()
-    setSearchField(searchFieldString);  
-    }
+    setSearchField(searchFieldString);
+  }
 
   const filteredPlaces = places.filter((place) => {
-      return place.city.toLowerCase().includes(searchField)})
+    return place.city.toLowerCase().includes(searchField)
+  })
 
-      async function fetchData() {
-        const data = await ApiFetch(apiUrl);  
-        if(data) setPlaces(data);
-        }
+  async function fetchData() {
+    const data = await ApiFetch(apiUrl);
+    if (data) setPlaces(data);
+  }
 
-  useEffect(() => {    
-      console.log("Kallar på metod")  
-        console.log(apiUrl);
-        fetchData()
-      }, []);
- 
-      
-  return(
-      <div> 
-        <div className='boxAroundSearchBox'>
-          <SearchBox header = {header} className='SearchBox' placeholder='Search for a city...' onChangeHandler={onSearchChange} />
-        </div>  
+  useEffect(() => {
+    console.log("Kallar på metod")
+    console.log(apiUrl);
+    fetchData()
+  }, []);
 
-        <div className="attractionList">
-          <ListOfAttractions places = {filteredPlaces} updatePlaces={fetchData} />
 
-        </div>
+
+  return (
+    <div>
+      <div className='boxAroundSearchBox'>
+        <SearchBox header={header} className='SearchBox' placeholder='Search for a city...' onChangeHandler={onSearchChange} />
       </div>
+
+      <div className="attractionList">
+        <ListOfAttractions places={filteredPlaces} updatePlaces={fetchData} />
+      </div>
+    </div>
   )
 }
 

@@ -1,3 +1,11 @@
+/**
+these are global styles. would be better to seperate styles at component level. so thet are only imported when they are used
+also makes it easier to find styles
+@see https://create-react-app.dev/docs/adding-a-stylesheet/
+*/
+
+
+
 /*.App {
     text-align: center;
   }*/

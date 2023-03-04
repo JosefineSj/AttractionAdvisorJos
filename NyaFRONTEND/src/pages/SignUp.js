@@ -8,7 +8,8 @@ export default function SignUp() {
 
   const navigate = useNavigate();
 
-
+  // use a ref instead, t reduce rerenders
+  // @see https://www.developerway.com/posts/react-re-renders-guide
         const [formData, setFormData] = useState({
             username: '',
             password: ''
