@@ -1,49 +1,52 @@
-import { useState, useContext } from "react";
+import { useState, useContext, } from "react";
 import './login.css';
 import ApiFetch from "../webService/WebApi";
 import userData from "../userData";
-import {UserContext} from '../App';
-import {useNavigate} from "react-router-dom";
+import { UserContext } from '../App';
+import { useNavigate } from "react-router-dom";
 
 
 
 export default function SignIn() {
-
   const navigate = useNavigate();
-  
-  const {state, dispatch} = useContext(UserContext);
-
+  const { dispatch } = useContext(UserContext);
+  // can rewrite the input fields using useRef as they will trigger a rerender everytime they change
+  // @see https://www.developerway.com/posts/react-re-renders-guide
   const [userName, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [user, setUser] = useState(null);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = await ApiFetch('/Users/login', 'POST', {username:  `${userName}`, password: `${password}` });
+    const data = await ApiFetch('/Users/login', 'POST', { username: `${userName}`, password: `${password}` })
+    // IF return, its a nice pattern
 
-      if (isNaN(data) || data === undefined){
-        alert("Incorrect input or user does not exist");
-        console.log(data, "data");
-      }
-        else {
-          console.log("data", data, "username", userName);
+    if (isNaN(data) || data === undefined) {
+      alert("Incorrect input or user does not exist");
+      console.log(data, "data");
+      return
+    }
 
-          alert("You are now signed in!");
-          dispatch({type: 'USER', payload: true})
+    console.log("data", data, "username", userName);
 
-          setUser(userName);
-          userData.userName = userName;
-          userData.id = data;
-          navigate("/add-attraction");
-        }
+    alert("You are now signed in!");
+    dispatch({ type: 'USER', payload: true })
+
+    setUser(userName);
+    userData.userName = userName;
+    userData.id = data;
+    navigate("/add-attraction");
+
   };
 
-  if (user === null) {
 
-    dispatch({type: 'USER', payload: false})
+  if (user) {
+    return null
+  }
 
-    return (
-      <div className="LogIn">
+
+  return (
+    <div className="LogIn">
       <form
         className="formControl"
         onSubmit={handleSubmit}
@@ -90,7 +93,8 @@ export default function SignIn() {
           </div>
         </div>
       </form>
-      </div>
-    ); 
-  }
+    </div>
+  );
+
+
 }
